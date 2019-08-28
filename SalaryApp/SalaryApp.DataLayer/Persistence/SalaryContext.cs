@@ -22,6 +22,8 @@ namespace SalaryApp.DataLayer.Persistence
 
         public DbSet<Workplace> Workplaces { get; set; }
 
+        public DbSet<Pay> Pays { get; set; }
+
         public SalaryContext():base("name=DefaultConnection")
         {
               
