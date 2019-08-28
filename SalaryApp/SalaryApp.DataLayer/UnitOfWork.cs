@@ -13,16 +13,20 @@ namespace SalaryApp.DataLayer.Models
         public UnitOfWork(SalaryContext context)    
         {
             this.context = context;
+
             Employees = new EmployeeRepository(context);
             Workshops = new WorkshopRepository(context);
             Cities = new CityRepository(context);
             Workgroups = new WorkgroupRepository(context);
+            FinancialYears = new FincancialYearRepository(context);
         }
 
         public IEmployeeRepository Employees { get; private set; }
         public IWorkshopRepository Workshops { get; private set; }
         public ICityRepository Cities { get; private set; }
         public IWorkgroupRepository Workgroups { get; private set; }
+        public IFincancialYearRepository FinancialYears { get; private set; }
+
 
 
         public int Complete()

@@ -17,6 +17,8 @@ namespace SalaryApp.DataLayer.Models
 
         public DbSet<Workgroup> Workgroup { get; set; }
 
+        public DbSet<FincancialYear> FinancialYears { get; set; }
+
         public SalaryContext():base("name=DefaultConnection")
         {
               

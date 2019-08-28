@@ -19,25 +19,14 @@ namespace SalaryApp.WinClient
             using (var unitOfWork = new UnitOfWork(new SalaryContext()))
             {
                 var workshop = unitOfWork.Workshops.Get(3);
-                var workgroup = new Workgroup
+
+                var finanYear = new FincancialYear
                 {
-                    Title = "6-A",
-                    Rate = 600000,
-                    Bon = 1900000,
-                    Maskan = 1000000,
-                    ChildrenBenefit = 1150000,
-                    IsShift = true,
-                    ShiftRation = 0.15f,
-                    TaxExept = 2750000,
-                    Workshop=workshop,
-                    
-
-
-
-
+                    Year = 1396,
+                    Workshop = workshop
                 };
 
-                unitOfWork.Workgroups.Add(workgroup);
+                unitOfWork.FinancialYears.Add(finanYear);
                 unitOfWork.Complete();
 
             }

@@ -67,20 +67,31 @@
     <Compile Include="Migrations\201908280604568_modify workshop and workgroup model..Designer.cs">
       <DependentUpon>201908280604568_modify workshop and workgroup model..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908280722528_add financialyear model..cs" />
+    <Compile Include="Migrations\201908280722528_add financialyear model..Designer.cs">
+      <DependentUpon>201908280722528_add financialyear model..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908280731494_make unique year in financail model..cs" />
+    <Compile Include="Migrations\201908280731494_make unique year in financail model..Designer.cs">
+      <DependentUpon>201908280731494_make unique year in financail model..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\CityRepository.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeRepository.cs" />
+    <Compile Include="Models\FincancialYear.cs" />
+    <Compile Include="Models\FincancialYearRepository.cs" />
     <Compile Include="Models\ICityRepository.cs" />
     <Compile Include="Models\IEmployeeRepository.cs" />
+    <Compile Include="Models\IFincancialYearRepository.cs" />
     <Compile Include="Models\IRepository.cs" />
-    <Compile Include="Models\IUnitOfWork.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Models\IWorkgroupRepository.cs" />
     <Compile Include="Models\IWorkshopRepository.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\SalaryContext.cs" />
-    <Compile Include="Models\UnitOfWork.cs" />
+    <Compile Include="UnitOfWork.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Workgroup.cs" />
     <Compile Include="Models\WorkgroupRepository.cs" />
@@ -107,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908280604568_modify workshop and workgroup model..resx">
       <DependentUpon>201908280604568_modify workshop and workgroup model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908280722528_add financialyear model..resx">
+      <DependentUpon>201908280722528_add financialyear model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908280731494_make unique year in financail model..resx">
+      <DependentUpon>201908280731494_make unique year in financail model..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
