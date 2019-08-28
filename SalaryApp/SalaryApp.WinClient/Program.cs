@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalaryApp.DataLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,19 @@ namespace SalaryApp.WinClient
         [STAThread]
         static void Main()
         {
+
+            using (var unitOfWork = new UnitOfWork(new SalaryContext()))
+            {
+                var city = new City
+                {
+                    CityName="خرمشهر"
+    
+                };
+
+                unitOfWork.Cities.Add(city);
+                unitOfWork.Complete();
+
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

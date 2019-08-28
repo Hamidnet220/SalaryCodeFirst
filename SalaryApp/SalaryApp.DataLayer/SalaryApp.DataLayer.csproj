@@ -51,15 +51,30 @@
     <Compile Include="Migrations\201908270458236_InitialModel.Designer.cs">
       <DependentUpon>201908270458236_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908280133026_add Workplace model.cs" />
+    <Compile Include="Migrations\201908280133026_add Workplace model.Designer.cs">
+      <DependentUpon>201908280133026_add Workplace model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908280428589_add city model.cs" />
+    <Compile Include="Migrations\201908280428589_add city model.Designer.cs">
+      <DependentUpon>201908280428589_add city model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\CityRepository.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeRepository.cs" />
+    <Compile Include="Models\ICityRepository.cs" />
     <Compile Include="Models\IEmployeeRepository.cs" />
     <Compile Include="Models\IRepository.cs" />
+    <Compile Include="Models\IUnitOfWork.cs" />
+    <Compile Include="Models\IWorkshopRepository.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\SalaryContext.cs" />
+    <Compile Include="Models\UnitOfWork.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Workshop.cs" />
+    <Compile Include="Models\WorkshopRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +84,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908270458236_InitialModel.resx">
       <DependentUpon>201908270458236_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908280133026_add Workplace model.resx">
+      <DependentUpon>201908280133026_add Workplace model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908280428589_add city model.resx">
+      <DependentUpon>201908280428589_add city model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
