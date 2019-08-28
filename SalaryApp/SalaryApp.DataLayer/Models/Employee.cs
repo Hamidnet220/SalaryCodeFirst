@@ -20,6 +20,9 @@ namespace SalaryApp.DataLayer.Models
         public byte NumberOfChildren { get; set; }
         public string Address { get; set; }
         public string Mobile { get; set; }
+        public DateTime? DOB { get; set; }
+        public int POB { get; set; }
+        public int POI { get; set; }
 
     }
 }
