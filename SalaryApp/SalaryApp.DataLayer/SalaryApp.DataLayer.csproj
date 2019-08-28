@@ -47,9 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Domain\AnnualPayDetail.cs" />
     <Compile Include="Core\Domain\Pay.cs" />
     <Compile Include="Core\Domain\SalaryPayDetails.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
+    <Compile Include="Core\Repositories\IAnnualPayDetailRepository.cs" />
     <Compile Include="Core\Repositories\ISalaryPayDetails.cs" />
     <Compile Include="Core\Repositories\IWorkPlaceRepository.cs" />
     <Compile Include="Core\Repositories\IPayRepository.cs" />
@@ -93,8 +95,17 @@
     <Compile Include="Migrations\201908281730458_add paydetails and modify pay model..Designer.cs">
       <DependentUpon>201908281730458_add paydetails and modify pay model..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908281927278_add AnnualPaydetail model..cs" />
+    <Compile Include="Migrations\201908281927278_add AnnualPaydetail model..Designer.cs">
+      <DependentUpon>201908281927278_add AnnualPaydetail model..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908281956281_modify AnnualPaydetail model..cs" />
+    <Compile Include="Migrations\201908281956281_modify AnnualPaydetail model..Designer.cs">
+      <DependentUpon>201908281956281_modify AnnualPaydetail model..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
+    <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
     <Compile Include="Persistence\Repositories\CityRepository.cs" />
     <Compile Include="Core\Domain\Employee.cs" />
     <Compile Include="Persistence\Repositories\EmployeeRepository.cs" />
@@ -154,6 +165,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908281730458_add paydetails and modify pay model..resx">
       <DependentUpon>201908281730458_add paydetails and modify pay model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281927278_add AnnualPaydetail model..resx">
+      <DependentUpon>201908281927278_add AnnualPaydetail model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281956281_modify AnnualPaydetail model..resx">
+      <DependentUpon>201908281956281_modify AnnualPaydetail model..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
