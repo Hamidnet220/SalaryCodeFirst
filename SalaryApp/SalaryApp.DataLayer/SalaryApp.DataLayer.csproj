@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Domain\Pay.cs" />
+    <Compile Include="Core\Domain\SalaryPayDetails.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
+    <Compile Include="Core\Repositories\ISalaryPayDetails.cs" />
     <Compile Include="Core\Repositories\IWorkPlaceRepository.cs" />
     <Compile Include="Core\Repositories\IPayRepository.cs" />
     <Compile Include="Migrations\201908270458236_InitialModel.cs" />
@@ -87,6 +89,10 @@
     <Compile Include="Migrations\201908281612288_add pay model..Designer.cs">
       <DependentUpon>201908281612288_add pay model..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908281730458_add paydetails and modify pay model..cs" />
+    <Compile Include="Migrations\201908281730458_add paydetails and modify pay model..Designer.cs">
+      <DependentUpon>201908281730458_add paydetails and modify pay model..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\CityRepository.cs" />
@@ -103,6 +109,7 @@
     <Compile Include="Core\Repositories\IWorkshopRepository.cs" />
     <Compile Include="Persistence\Repositories\PayRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
+    <Compile Include="Persistence\Repositories\SalaryPayDetailsRepository.cs" />
     <Compile Include="Persistence\Repositories\WorkplaceRepository.cs" />
     <Compile Include="Persistence\SalaryContext.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
@@ -144,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908281612288_add pay model..resx">
       <DependentUpon>201908281612288_add pay model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281730458_add paydetails and modify pay model..resx">
+      <DependentUpon>201908281730458_add paydetails and modify pay model..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
