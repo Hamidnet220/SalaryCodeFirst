@@ -13,6 +13,8 @@ namespace SalaryApp.DataLayer.Models
 
         public DbSet<Workshop> Workshop { get;set; }
 
+        public DbSet<City> City { get; set; }
+
         public SalaryContext():base("name=DefaultConnection")
         {
               
