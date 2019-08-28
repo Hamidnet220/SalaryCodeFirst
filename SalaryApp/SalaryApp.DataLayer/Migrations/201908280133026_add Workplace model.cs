@@ -3,7 +3,7 @@ namespace SalaryApp.DataLayer.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addWorkplacemodel : DbMigration
+    public partial class addworkshopmodel : DbMigration
     {
         public override void Up()
         {

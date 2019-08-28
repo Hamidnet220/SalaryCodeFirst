@@ -1,4 +1,5 @@
-﻿using SalaryApp.DataLayer.Persistence;
+﻿using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Persistence;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,12 +17,16 @@ namespace SalaryApp.WinClient
 
             using (var unitOfWork = new UnitOfWork(new SalaryContext()))
             {
-                var emp = unitOfWork.Employees.Find(e => e.Lastname == "کیانی بخش").FirstOrDefault();
-
-                if (emp != null)
+                var workshop = unitOfWork.Workshops.Get(3);
+                var workplace = new Workplace
                 {
-                    MessageBox.Show(emp.Firstname+" "+emp.Lastname+""+emp.NationalCode);
-                }
+                    Title = "دارخوین",
+                    Workshop = workshop,
+
+                };
+
+                unitOfWork.Workplaces.Add(workplace);
+                unitOfWork.Complete();
 
             }
             Application.EnableVisualStyles();

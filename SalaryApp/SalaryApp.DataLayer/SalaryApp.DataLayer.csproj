@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201908280731494_make unique year in financail model..Designer.cs">
       <DependentUpon>201908280731494_make unique year in financail model..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908281000399_add workplace model..cs" />
+    <Compile Include="Migrations\201908281000399_add workplace model..Designer.cs">
+      <DependentUpon>201908281000399_add workplace model..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\CityRepository.cs" />
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908280731494_make unique year in financail model..resx">
       <DependentUpon>201908280731494_make unique year in financail model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281000399_add workplace model..resx">
+      <DependentUpon>201908281000399_add workplace model..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SalaryApp.DataLayer.Core.Repositories
 {
-    interface IWorkPlaceRepository:IRepository<Workplace>
+    public interface IWorkPlaceRepository:IRepository<Workplace>
     {
     }
 }

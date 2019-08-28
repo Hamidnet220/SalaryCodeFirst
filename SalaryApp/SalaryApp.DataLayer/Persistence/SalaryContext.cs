@@ -20,6 +20,8 @@ namespace SalaryApp.DataLayer.Persistence
 
         public DbSet<FincancialYear> FinancialYears { get; set; }
 
+        public DbSet<Workplace> Workplaces { get; set; }
+
         public SalaryContext():base("name=DefaultConnection")
         {
               

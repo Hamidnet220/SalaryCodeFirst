@@ -2,15 +2,18 @@
 using SalaryApp.DataLayer.Core.Repositories;
 using SalaryApp.DataLayer.Persistence.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SalaryApp.DataLayer.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
+        public IEmployeeRepository Employees { get; private set; }
+        public IWorkshopRepository Workshops { get; private set; }
+        public ICityRepository Cities { get; private set; }
+        public IWorkgroupRepository Workgroups { get; private set; }
+        public IFincancialYearRepository FinancialYears { get; private set; }
+        public IWorkPlaceRepository Workplaces { get; private set; }
+
         private readonly SalaryContext context;
 
         public UnitOfWork(SalaryContext context)    
@@ -22,15 +25,10 @@ namespace SalaryApp.DataLayer.Persistence
             Cities = new CityRepository(context);
             Workgroups = new WorkgroupRepository(context);
             FinancialYears = new FincancialYearRepository(context);
+            Workplaces = new WorkplaceRepository(context);
         }
 
-        public IEmployeeRepository Employees { get; private set; }
-        public IWorkshopRepository Workshops { get; private set; }
-        public ICityRepository Cities { get; private set; }
-        public IWorkgroupRepository Workgroups { get; private set; }
-        public IFincancialYearRepository FinancialYears { get; private set; }
 
-        IEmployeeRepository IUnitOfWork.Employees => throw new NotImplementedException();
 
         public int Complete()
         {
