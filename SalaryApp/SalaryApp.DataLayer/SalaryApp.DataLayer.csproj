@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Domain\Workplace.cs" />
+    <Compile Include="Core\Repositories\IWorkPlaceRepository.cs" />
     <Compile Include="Migrations\201908270458236_InitialModel.cs" />
     <Compile Include="Migrations\201908270458236_InitialModel.Designer.cs">
       <DependentUpon>201908270458236_InitialModel.cs</DependentUpon>
@@ -76,27 +78,28 @@
       <DependentUpon>201908280731494_make unique year in financail model..cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\City.cs" />
-    <Compile Include="Models\CityRepository.cs" />
-    <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\EmployeeRepository.cs" />
-    <Compile Include="Models\FincancialYear.cs" />
-    <Compile Include="Models\FincancialYearRepository.cs" />
-    <Compile Include="Models\ICityRepository.cs" />
-    <Compile Include="Models\IEmployeeRepository.cs" />
-    <Compile Include="Models\IFincancialYearRepository.cs" />
-    <Compile Include="Models\IRepository.cs" />
-    <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Models\IWorkgroupRepository.cs" />
-    <Compile Include="Models\IWorkshopRepository.cs" />
-    <Compile Include="Models\Repository.cs" />
-    <Compile Include="Models\SalaryContext.cs" />
-    <Compile Include="UnitOfWork.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Workgroup.cs" />
-    <Compile Include="Models\WorkgroupRepository.cs" />
-    <Compile Include="Models\Workshop.cs" />
-    <Compile Include="Models\WorkshopRepository.cs" />
+    <Compile Include="Core\Domain\City.cs" />
+    <Compile Include="Persistence\Repositories\CityRepository.cs" />
+    <Compile Include="Core\Domain\Employee.cs" />
+    <Compile Include="Persistence\Repositories\EmployeeRepository.cs" />
+    <Compile Include="Core\Domain\FincancialYear.cs" />
+    <Compile Include="Persistence\Repositories\FincancialYearRepository.cs" />
+    <Compile Include="Core\Repositories\ICityRepository.cs" />
+    <Compile Include="Core\Repositories\IEmployeeRepository.cs" />
+    <Compile Include="Core\Repositories\IFincancialYearRepository.cs" />
+    <Compile Include="Core\Repositories\IRepository.cs" />
+    <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Core\Repositories\IWorkgroupRepository.cs" />
+    <Compile Include="Core\Repositories\IWorkshopRepository.cs" />
+    <Compile Include="Persistence\Repositories\Repository.cs" />
+    <Compile Include="Persistence\Repositories\WorkplaceRepository.cs" />
+    <Compile Include="Persistence\SalaryContext.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
+    <Compile Include="Core\Domain\User.cs" />
+    <Compile Include="Core\Domain\Workgroup.cs" />
+    <Compile Include="Persistence\Repositories\WorkgroupRepository.cs" />
+    <Compile Include="Core\Domain\Workshop.cs" />
+    <Compile Include="Persistence\Repositories\WorkshopRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,5 +129,6 @@
       <DependentUpon>201908280731494_make unique year in financail model..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

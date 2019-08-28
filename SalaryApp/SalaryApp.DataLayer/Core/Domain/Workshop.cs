@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalaryApp.DataLayer.Models
+namespace SalaryApp.DataLayer.Core.Domain
 {
     public class Workshop
     {

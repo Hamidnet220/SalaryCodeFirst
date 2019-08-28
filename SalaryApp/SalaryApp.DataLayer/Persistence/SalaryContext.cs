@@ -1,11 +1,12 @@
-﻿using System;
+﻿using SalaryApp.DataLayer.Core.Domain;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalaryApp.DataLayer.Models
+namespace SalaryApp.DataLayer.Persistence
 {
     public class SalaryContext:DbContext
     {

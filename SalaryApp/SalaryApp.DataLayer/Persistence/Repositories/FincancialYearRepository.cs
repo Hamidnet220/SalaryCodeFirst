@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Core.Repositories;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SalaryApp.DataLayer.Models
+namespace SalaryApp.DataLayer.Persistence.Repositories
 {
     public class FincancialYearRepository : Repository<FincancialYear>,IFincancialYearRepository
     {

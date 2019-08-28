@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalaryApp.DataLayer.Models
+namespace SalaryApp.DataLayer.Core.Repositories
 {
     public interface IRepository<TEntity> where TEntity:class
     {

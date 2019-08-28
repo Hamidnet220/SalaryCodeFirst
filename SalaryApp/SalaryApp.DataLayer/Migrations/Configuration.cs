@@ -5,14 +5,14 @@ namespace SalaryApp.DataLayer.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SalaryApp.DataLayer.Models.SalaryContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SalaryApp.DataLayer.Persistence.SalaryContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SalaryApp.DataLayer.Models.SalaryContext context)
+        protected override void Seed(SalaryApp.DataLayer.Persistence.SalaryContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Core.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalaryApp.DataLayer.Models
+namespace SalaryApp.DataLayer.Persistence.Repositories
 {
     public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
     {

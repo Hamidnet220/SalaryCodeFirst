@@ -1,8 +1,6 @@
-﻿using SalaryApp.DataLayer.Models;
+﻿using SalaryApp.DataLayer.Persistence;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalaryApp.WinClient
@@ -18,16 +16,12 @@ namespace SalaryApp.WinClient
 
             using (var unitOfWork = new UnitOfWork(new SalaryContext()))
             {
-                var workshop = unitOfWork.Workshops.Get(3);
+                var emp = unitOfWork.Employees.Find(e => e.Lastname == "کیانی بخش").FirstOrDefault();
 
-                var finanYear = new FincancialYear
+                if (emp != null)
                 {
-                    Year = 1396,
-                    Workshop = workshop
-                };
-
-                unitOfWork.FinancialYears.Add(finanYear);
-                unitOfWork.Complete();
+                    MessageBox.Show(emp.Firstname+" "+emp.Lastname+""+emp.NationalCode);
+                }
 
             }
             Application.EnableVisualStyles();

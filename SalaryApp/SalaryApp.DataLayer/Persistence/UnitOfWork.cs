@@ -1,10 +1,13 @@
-﻿using System;
+﻿using SalaryApp.DataLayer.Core;
+using SalaryApp.DataLayer.Core.Repositories;
+using SalaryApp.DataLayer.Persistence.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalaryApp.DataLayer.Models
+namespace SalaryApp.DataLayer.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -27,7 +30,7 @@ namespace SalaryApp.DataLayer.Models
         public IWorkgroupRepository Workgroups { get; private set; }
         public IFincancialYearRepository FinancialYears { get; private set; }
 
-
+        IEmployeeRepository IUnitOfWork.Employees => throw new NotImplementedException();
 
         public int Complete()
         {

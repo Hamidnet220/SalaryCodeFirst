@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
-namespace SalaryApp.DataLayer.Models
+namespace SalaryApp.DataLayer.Core.Domain
 {
     public class Employee
     {
