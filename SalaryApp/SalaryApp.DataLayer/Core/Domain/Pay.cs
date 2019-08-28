@@ -12,6 +12,7 @@ namespace SalaryApp.DataLayer.Core.Domain
         public string Title { get; set; }
         public Workshop Workshop { get; set; }
         public FincancialYear FinancialYear { get; set; }
+        public int MonthId { get; set; }
         public int EmployeesCount { get; set; }
         public decimal TotalGrossAmount { get; set; }
         public decimal TotalTaxAmount { get; set; }
