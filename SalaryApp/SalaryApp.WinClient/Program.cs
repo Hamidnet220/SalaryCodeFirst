@@ -14,48 +14,48 @@ namespace SalaryApp.WinClient
         [STAThread]
         static void Main()
         {
-            // Test AnnualPayDetails
+            //// Test AnnualPayDetails
 
-            using (var unitOfWork = new UnitOfWork(new SalaryContext()))
-            {
-                var emp = unitOfWork.Employees.Find(e => e.IdNumber == "1459").FirstOrDefault();
-                var pay = unitOfWork.Pays.Find(p => p.Id == 1).FirstOrDefault();
-                var wg = unitOfWork.Workgroups.Find(w => w.Title == "6-A").FirstOrDefault();
-                var annualPayDetail = new AnnualPayDetails
-                {
-                    BackpayAmount = 100,
-                    BackpayExempt = 0,
-                    DailyRate = 653000,
-                    Employee = emp,
-                    EmployeeIncurance = 122362,
-                    EmployeerIncurance = 26266,
-                    GrossAmount = 35000000,
-                    InPartPayment = 15000000,
-                    InsuranceIncluded = 30000000,
-                    Loan = 1500000,
-                    NetAmount = 25000000,
-                    OtherDeduction = 0,
-                    OtherDeduction1 = 0,
-                    PayInAdvance = 4000000,
-                    TaxAmount = 152322,
-                    IsTaxExempt = false,
-                    TaxIncluded = 2502322,
-                    Pay = pay,
-                    WorkGroup = wg,
-                    EadiAmount=2000000,
-                    IsInsuranceExempt=false,
-                    LeaveAmount=800000,
-                    SanavatAmount=20000000,
-                    TotalAbsentDays=17,
-                    TotalDaysOfWork=360,
-                    TotalLeaveDays=25
+            //using (var unitOfWork = new UnitOfWork(new SalaryContext()))
+            //{
+            //    var emp = unitOfWork.Employees.Find(e => e.IdNumber == "1459").FirstOrDefault();
+            //    var pay = unitOfWork.Pays.Find(p => p.Id == 1).FirstOrDefault();
+            //    var wg = unitOfWork.Workgroups.Find(w => w.Title == "6-A").FirstOrDefault();
+            //    var annualPayDetail = new AnnualPayDetails
+            //    {
+            //        BackpayAmount = 100,
+            //        BackpayExempt = 0,
+            //        DailyRate = 653000,
+            //        Employee = emp,
+            //        EmployeeIncurance = 122362,
+            //        EmployeerIncurance = 26266,
+            //        GrossAmount = 35000000,
+            //        InPartPayment = 15000000,
+            //        InsuranceIncluded = 30000000,
+            //        Loan = 1500000,
+            //        NetAmount = 25000000,
+            //        OtherDeduction = 0,
+            //        OtherDeduction1 = 0,
+            //        PayInAdvance = 4000000,
+            //        TaxAmount = 152322,
+            //        IsTaxExempt = false,
+            //        TaxIncluded = 2502322,
+            //        Pay = pay,
+            //        WorkGroup = wg,
+            //        EadiAmount=2000000,
+            //        IsInsuranceExempt=false,
+            //        LeaveAmount=800000,
+            //        SanavatAmount=20000000,
+            //        TotalAbsentDays=17,
+            //        TotalDaysOfWork=360,
+            //        TotalLeaveDays=25
 
-                };
+            //    };
 
-                unitOfWork.AnnualDetails.Add(annualPayDetail);
-                unitOfWork.Complete();
+            //    unitOfWork.AnnualDetails.Add(annualPayDetail);
+            //    unitOfWork.Complete();
 
-            }
+            //}
 
             //// Test SalaryPayDetails
 
@@ -124,7 +124,7 @@ namespace SalaryApp.WinClient
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
     }
 }
