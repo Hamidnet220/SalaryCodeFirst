@@ -14,6 +14,26 @@ namespace SalaryApp.WinClient
         [STAThread]
         static void Main()
         {
+
+
+
+            ////Test education
+
+            //using (var unitOfWork=new UnitOfWork(new SalaryContext()))
+            //{
+            //    var ed = new Education
+            //    {
+            //        Title = "دیپلم"
+            //    };
+
+            //    unitOfWork.Educations.Add(ed);
+            //    var res=unitOfWork.Complete();
+            //    MessageBox.Show(res.ToString());
+
+
+            //}
+
+
             //// Test AnnualPayDetails
 
             //using (var unitOfWork = new UnitOfWork(new SalaryContext()))

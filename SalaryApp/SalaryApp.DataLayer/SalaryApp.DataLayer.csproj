@@ -48,10 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Domain\AnnualPayDetail.cs" />
+    <Compile Include="Core\Domain\Education.cs" />
     <Compile Include="Core\Domain\Pay.cs" />
     <Compile Include="Core\Domain\SalaryPayDetails.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
     <Compile Include="Core\Repositories\IAnnualPayDetailRepository.cs" />
+    <Compile Include="Core\Repositories\IEducationRepository.cs" />
     <Compile Include="Core\Repositories\ISalaryPayDetails.cs" />
     <Compile Include="Core\Repositories\IWorkPlaceRepository.cs" />
     <Compile Include="Core\Repositories\IPayRepository.cs" />
@@ -103,11 +105,20 @@
     <Compile Include="Migrations\201908281956281_modify AnnualPaydetail model..Designer.cs">
       <DependentUpon>201908281956281_modify AnnualPaydetail model..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908290636292_add educantion model..cs" />
+    <Compile Include="Migrations\201908290636292_add educantion model..Designer.cs">
+      <DependentUpon>201908290636292_add educantion model..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908290642246_add education in employee model..cs" />
+    <Compile Include="Migrations\201908290642246_add education in employee model..Designer.cs">
+      <DependentUpon>201908290642246_add education in employee model..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
     <Compile Include="Persistence\Repositories\CityRepository.cs" />
     <Compile Include="Core\Domain\Employee.cs" />
+    <Compile Include="Persistence\Repositories\EducationRepository.cs" />
     <Compile Include="Persistence\Repositories\EmployeeRepository.cs" />
     <Compile Include="Core\Domain\FincancialYear.cs" />
     <Compile Include="Persistence\Repositories\FincancialYearRepository.cs" />
@@ -171,6 +182,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908281956281_modify AnnualPaydetail model..resx">
       <DependentUpon>201908281956281_modify AnnualPaydetail model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908290636292_add educantion model..resx">
+      <DependentUpon>201908290636292_add educantion model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908290642246_add education in employee model..resx">
+      <DependentUpon>201908290642246_add education in employee model..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
