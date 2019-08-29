@@ -2,11 +2,6 @@
 using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.CustomeControls;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalaryApp.WinClient.BaseInfoForms
@@ -33,7 +28,18 @@ namespace SalaryApp.WinClient.BaseInfoForms
             Text=title;
             InitializeComponent();
             this.Load += new EventHandler(GetData);
+            grid.CellContentClick += Grid_CellContentClick;
+            
         }
+
+        private void Grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = this.grid.Rows[e.RowIndex];
+            titleTextBox.Text = row.Cells["Title"].Value.ToString();
+            addressTextBox.Text = row.Cells["Address"].Value.ToString();
+        }
+
+        
 
         public void GetData(object sender,EventArgs e)
         {
@@ -192,9 +198,8 @@ namespace SalaryApp.WinClient.BaseInfoForms
             DatagridPanel.Controls.Add(grid);
         }
 
-        
-        
 
        
+
     }
 }
