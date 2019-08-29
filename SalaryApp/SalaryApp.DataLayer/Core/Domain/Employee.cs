@@ -15,6 +15,7 @@ namespace SalaryApp.DataLayer.Core.Domain
         public string FatherName { get; set; }
         public string IdNumber { get; set; }
         public string NationalCode { get; set; }
+        public string InsuranceId { get; set; }
         public int Age { get; set; }
         public bool IsMarrid { get; set; }
         public byte NumberOfChildren { get; set; }
@@ -23,6 +24,9 @@ namespace SalaryApp.DataLayer.Core.Domain
         public DateTime? DOB { get; set; }
         public int POB { get; set; }
         public int POI { get; set; }
+        public string BankAccount { get; set; }
+        public Education Education { get; set; }
+
 
     }
 }
