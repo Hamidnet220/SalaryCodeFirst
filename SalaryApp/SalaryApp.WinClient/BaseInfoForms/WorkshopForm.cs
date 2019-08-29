@@ -1,7 +1,9 @@
 ﻿using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Persistence;
+using SalaryApp.WinClient.CustomeControls;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ namespace SalaryApp.WinClient.BaseInfoForms
 {
     public class WorkshopForm:BaseForm
     {
-        public DialogResult result;
+        
         private CustomeControls.BaseTextBox titleTextBox;
         private CustomeControls.BaseTextBox addressTextBox;
         private CustomeControls.BaseTextBox telTextBox;
@@ -20,17 +22,27 @@ namespace SalaryApp.WinClient.BaseInfoForms
         private CustomeControls.BaseLabel workshopName;
         private CustomeControls.BaseLabel baseLabel2;
         private CustomeControls.BaseLabel tel;
+        private Panel DatagridPanel;
         private System.ComponentModel.IContainer components;
-
+        BindingSource bindingSource = new BindingSource();
+        GridControl grid = new GridControl();
         
 
         public WorkshopForm(string title)
         {
-            this.Text=title;
+            Text=title;
             InitializeComponent();
+            this.Load += new EventHandler(GetData);
         }
 
-        
+        public void GetData(object sender,EventArgs e)
+        {
+            using (var unitOfWork = new UnitOfWork(new SalaryContext()))
+            {
+                bindingSource.DataSource = unitOfWork.Workshops.GetAll();
+            }
+
+        }
 
         private void InitializeComponent()
         {
@@ -42,6 +54,7 @@ namespace SalaryApp.WinClient.BaseInfoForms
             this.workshopName = new SalaryApp.WinClient.CustomeControls.BaseLabel();
             this.baseLabel2 = new SalaryApp.WinClient.CustomeControls.BaseLabel();
             this.tel = new SalaryApp.WinClient.CustomeControls.BaseLabel();
+            this.DatagridPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // titleTextBox
@@ -67,7 +80,7 @@ namespace SalaryApp.WinClient.BaseInfoForms
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(12, 177);
+            this.cancelButton.Location = new System.Drawing.Point(12, 127);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(91, 23);
             this.cancelButton.TabIndex = 1;
@@ -77,7 +90,7 @@ namespace SalaryApp.WinClient.BaseInfoForms
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(118, 177);
+            this.saveButton.Location = new System.Drawing.Point(117, 127);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(91, 23);
             this.saveButton.TabIndex = 1;
@@ -112,10 +125,19 @@ namespace SalaryApp.WinClient.BaseInfoForms
             this.tel.TabIndex = 2;
             this.tel.Text = "تلفن";
             // 
+            // DatagridPanel
+            // 
+            this.DatagridPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DatagridPanel.Location = new System.Drawing.Point(0, 184);
+            this.DatagridPanel.Name = "DatagridPanel";
+            this.DatagridPanel.Size = new System.Drawing.Size(625, 250);
+            this.DatagridPanel.TabIndex = 3;
+            // 
             // WorkshopForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-            this.ClientSize = new System.Drawing.Size(595, 212);
+            this.ClientSize = new System.Drawing.Size(625, 434);
+            this.Controls.Add(this.DatagridPanel);
             this.Controls.Add(this.tel);
             this.Controls.Add(this.baseLabel2);
             this.Controls.Add(this.workshopName);
@@ -125,6 +147,7 @@ namespace SalaryApp.WinClient.BaseInfoForms
             this.Controls.Add(this.addressTextBox);
             this.Controls.Add(this.titleTextBox);
             this.Name = "WorkshopForm";
+            this.Load += new System.EventHandler(this.WorkshopForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +185,16 @@ namespace SalaryApp.WinClient.BaseInfoForms
         {
             this.Close();
         }
+        
+        private void WorkshopForm_Load(object sender, EventArgs e)
+        {
+            grid.DataSource = bindingSource;
+            DatagridPanel.Controls.Add(grid);
+        }
+
+        
+        
+
+       
     }
 }

@@ -18,18 +18,18 @@ namespace SalaryApp.WinClient
             InitializeComponent();
         }
 
-        private void BaseInfoWorkshopMenu_Click(object sender, EventArgs e)
-        {
-            var workshopForm = new WorkshopForm("تعریف کارگاه جدید");
-            workshopForm.ShowDialog();
-            
-
-        }
+       
 
         private void EmployeeInfoMenu_Click(object sender, EventArgs e)
         {
             var employeeForm = new EmployeeForm("ایجاد/ویرایش کارکنان");
             employeeForm.ShowDialog();
+        }
+
+        private void ManageWorkshopButton_Click(object sender, EventArgs e)
+        {
+            var workshopForm = new WorkshopForm("تعریف کارگاه جدید");
+            workshopForm.ShowDialog();
         }
     }
 }

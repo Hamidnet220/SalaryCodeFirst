@@ -28,181 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.BaseInfoMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.BaseInfoWorkshopMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.EmployeeInfoMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.خروجToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.حقوقودستمزدToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.حقوقToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.عیدیوسنواتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.علیالحسابToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.بیمهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.مالیاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.گزارشاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.لیستبانکToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.لیستبیمهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.لیستمالیاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainMenu.SuspendLayout();
+            this.ManageWorkshopButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // MainMenu
+            // ManageWorkshopButton
             // 
-            this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BaseInfoMenu,
-            this.حقوقودستمزدToolStripMenuItem,
-            this.گزارشاتToolStripMenuItem});
-            this.MainMenu.Location = new System.Drawing.Point(0, 0);
-            this.MainMenu.Name = "MainMenu";
-            this.MainMenu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.MainMenu.Size = new System.Drawing.Size(868, 24);
-            this.MainMenu.TabIndex = 0;
-            this.MainMenu.Text = "menuStrip1";
+            this.ManageWorkshopButton.Location = new System.Drawing.Point(702, 12);
+            this.ManageWorkshopButton.Name = "ManageWorkshopButton";
+            this.ManageWorkshopButton.Size = new System.Drawing.Size(154, 115);
+            this.ManageWorkshopButton.TabIndex = 1;
+            this.ManageWorkshopButton.Text = "ایجاد/ویرایش/انتخاب کارگاه";
+            this.ManageWorkshopButton.UseVisualStyleBackColor = true;
+            this.ManageWorkshopButton.Click += new System.EventHandler(this.ManageWorkshopButton_Click);
             // 
-            // BaseInfoMenu
+            // button2
             // 
-            this.BaseInfoMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BaseInfoWorkshopMenu,
-            this.EmployeeInfoMenu,
-            this.toolStripMenuItem1,
-            this.خروجToolStripMenuItem});
-            this.BaseInfoMenu.Name = "BaseInfoMenu";
-            this.BaseInfoMenu.Size = new System.Drawing.Size(80, 20);
-            this.BaseInfoMenu.Text = "اطلاعات پایه";
+            this.button2.Location = new System.Drawing.Point(542, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(154, 115);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "ایجاد /ویرایش کارکنان";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // BaseInfoWorkshopMenu
+            // button3
             // 
-            this.BaseInfoWorkshopMenu.Name = "BaseInfoWorkshopMenu";
-            this.BaseInfoWorkshopMenu.Size = new System.Drawing.Size(159, 22);
-            this.BaseInfoWorkshopMenu.Text = "اطلاعات کارگاه";
-            this.BaseInfoWorkshopMenu.Click += new System.EventHandler(this.BaseInfoWorkshopMenu_Click);
+            this.button3.Location = new System.Drawing.Point(382, 12);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(154, 115);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "ایجاد /ویرایش پرداخت";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // EmployeeInfoMenu
+            // button4
             // 
-            this.EmployeeInfoMenu.Name = "EmployeeInfoMenu";
-            this.EmployeeInfoMenu.Size = new System.Drawing.Size(159, 22);
-            this.EmployeeInfoMenu.Text = "اطلاعات کارمندان";
-            this.EmployeeInfoMenu.Click += new System.EventHandler(this.EmployeeInfoMenu_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(156, 6);
-            // 
-            // خروجToolStripMenuItem
-            // 
-            this.خروجToolStripMenuItem.Name = "خروجToolStripMenuItem";
-            this.خروجToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.خروجToolStripMenuItem.Text = "خروج";
-            // 
-            // حقوقودستمزدToolStripMenuItem
-            // 
-            this.حقوقودستمزدToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.حقوقToolStripMenuItem,
-            this.عیدیوسنواتToolStripMenuItem,
-            this.علیالحسابToolStripMenuItem,
-            this.بیمهToolStripMenuItem,
-            this.مالیاتToolStripMenuItem});
-            this.حقوقودستمزدToolStripMenuItem.Name = "حقوقودستمزدToolStripMenuItem";
-            this.حقوقودستمزدToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.حقوقودستمزدToolStripMenuItem.Text = "حقوق و دستمزد";
-            // 
-            // حقوقToolStripMenuItem
-            // 
-            this.حقوقToolStripMenuItem.Name = "حقوقToolStripMenuItem";
-            this.حقوقToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.حقوقToolStripMenuItem.Text = "حقوق";
-            // 
-            // عیدیوسنواتToolStripMenuItem
-            // 
-            this.عیدیوسنواتToolStripMenuItem.Name = "عیدیوسنواتToolStripMenuItem";
-            this.عیدیوسنواتToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.عیدیوسنواتToolStripMenuItem.Text = "عیدی و سنوات";
-            // 
-            // علیالحسابToolStripMenuItem
-            // 
-            this.علیالحسابToolStripMenuItem.Name = "علیالحسابToolStripMenuItem";
-            this.علیالحسابToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.علیالحسابToolStripMenuItem.Text = "علی الحساب";
-            // 
-            // بیمهToolStripMenuItem
-            // 
-            this.بیمهToolStripMenuItem.Name = "بیمهToolStripMenuItem";
-            this.بیمهToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.بیمهToolStripMenuItem.Text = "بیمه";
-            // 
-            // مالیاتToolStripMenuItem
-            // 
-            this.مالیاتToolStripMenuItem.Name = "مالیاتToolStripMenuItem";
-            this.مالیاتToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.مالیاتToolStripMenuItem.Text = "مالیات";
-            // 
-            // گزارشاتToolStripMenuItem
-            // 
-            this.گزارشاتToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.لیستبانکToolStripMenuItem,
-            this.لیستبیمهToolStripMenuItem,
-            this.لیستمالیاتToolStripMenuItem});
-            this.گزارشاتToolStripMenuItem.Name = "گزارشاتToolStripMenuItem";
-            this.گزارشاتToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.گزارشاتToolStripMenuItem.Text = "گزارشات";
-            // 
-            // لیستبانکToolStripMenuItem
-            // 
-            this.لیستبانکToolStripMenuItem.Name = "لیستبانکToolStripMenuItem";
-            this.لیستبانکToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.لیستبانکToolStripMenuItem.Text = "لیست بانک";
-            // 
-            // لیستبیمهToolStripMenuItem
-            // 
-            this.لیستبیمهToolStripMenuItem.Name = "لیستبیمهToolStripMenuItem";
-            this.لیستبیمهToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.لیستبیمهToolStripMenuItem.Text = "لیست بیمه";
-            // 
-            // لیستمالیاتToolStripMenuItem
-            // 
-            this.لیستمالیاتToolStripMenuItem.Name = "لیستمالیاتToolStripMenuItem";
-            this.لیستمالیاتToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.لیستمالیاتToolStripMenuItem.Text = "لیست مالیات";
+            this.button4.Location = new System.Drawing.Point(222, 12);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(154, 115);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "گزارشات";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 448);
-            this.Controls.Add(this.MainMenu);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.ManageWorkshopButton);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.MainMenuStrip = this.MainMenu;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "فرم اصلی";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.MainMenu.ResumeLayout(false);
-            this.MainMenu.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip MainMenu;
-        private System.Windows.Forms.ToolStripMenuItem BaseInfoMenu;
-        private System.Windows.Forms.ToolStripMenuItem BaseInfoWorkshopMenu;
-        private System.Windows.Forms.ToolStripMenuItem EmployeeInfoMenu;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem خروجToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem حقوقودستمزدToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem حقوقToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem عیدیوسنواتToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem علیالحسابToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem بیمهToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem مالیاتToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem گزارشاتToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem لیستبانکToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem لیستبیمهToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem لیستمالیاتToolStripMenuItem;
+        private System.Windows.Forms.Button ManageWorkshopButton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

@@ -70,6 +70,9 @@
     <Compile Include="CustomeControls\BaseButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomeControls\BaseDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomeControls\BaseLabel.cs">
       <SubType>Component</SubType>
     </Compile>
