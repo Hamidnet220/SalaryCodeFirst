@@ -61,6 +61,11 @@ namespace SalaryApp.WinClient.CustomeControls
             return this;
         }
 
+        public void RemoveCurrentItem()
+        {
+            bindingSource.RemoveCurrent();
+            bindingSource.ResetBindings(true);
+        }
         public TModel GetCurrentItem
         {
             get{ return bindingSource.Current as TModel; }
