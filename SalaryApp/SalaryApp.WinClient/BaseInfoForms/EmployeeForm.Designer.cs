@@ -637,7 +637,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.CancelButton);
             this.panel2.Controls.Add(this.EditButton);
             this.panel2.Controls.Add(this.SaveButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -655,14 +654,7 @@
             this.SaveButton.Text = "ذخیره";
             this.SaveButton.UseVisualStyleBackColor = true;
             // 
-            // CancelButton
-            // 
-            this.CancelButton.Location = new System.Drawing.Point(119, 12);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 0;
-            this.CancelButton.Text = "انصراف";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            
             // 
             // EditButton
             // 
@@ -763,7 +755,6 @@
         private System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button SaveButton;
     }

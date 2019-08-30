@@ -28,7 +28,7 @@ namespace SalaryApp.WinClient
 
         private void ManageWorkshopButton_Click(object sender, EventArgs e)
         {
-            var workshopForm = new WorkshopForm("تعریف کارگاه جدید");
+            var workshopForm = new WorkshopForm();
             workshopForm.ShowDialog();
         }
     }

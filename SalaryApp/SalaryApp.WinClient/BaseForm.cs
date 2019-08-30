@@ -17,5 +17,7 @@ namespace SalaryApp.WinClient
         {
             InitializeComponent();
         }
+
+        public string Titile { get; set; }
     }
 }
