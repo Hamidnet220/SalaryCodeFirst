@@ -2,6 +2,7 @@
 using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.CustomeControls;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SalaryApp.WinClient.BaseInfoForms
@@ -19,33 +20,22 @@ namespace SalaryApp.WinClient.BaseInfoForms
         private CustomeControls.BaseLabel tel;
         private Panel DatagridPanel;
         private System.ComponentModel.IContainer components;
-        BindingSource bindingSource = new BindingSource();
-        GridControl grid = new GridControl();
+        
         
 
         public WorkshopForm(string title)
         {
             Text=title;
             InitializeComponent();
-            this.Load += new EventHandler(GetData);
-            grid.CellContentClick += Grid_CellContentClick;
             
         }
 
-        private void Grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow row = this.grid.Rows[e.RowIndex];
-            titleTextBox.Text = row.Cells["Title"].Value.ToString();
-            addressTextBox.Text = row.Cells["Address"].Value.ToString();
-        }
 
-        
-
-        public void GetData(object sender,EventArgs e)
+        public IEnumerable<Workshop> GetData()
         {
             using (var unitOfWork = new UnitOfWork(new SalaryContext()))
             {
-                bindingSource.DataSource = unitOfWork.Workshops.GetAll();
+                return  unitOfWork.Workshops.GetAll();
             }
 
         }
@@ -181,6 +171,7 @@ namespace SalaryApp.WinClient.BaseInfoForms
                 unitOfWork.Complete();
 
                 MessageBox.Show("عملیات ثبت انجام شد");
+                
 
             }
                 
@@ -194,11 +185,14 @@ namespace SalaryApp.WinClient.BaseInfoForms
         
         private void WorkshopForm_Load(object sender, EventArgs e)
         {
-            grid.DataSource = bindingSource;
-            DatagridPanel.Controls.Add(grid);
+            var grid = new GridControl<Workshop>(DatagridPanel);
+            grid.AddTextBoxColumn(workshop => workshop.Title, "عنوان کارگاه");
+            grid.AddTextBoxColumn(workshop => workshop.Tel, "تلفن تماس");
+            grid.AddTextBoxColumn(workshop => workshop.Address, "آدرس");
+            grid.PopulateDataGridView(GetData());
         }
 
-
+        
        
 
     }

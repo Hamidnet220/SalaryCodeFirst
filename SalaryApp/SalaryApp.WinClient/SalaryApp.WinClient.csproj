@@ -70,15 +70,14 @@
     <Compile Include="CustomeControls\BaseButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomeControls\BaseDataGridView.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="CustomeControls\GridView.cs" />
     <Compile Include="CustomeControls\BaseLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomeControls\BaseTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ExpressionHandler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
