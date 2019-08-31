@@ -64,6 +64,12 @@
     <Compile Include="BaseInfoForms\EmployeeForm.Designer.cs">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseInfoForms\EmployeeViews\EmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseInfoForms\EmployeeViews\EmployeeList.Designer.cs">
+      <DependentUpon>EmployeeList.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseInfoForms\WorkshopForm.cs">
       <SubType>Form</SubType>
     </Compile>

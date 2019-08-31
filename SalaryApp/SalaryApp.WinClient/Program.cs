@@ -1,5 +1,6 @@
 ﻿using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Persistence;
+using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -8,6 +9,8 @@ namespace SalaryApp.WinClient
 {
     static class Program
     {
+
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -15,7 +18,8 @@ namespace SalaryApp.WinClient
         static void Main()
         {
 
-
+            var form = new EmployeeList();
+            form.ShowDialog();
 
             ////Test education
 
@@ -142,9 +146,9 @@ namespace SalaryApp.WinClient
 
 
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new MainForm());
         }
     }
 }

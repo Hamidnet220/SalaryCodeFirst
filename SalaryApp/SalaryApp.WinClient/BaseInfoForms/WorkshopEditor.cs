@@ -78,10 +78,6 @@ namespace SalaryApp.WinClient.BaseInfoForms
                 this.Close();
             }
 
-            
-
-            
-            
         }
 
         
