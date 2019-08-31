@@ -66,6 +66,18 @@ namespace SalaryApp.WinClient.CustomeControls
             bindingSource.RemoveCurrent();
             bindingSource.ResetBindings(true);
         }
+
+        public void ResetBindings()
+        {
+            bindingSource?.ResetBindings(true);
+        }
+
+        public void AddItem(TModel entity)
+        {
+            bindingSource.Add(entity);
+            bindingSource.ResetBindings(true);
+        }
+        
         public TModel GetCurrentItem
         {
             get{ return bindingSource.Current as TModel; }
