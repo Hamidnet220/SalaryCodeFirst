@@ -30,9 +30,9 @@
         {
             this.GridViewPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Delete = new System.Windows.Forms.Button();
-            this.Edit = new System.Windows.Forms.Button();
             this.Add = new System.Windows.Forms.Button();
+            this.Edit = new System.Windows.Forms.Button();
+            this.Delete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,15 +57,14 @@
             this.panel1.Size = new System.Drawing.Size(721, 45);
             this.panel1.TabIndex = 4;
             // 
-            // Delete
+            // Add
             // 
-            this.Delete.Location = new System.Drawing.Point(19, 10);
-            this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(75, 23);
-            this.Delete.TabIndex = 0;
-            this.Delete.Text = "حذف";
-            this.Delete.UseVisualStyleBackColor = true;
-            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            this.Add.Location = new System.Drawing.Point(181, 10);
+            this.Add.Name = "Add";
+            this.Add.Size = new System.Drawing.Size(75, 23);
+            this.Add.TabIndex = 0;
+            this.Add.Text = "جدید";
+            this.Add.UseVisualStyleBackColor = true;
             // 
             // Edit
             // 
@@ -75,17 +74,15 @@
             this.Edit.TabIndex = 0;
             this.Edit.Text = "ویرایش";
             this.Edit.UseVisualStyleBackColor = true;
-            this.Edit.Click += new System.EventHandler(this.Edit_Click);
             // 
-            // Add
+            // Delete
             // 
-            this.Add.Location = new System.Drawing.Point(181, 10);
-            this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(75, 23);
-            this.Add.TabIndex = 0;
-            this.Add.Text = "جدید";
-            this.Add.UseVisualStyleBackColor = true;
-            this.Add.Click += new System.EventHandler(this.Add_Click);
+            this.Delete.Location = new System.Drawing.Point(19, 10);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(75, 23);
+            this.Delete.TabIndex = 0;
+            this.Delete.Text = "حذف";
+            this.Delete.UseVisualStyleBackColor = true;
             // 
             // WorkshopForm
             // 

@@ -1,13 +1,12 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.DataLayer.Persistence;
+﻿using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.CustomeControls;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace SalaryApp.WinClient.BaseInfoForms
+namespace SalaryApp.WinClient.BaseInfoForms.workshop
 {
-    public partial class WorkshopForm : BaseForm
+    public partial class WorkshopForm : Form
     {
 
         GridControl<Workshop> grid;
@@ -76,30 +75,14 @@ namespace SalaryApp.WinClient.BaseInfoForms
 
         }
 
-       
-
-        private void Edit_Click(object sender, EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
         {
-            var workshoEditor = new WorkshopEditor(grid.GetCurrentItem,unitOfWork);
-            workshoEditor.ShowDialog();
-            grid.ResetBindings();
-
 
         }
 
-        private void Add_Click(object sender, EventArgs e)
-        {
-            var workshoEditor = new WorkshopEditor(new Workshop(),unitOfWork);
-            workshoEditor.ShowDialog();
-            grid.AddItem(workshoEditor.entity);
-            
-        }
 
-        private void Delete_Click(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
-            unitOfWork.Workshops.Remove(grid.GetCurrentItem);
-            unitOfWork.Complete();
-            grid.RemoveCurrentItem();
 
         }
     }
