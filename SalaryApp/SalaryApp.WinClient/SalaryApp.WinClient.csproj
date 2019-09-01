@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="ExpressionHandler.cs" />
     <Compile Include="CustomeControls\GridView.cs" />
+    <Compile Include="GeneralClass\MessagesClass.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

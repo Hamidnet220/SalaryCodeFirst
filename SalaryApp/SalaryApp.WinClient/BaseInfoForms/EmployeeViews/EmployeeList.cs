@@ -1,6 +1,7 @@
 ﻿using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.CustomeControls;
+using SalaryApp.WinClient.GeneralClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
 {
     public partial class EmployeeList : BaseForm
     {
+        UnitOfWork unitOfWork;
+        GridControl<Employee> grid;
+
         public EmployeeList()
         {
             InitializeComponent();
@@ -52,14 +56,15 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             oprationPanel.Controls.Add(EditButton);
 
 
-            var grid = new GridControl<Employee>(gridPanel);
+            grid = new GridControl<Employee>(gridPanel);
             grid.AddTextBoxColumn(emp => new Employee().Firstname,"نام");
             grid.AddTextBoxColumn(emp => new Employee().Lastname,"نام خانوادگی");
             grid.AddTextBoxColumn(emp => new Employee().FatherName,"نام پدر");
             grid.AddTextBoxColumn(emp => new Employee().NationalCode,"کد ملی");
             grid.AddTextBoxColumn(emp => new Employee().IdNumber,"شماره شناسنامه");
+            grid.AddTextBoxColumn(emp => new Employee().BankAccount,"شماره حساب");
 
-            var unitOfWork = new UnitOfWork(new SalaryContext());
+            unitOfWork = new UnitOfWork(new SalaryContext());
 
             grid.PopulateDataGridView(unitOfWork.Employees.GetAll());
         }
@@ -71,8 +76,13 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("delete employeee");
-        }
+            if (MessageBox.Show(MessagesClass.DeleteConfirm,MessagesClass.CriticalCaption,MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+
+            unitOfWork.Employees.Remove(grid.GetCurrentItem);
+            unitOfWork.Complete();
+            grid.RemoveCurrentItem();
+    }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
