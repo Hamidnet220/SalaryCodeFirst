@@ -85,9 +85,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             {
                 onClick(btn);
             };
-            buttonTop += 25;
+            buttonTop += 27;
             btn.Top = buttonTop;
-            btn.Left = 25;
+            btn.Left = 45;
             oprationPanel.Controls.Add(btn);
             
         }
