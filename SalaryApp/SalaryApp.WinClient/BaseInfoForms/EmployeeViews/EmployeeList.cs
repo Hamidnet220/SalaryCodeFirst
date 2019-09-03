@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
     {
         UnitOfWork unitOfWork;
         GridControl<Employee> grid;
+        Panel oprationPanel;
+        int buttonTop = 0;
+
 
         public EmployeeList()
         {
@@ -30,30 +34,34 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             this.Text = "لیست کارکنان";
             this.WindowState = FormWindowState.Maximized;
             var gridPanel = new Panel();
-            var oprationPanel = new Panel();
+            oprationPanel = new Panel();
             oprationPanel.Dock = DockStyle.Right;
             gridPanel.Dock = DockStyle.Fill;
-            var AddButton = new Button();
-            AddButton.Text = "+ جدید";
-            AddButton.Left = 25;
-            AddButton.Click += AddButton_Click;
-            var DeleteButton = new Button();
-            DeleteButton.Text = "- حذف";
-            DeleteButton.Left = 25;
-            DeleteButton.Top = AddButton.Height + 8;
-            DeleteButton.Click += DeleteButton_Click;
-
-            var EditButton = new Button();
-            EditButton.Text = "[X] ویرایش";
-            EditButton.Left = 25;
-            EditButton.Top = AddButton.Height *2 + 15;
-            EditButton.Click += EditButton_Click;
-
             this.Controls.Add(gridPanel);
             this.Controls.Add(oprationPanel);
-            oprationPanel.Controls.Add(AddButton);
-            oprationPanel.Controls.Add(DeleteButton);
-            oprationPanel.Controls.Add(EditButton);
+
+
+            AddAction("+جدید", button =>
+            {
+                var employeeForm = new EmployeeForm(" ");
+                employeeForm.ShowDialog();
+            });
+
+            AddAction("ویرایش", button =>
+            {
+                MessageBox.Show("Edit employeee");
+            });
+
+            AddAction("-حذف", button =>
+            {
+                if (MessageBox.Show(MessagesClass.DeleteConfirm, MessagesClass.CriticalCaption, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    return;
+
+                unitOfWork.Employees.Remove(grid.GetCurrentItem);
+                unitOfWork.Complete();
+                grid.RemoveCurrentItem();
+            });
+
 
 
             grid = new GridControl<Employee>(gridPanel);
@@ -69,25 +77,19 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             grid.PopulateDataGridView(unitOfWork.Employees.GetAll());
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
+        private void AddAction(string title,Action<Button> onClick)
         {
-            MessageBox.Show("Edit employeee");
-        }
-
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show(MessagesClass.DeleteConfirm,MessagesClass.CriticalCaption,MessageBoxButtons.YesNo) != DialogResult.Yes)
-                return;
-
-            unitOfWork.Employees.Remove(grid.GetCurrentItem);
-            unitOfWork.Complete();
-            grid.RemoveCurrentItem();
-    }
-
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            var employeeForm = new EmployeeForm(" ");
-            employeeForm.ShowDialog();
+            var btn = new Button();
+            btn.Text = title;
+            btn.Click += (obj, e) =>
+            {
+                onClick(btn);
+            };
+            buttonTop += 25;
+            btn.Top = buttonTop;
+            btn.Left = 25;
+            oprationPanel.Controls.Add(btn);
+            
         }
     }
 }
