@@ -1,10 +1,6 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.DataLayer.Persistence;
-using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
+﻿using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
 using System;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace SalaryApp.WinClient
 {
@@ -19,7 +15,7 @@ namespace SalaryApp.WinClient
         static void Main()
         {
 
-            var form = new WorkshopList();
+            var form = new EmployeeList();
             form.ShowDialog();
 
             ////Test education

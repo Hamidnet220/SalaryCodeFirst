@@ -3,33 +3,23 @@ using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
 {
     public partial class EmployeeList : ViewBase
     {
-        UnitOfWork unitOfWork;
         GridControl<Employee> grid;
         int buttonTop = 0;
 
 
-        public EmployeeList():base()
+        public EmployeeList()
         {
             
             InitializeComponent();
             Load += EmployeeList_Load;
             Load += AddActions;
             Load += PopulateGrid;
-            FormClosed += EmployeeList_FormClosed;
         }
 
 
@@ -49,8 +39,6 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             grid.AddTextBoxColumn(emp => new Employee().NationalCode, "کد ملی");
             grid.AddTextBoxColumn(emp => new Employee().IdNumber, "شماره شناسنامه");
             grid.AddTextBoxColumn(emp => new Employee().BankAccount, "شماره حساب");
-
-            unitOfWork = new UnitOfWork(new SalaryContext());
 
             grid.PopulateDataGridView(unitOfWork.Employees.GetAll());
         }
@@ -79,9 +67,6 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             });
         }
         
-        private void EmployeeList_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            unitOfWork.Dispose();
-        }
+        
     }
 }

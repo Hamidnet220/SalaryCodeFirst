@@ -9,7 +9,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
 {
     public class WorkshopList:ViewBase
     {
-        UnitOfWork unitOfWork;
+        
         GridControl<Workshop> grid;
 
         public WorkshopList()
@@ -17,7 +17,6 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
             Load += WorkshopList_Load;
             Load += AddActions;
             Load += PopulateGrid;
-            FormClosed += WorkshopList_FormClosed;
         }
 
         private void WorkshopList_Load(object sender, EventArgs e)
@@ -33,9 +32,6 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
             grid.AddTextBoxColumn(w=>w.Title, "نام کارگاه");
             grid.AddTextBoxColumn(w=>w.Tel, "تلفن");
             grid.AddTextBoxColumn(w=>w.Address, "آدرس");
-
-
-            unitOfWork = new UnitOfWork(new SalaryContext());
 
             grid.PopulateDataGridView(unitOfWork.Workshops.GetAll());
         }
@@ -63,9 +59,6 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
             });
         }
 
-        private void WorkshopList_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            unitOfWork.Dispose();
-        }
+       
     }
 }
