@@ -15,32 +15,46 @@ using System.Windows.Forms;
 
 namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
 {
-    public partial class EmployeeList : BaseForm
+    public partial class EmployeeList : ViewBase
     {
         UnitOfWork unitOfWork;
         GridControl<Employee> grid;
-        Panel oprationPanel;
         int buttonTop = 0;
 
 
-        public EmployeeList()
+        public EmployeeList():base()
         {
+            
             InitializeComponent();
             Load += EmployeeList_Load;
+            Load += AddActions;
+            Load += PopulateGrid;
         }
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
             this.Text = "لیست کارکنان";
             this.WindowState = FormWindowState.Maximized;
-            var gridPanel = new Panel();
-            oprationPanel = new Panel();
-            oprationPanel.Dock = DockStyle.Right;
-            gridPanel.Dock = DockStyle.Fill;
-            this.Controls.Add(gridPanel);
-            this.Controls.Add(oprationPanel);
+            
+        }
 
+        private void PopulateGrid(object sender, EventArgs e)
+        {
+            grid = new GridControl<Employee>(gridPanel);
+            grid.AddTextBoxColumn(emp => new Employee().Firstname, "نام");
+            grid.AddTextBoxColumn(emp => new Employee().Lastname, "نام خانوادگی");
+            grid.AddTextBoxColumn(emp => new Employee().FatherName, "نام پدر");
+            grid.AddTextBoxColumn(emp => new Employee().NationalCode, "کد ملی");
+            grid.AddTextBoxColumn(emp => new Employee().IdNumber, "شماره شناسنامه");
+            grid.AddTextBoxColumn(emp => new Employee().BankAccount, "شماره حساب");
 
+            unitOfWork = new UnitOfWork(new SalaryContext());
+
+            grid.PopulateDataGridView(unitOfWork.Employees.GetAll());
+        }
+
+        private void AddActions(object sender, EventArgs e)
+        {
             AddAction("+جدید", button =>
             {
                 var employeeForm = new EmployeeForm(" ");
@@ -61,35 +75,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
                 unitOfWork.Complete();
                 grid.RemoveCurrentItem();
             });
-
-
-
-            grid = new GridControl<Employee>(gridPanel);
-            grid.AddTextBoxColumn(emp => new Employee().Firstname,"نام");
-            grid.AddTextBoxColumn(emp => new Employee().Lastname,"نام خانوادگی");
-            grid.AddTextBoxColumn(emp => new Employee().FatherName,"نام پدر");
-            grid.AddTextBoxColumn(emp => new Employee().NationalCode,"کد ملی");
-            grid.AddTextBoxColumn(emp => new Employee().IdNumber,"شماره شناسنامه");
-            grid.AddTextBoxColumn(emp => new Employee().BankAccount,"شماره حساب");
-
-            unitOfWork = new UnitOfWork(new SalaryContext());
-
-            grid.PopulateDataGridView(unitOfWork.Employees.GetAll());
         }
-
-        private void AddAction(string title,Action<Button> onClick)
-        {
-            var btn = new Button();
-            btn.Text = title;
-            btn.Click += (obj, e) =>
-            {
-                onClick(btn);
-            };
-            buttonTop += 27;
-            btn.Top = buttonTop;
-            btn.Left = 45;
-            oprationPanel.Controls.Add(btn);
-            
-        }
+        
     }
 }
