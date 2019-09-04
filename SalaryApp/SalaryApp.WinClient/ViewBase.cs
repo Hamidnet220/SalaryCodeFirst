@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalaryApp.DataLayer.Persistence;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,24 @@ namespace SalaryApp.WinClient
 {
     public partial class ViewBase : BaseForm
     {
+
+
+        protected UnitOfWork unitOfWork;
         int buttonTop = 0;
 
         public ViewBase()
         {
             InitializeComponent();
+            unitOfWork = new UnitOfWork(new SalaryContext());
             Load += ViewBase_Load;
-           
+            FormClosed += ViewBase_FormClosed;
+        }
+
+        
+
+        private void ViewBase_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            unitOfWork.Dispose();
         }
 
         private void ViewBase_Load(object sender, EventArgs e)
