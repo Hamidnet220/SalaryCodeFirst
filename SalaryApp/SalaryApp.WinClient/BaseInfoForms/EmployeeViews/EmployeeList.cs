@@ -29,7 +29,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             Load += EmployeeList_Load;
             Load += AddActions;
             Load += PopulateGrid;
+            FormClosed += EmployeeList_FormClosed;
         }
+
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
@@ -77,5 +79,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             });
         }
         
+        private void EmployeeList_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            unitOfWork.Dispose();
+        }
     }
 }
