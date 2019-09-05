@@ -1,6 +1,10 @@
-﻿using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
+﻿using SalaryApp.DataLayer.Core;
+using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
+using SalaryApp.WinClient.BaseInfoForms.PayViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
 using System;
+using System.Reflection;
 
 namespace SalaryApp.WinClient
 {
@@ -15,8 +19,9 @@ namespace SalaryApp.WinClient
         static void Main()
         {
 
-            var form = new EmployeeList();
-            form.ShowDialog();
+            var frm = new EmployeeEditor();
+            frm.ShowDialog();
+            
 
             ////Test education
 

@@ -52,6 +52,7 @@
     <Compile Include="Core\Domain\Pay.cs" />
     <Compile Include="Core\Domain\SalaryPayDetails.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
+    <Compile Include="Core\VerboseNameAttribute.cs" />
     <Compile Include="Core\Repositories\IAnnualPayDetailRepository.cs" />
     <Compile Include="Core\Repositories\IEducationRepository.cs" />
     <Compile Include="Core\Repositories\ISalaryPayDetails.cs" />

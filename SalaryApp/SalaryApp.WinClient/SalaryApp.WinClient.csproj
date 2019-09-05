@@ -52,6 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseInfoForms\PayViews\PayEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseInfoForms\PayViews\PayList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseInfoForms\WorkshopViews\WorkshopEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditorBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,23 +76,14 @@
     <Compile Include="BaseInfoForms\EmployeeForm.Designer.cs">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseInfoForms\EmployeeViews\EmployeeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BaseInfoForms\EmployeeViews\EmployeeList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BaseInfoForms\EmployeeViews\EmployeeList.Designer.cs">
       <DependentUpon>EmployeeList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseInfoForms\WorkshopForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BaseInfoForms\WorkshopForm.Designer.cs">
-      <DependentUpon>WorkshopForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseInfoForms\WorkshopEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BaseInfoForms\WorkshopEditor.Designer.cs">
-      <DependentUpon>WorkshopEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseInfoForms\WorkshopViews\WorkshopList.cs">
       <SubType>Form</SubType>
@@ -102,17 +105,14 @@
     <Compile Include="ViewBase.Designer.cs">
       <DependentUpon>ViewBase.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditorBase.resx">
+      <DependentUpon>EditorBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BaseInfoForms\EmployeeForm.resx">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BaseInfoForms\WorkshopForm.resx">
-      <DependentUpon>WorkshopForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BaseInfoForms\WorkshopEditor.resx">
-      <DependentUpon>WorkshopEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

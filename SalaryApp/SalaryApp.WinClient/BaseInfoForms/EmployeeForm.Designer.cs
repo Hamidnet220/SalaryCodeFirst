@@ -45,7 +45,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.DateOfBorn = new System.Windows.Forms.TextBox();
-            this.MaritalStatus = new System.Windows.Forms.TextBox();
             this.NationalCode = new System.Windows.Forms.TextBox();
             this.IdNumber = new System.Windows.Forms.TextBox();
             this.FatherName = new System.Windows.Forms.TextBox();
@@ -89,6 +88,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.MaritalStatus = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -137,6 +137,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.MaritalStatus);
             this.groupBox2.Controls.Add(this.PlaceOfBorn);
             this.groupBox2.Controls.Add(this.PlaceOfIssue);
             this.groupBox2.Controls.Add(this.label9);
@@ -149,7 +150,6 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.DateOfBorn);
-            this.groupBox2.Controls.Add(this.MaritalStatus);
             this.groupBox2.Controls.Add(this.NationalCode);
             this.groupBox2.Controls.Add(this.IdNumber);
             this.groupBox2.Controls.Add(this.FatherName);
@@ -266,13 +266,6 @@
             this.DateOfBorn.Size = new System.Drawing.Size(141, 22);
             this.DateOfBorn.TabIndex = 6;
             // 
-            // MaritalStatus
-            // 
-            this.MaritalStatus.Location = new System.Drawing.Point(62, 161);
-            this.MaritalStatus.Name = "MaritalStatus";
-            this.MaritalStatus.Size = new System.Drawing.Size(141, 22);
-            this.MaritalStatus.TabIndex = 5;
-            // 
             // NationalCode
             // 
             this.NationalCode.Location = new System.Drawing.Point(62, 133);
@@ -322,7 +315,6 @@
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "اطلاعات بانکی";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label22
             // 
@@ -391,7 +383,6 @@
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "اطلاعات تماس";
-            this.groupBox5.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label33
             // 
@@ -477,7 +468,6 @@
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "اطلاعات شغلی";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label21
             // 
@@ -580,7 +570,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اطلاعات شغلی";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label5
             // 
@@ -662,6 +651,14 @@
             this.textBox1.Size = new System.Drawing.Size(141, 22);
             this.textBox1.TabIndex = 0;
             // 
+            // MaritalStatus
+            // 
+            this.MaritalStatus.FormattingEnabled = true;
+            this.MaritalStatus.Location = new System.Drawing.Point(62, 164);
+            this.MaritalStatus.Name = "MaritalStatus";
+            this.MaritalStatus.Size = new System.Drawing.Size(141, 22);
+            this.MaritalStatus.TabIndex = 9;
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -727,7 +724,6 @@
         private System.Windows.Forms.TextBox textBox23;
         private System.Windows.Forms.TextBox textBox24;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox MaritalStatus;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label25;
@@ -754,5 +750,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.ComboBox MaritalStatus;
     }
 }

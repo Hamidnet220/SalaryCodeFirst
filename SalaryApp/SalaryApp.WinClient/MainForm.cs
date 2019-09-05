@@ -1,12 +1,6 @@
 ﻿using SalaryApp.WinClient.BaseInfoForms;
+using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalaryApp.WinClient
@@ -28,7 +22,7 @@ namespace SalaryApp.WinClient
 
         private void ManageWorkshopButton_Click(object sender, EventArgs e)
         {
-            var workshopForm = new WorkshopForm();
+            var workshopForm = new WorkshopList();
             workshopForm.ShowDialog();
         }
     }

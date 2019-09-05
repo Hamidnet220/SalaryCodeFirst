@@ -16,11 +16,12 @@ namespace SalaryApp.WinClient.BaseInfoForms
         {
             this.Text = title;
            InitializeComponent();
+            Load += EmployeeForm_Load;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void EmployeeForm_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
