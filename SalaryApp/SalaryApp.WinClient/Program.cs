@@ -3,6 +3,7 @@ using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
 using SalaryApp.WinClient.BaseInfoForms.PayViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
+using SalaryApp.WinClient.Salary.SalaryDetails;
 using System;
 using System.Reflection;
 
@@ -19,7 +20,7 @@ namespace SalaryApp.WinClient
         static void Main()
         {
 
-            var frm = new EmployeeEditor();
+            var frm = new EmployeeList();
             frm.ShowDialog();
             
 
