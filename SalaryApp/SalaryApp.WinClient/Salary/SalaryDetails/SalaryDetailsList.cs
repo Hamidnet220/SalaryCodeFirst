@@ -35,6 +35,23 @@ namespace SalaryApp.WinClient.Salary.SalaryDetails
         {
             grid = new GridControl<SalaryPayDetails>(gridPanel);
 
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Employee.Firstname, "نام");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Employee.Lastname, "نام خانوادگی");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().DailyRate, "پایه روزانه");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().DaysOfWork, "روز-کارکرد");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().ChildrenCount, "تعداد فرزند");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().WorkInHoliday, "تعطیل کاری-روز");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().WorkInFriday, "جمعه کاری -روز");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().LeaveDays, "مرخصی-روز");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().MissionDays, "ماموریت-روز");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().WorkOvertimeHr, "اضافه کاری-ساعت");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().WorkAsStandbyDays, "جایگزینی-روز");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().AbsentDays, "غیبت-روز");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().MonthlyWage, "حقوق ماهانه");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Bon,"بن");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Maskan, "مسکن");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Karobar, "خواروبار");
+
             grid.PopulateDataGridView(unitOfWork.SalaryDetails.GetAll());
         }
 

@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\ColumnVisbileAttribute.cs" />
     <Compile Include="Core\Domain\AnnualPayDetail.cs" />
     <Compile Include="Core\Domain\Education.cs" />
     <Compile Include="Core\Domain\Pay.cs" />
