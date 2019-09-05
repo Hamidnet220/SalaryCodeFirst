@@ -13,9 +13,11 @@ namespace SalaryApp.DataLayer.Core.Domain
 
         [Required]
         [StringLength(150)]
-        public string Title { get; set; } 
-
+        [VerboseName("عنوان کارگاه")]
+        public string Title { get; set; }
+        [VerboseName("آدرس کارگاه")]
         public string Address { get; set; }
+        [VerboseName("تلفن کارگاه")]
         public string Tel { get; set; }
         
     }
