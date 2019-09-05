@@ -9,10 +9,14 @@ namespace SalaryApp.DataLayer.Core.Domain
     public class Pay
     {
         public int Id { get; set; }
+        [VerboseName("عنوان پرداخت:")]
         public string Title { get; set; }
+        [VerboseName("نام کارگاه:")]
         public Workshop Workshop { get; set; }
         public FincancialYear FinancialYear { get; set; }
+        [VerboseName("شناسه ماه:")]
         public int MonthId { get; set; }
+        [VerboseName("تعداد کارکنان:")]
         public int EmployeesCount { get; set; }
         public decimal TotalGrossAmount { get; set; }
         public decimal TotalTaxAmount { get; set; }
