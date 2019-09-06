@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace SalaryApp.WinClient
 {
-    public partial class ViewBase : BaseForm
+    public partial class ListBase : BaseForm
     {
 
 
         protected UnitOfWork unitOfWork;
         int buttonTop = 0;
 
-        public ViewBase()
+        public ListBase()
         {
             InitializeComponent();
             unitOfWork = new UnitOfWork(new SalaryContext());

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
 {
-    public class WorkshopList:ViewBase
+    public class WorkshopList:ListBase
     {
         
         GridControl<Workshop> grid;

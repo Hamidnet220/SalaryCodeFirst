@@ -1,6 +1,6 @@
 ﻿namespace SalaryApp.WinClient
 {
-    partial class ViewBase
+    partial class ListBase
     {
         /// <summary>
         /// Required designer variable.

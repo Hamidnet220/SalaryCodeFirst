@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalaryApp.WinClient.BaseInfoForms.PayViews
 {
-    public class PayList: ViewBase
+    public class PayList: ListBase
     {
 
     }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SalaryApp.WinClient.Salary.SalaryDetails
 {
-    public class SalaryDetailsList:ViewBase
+    public class SalaryDetailsList:ListBase
     {
         GridControl<SalaryPayDetails> grid;
         int buttonTop = 0;
@@ -51,6 +51,10 @@ namespace SalaryApp.WinClient.Salary.SalaryDetails
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().Bon,"بن");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().Maskan, "مسکن");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().Karobar, "خواروبار");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().ChildrenBenefit, "حق اولاد");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().ShifStatus, "وضعیت نوبنکاری");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().WorkInHolidayAmount, "مبلغ تعطیل کاری");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().WrokInFridayAmoutn, "مبلغ جمعه کاری");
 
             grid.PopulateDataGridView(unitOfWork.SalaryDetails.GetAll());
         }
