@@ -7,7 +7,7 @@ namespace SalaryApp.DataLayer.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Pays", "Status", c => c.Byte(nullable: false));
+            AddColumn("dbo.Pays", "Status", c => c.Byte(nullable: false, defaultValue:1));
             AddColumn("dbo.Pays", "IsDeleted", c => c.Boolean(nullable: false));
         }
         
