@@ -13,9 +13,10 @@ namespace SalaryApp.WinClient.Salary.SalaryDetails
     public class SalaryDetailsList:ListBase
     {
         GridControl<SalaryPayDetails> grid;
-
-        public SalaryDetailsList()
+        Pay paylist;
+        public SalaryDetailsList(Pay paylist)
         {
+            this.paylist = paylist;
             Load += SalaryDetailsList_Load;
             Load += AddActions;
             Load += PopulateGrid;
@@ -58,8 +59,27 @@ namespace SalaryApp.WinClient.Salary.SalaryDetails
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().BadConditionRatio, "درصد بدی آب وهوا");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().BadConditionAmount, "مبلغ بدی آب و هوا");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().CommuteBenefiRatio, "درصد ایاب و ذهاب");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().CommuteBenefit, "مبلغ ایاب و ذهاب");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().HygieneAmount, "مبلغ سرانه بهداشت");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().FoodBenefit, "مبلغ غذا");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().InstructionBenefit, "مبلغ آموزش");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().BackpayAmount, "مبلغ معوق");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().BackpayExempt, "مبلغ معوق معاف");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().GrossAmount, "مبلغ ناخالص");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().InsuranceExempt, "مشمول مالیات");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().InsuranceIncluded, "مشمول بیمه");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().EmployeerIncurance, "بیمه کارفرما");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().TaxExempt, "معاف از مالیات");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().TaxIncluded, "مشمول مالیات");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().TaxAmount, "مبلغ مالیات");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().PayInAdvance, "مساعده");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().InPartPayment, "علی الحساب   ");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().OtherDeduction, "سایر کسورات");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().OtherDeduction1, "1 سایر کسورات");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().NetAmount, "خالص پرداختی");
 
-            grid.PopulateDataGridView(unitOfWork.SalaryDetails.GetAll());
+            grid.EnableHrScrollBar();
+            grid.PopulateDataGridView(unitOfWork.SalaryDetails.Find(payDitalis=>payDitalis.Pay.Id==paylist.Id).ToList());
         }
 
         private void AddActions(object sender, EventArgs e)

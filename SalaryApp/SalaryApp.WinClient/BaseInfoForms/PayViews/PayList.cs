@@ -1,6 +1,7 @@
 ﻿using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
+using SalaryApp.WinClient.Salary.SalaryDetails;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
             grid.AddTextBoxColumn(py => new Pay().EmployeesCount, "تعداد کارکنان");
             grid.AddTextBoxColumn(py => new Pay().Title, "عنوان پرداخت");
             grid.AddTextBoxColumn(py => new Pay().TotalGrossAmount, "جمع مبلغ ناخالص");
+            grid.AddTextBoxColumn(py => new Pay().Status, "وضعیت");
 
             grid.PopulateDataGridView(unitOfWork.Pays.GetAll());
         }
@@ -45,12 +47,21 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
         {
             AddAction("+جدید", button =>
             {
-
+                var payForm = new PayEditor();
+                payForm.ShowDialog();
             });
 
             AddAction("ویرایش", button =>
             {
             });
+
+            AddAction("جزئیات پرداخت", button =>
+             {
+                 var paylist = grid.GetCurrentItem;
+                 var payDetails = new SalaryDetailsList(paylist);
+                 payDetails.ShowDialog();
+                 
+             });
 
             AddAction("-حذف", button =>
             {
