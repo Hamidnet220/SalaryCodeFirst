@@ -114,6 +114,10 @@
     <Compile Include="Migrations\201908290642246_add education in employee model..Designer.cs">
       <DependentUpon>201908290642246_add education in employee model..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909070537159_add status and isdeleted field to pay table..cs" />
+    <Compile Include="Migrations\201909070537159_add status and isdeleted field to pay table..Designer.cs">
+      <DependentUpon>201909070537159_add status and isdeleted field to pay table..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -189,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908290642246_add education in employee model..resx">
       <DependentUpon>201908290642246_add education in employee model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909070537159_add status and isdeleted field to pay table..resx">
+      <DependentUpon>201909070537159_add status and isdeleted field to pay table..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
