@@ -10,8 +10,6 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
     public partial class EmployeeList : ListBase
     {
         GridControl<Employee> grid;
-        int buttonTop = 0;
-
 
         public EmployeeList()
         {

@@ -13,8 +13,6 @@ namespace SalaryApp.WinClient.Salary.SalaryDetails
     public class SalaryDetailsList:ListBase
     {
         GridControl<SalaryPayDetails> grid;
-        int buttonTop = 0;
-
 
         public SalaryDetailsList()
         {
