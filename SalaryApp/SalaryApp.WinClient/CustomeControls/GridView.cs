@@ -50,6 +50,13 @@ namespace SalaryApp.WinClient.CustomeControls
             return this;
         }
 
+        public GridControl<TModel> EnableHrScrollBar()
+        {
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            grid.ScrollBars = ScrollBars.Horizontal;
+            return this;
+        }
+
         public GridControl<TModel> PopulateDataGridView(IEnumerable<TModel> data)
         {
 
