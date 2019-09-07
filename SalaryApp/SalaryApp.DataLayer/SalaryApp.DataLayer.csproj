@@ -119,6 +119,10 @@
     <Compile Include="Migrations\201909070537159_add status and isdeleted field to pay table..Designer.cs">
       <DependentUpon>201909070537159_add status and isdeleted field to pay table..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909071632596_add employee to salary details..cs" />
+    <Compile Include="Migrations\201909071632596_add employee to salary details..Designer.cs">
+      <DependentUpon>201909071632596_add employee to salary details..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -197,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909070537159_add status and isdeleted field to pay table..resx">
       <DependentUpon>201909070537159_add status and isdeleted field to pay table..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909071632596_add employee to salary details..resx">
+      <DependentUpon>201909071632596_add employee to salary details..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

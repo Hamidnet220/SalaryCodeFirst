@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,11 @@ namespace SalaryApp.DataLayer.Core.Domain
         [VerboseName("عنوان پرداخت")]
         public Pay Pay { get; set; }
 
+        public int Employee_Id { get; set; }
+
         [VerboseName("نام کارمند")]
-        public Employee Employee { get; set; }
+        [ForeignKey("Employee_Id")]
+        public virtual Employee Employee { get ; set; }
 
         public Workgroup WorkGroup { get; set; }
 

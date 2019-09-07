@@ -1,5 +1,6 @@
 ﻿using SalaryApp.DataLayer.Core;
 using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
 using SalaryApp.WinClient.BaseInfoForms.PayViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
@@ -20,9 +21,8 @@ namespace SalaryApp.WinClient
         static void Main()
         {
 
-            var frm = new SalaryDetailsEditor();
+            var frm = new PayList();
             frm.ShowDialog();
-            
 
             ////Test education
 
