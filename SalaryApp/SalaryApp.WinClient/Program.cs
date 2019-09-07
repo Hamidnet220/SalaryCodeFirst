@@ -20,7 +20,7 @@ namespace SalaryApp.WinClient
         static void Main()
         {
 
-            var frm = new EmployeeList();
+            var frm = new SalaryDetailsList();
             frm.ShowDialog();
             
 

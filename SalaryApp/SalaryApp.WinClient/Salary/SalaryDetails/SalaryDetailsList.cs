@@ -53,6 +53,11 @@ namespace SalaryApp.WinClient.Salary.SalaryDetails
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().ShifStatus, "وضعیت نوبنکاری");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().WorkInHolidayAmount, "مبلغ تعطیل کاری");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().WrokInFridayAmoutn, "مبلغ جمعه کاری");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().WorkOvertimeAmount, "مبلغ اضافه کاری");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().WorkAsStandbyAmount, "مبلغ جایگزینی");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().BadConditionRatio, "درصد بدی آب وهوا");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().BadConditionAmount, "مبلغ بدی آب و هوا");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().CommuteBenefiRatio, "درصد ایاب و ذهاب");
 
             grid.PopulateDataGridView(unitOfWork.SalaryDetails.GetAll());
         }
