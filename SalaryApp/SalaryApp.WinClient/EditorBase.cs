@@ -18,6 +18,8 @@ namespace SalaryApp.WinClient
         protected Button Accept;
 
         int top = 25;
+        int left = 0;
+        int columnNumber =0;
 
         public enum FieldMode
         {
@@ -51,14 +53,16 @@ namespace SalaryApp.WinClient
 
                     textbox.Name = item.Name;
                     label.Name = item.Name + "Label";
-
+                    
                     textbox.Top = top;
                     label.Top = top;
 
                     textbox.Size = new System.Drawing.Size(150, 25);
+                    
+                    left=(this.Width - label.Width - 20)-(columnNumber*350);
 
-                    label.Left = this.Width-label.Width-20;
-                    textbox.Left =this.Width-label.Width-textbox.Width-20;
+                    label.Left = left;
+                    textbox.Left =left-textbox.Width;
 
                     textbox.Anchor = AnchorStyles.Right ;
                     textbox.Anchor = AnchorStyles.Top;
@@ -72,6 +76,12 @@ namespace SalaryApp.WinClient
                     this.Controls.Add(textbox);
 
                     top += 25;
+
+                    if (top >= this.Height)
+                    {
+                        top = 25;
+                        columnNumber++;
+                    }
 
                 }
                 catch (NullReferenceException)
