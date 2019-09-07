@@ -77,7 +77,7 @@ namespace SalaryApp.WinClient
 
                     top += 25;
 
-                    if (top >= this.Height)
+                    if (top >= this.Height-100)
                     {
                         top = 25;
                         columnNumber++;
