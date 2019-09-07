@@ -108,43 +108,43 @@ namespace SalaryApp.DataLayer.Core.Domain
         [VerboseName("مبلغ ناخالص")]
         public decimal GrossAmount { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("معاف از بیمه")]
         public bool InsuranceExempt { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("مشمول بیمه")]
         public decimal InsuranceIncluded { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("مبلغ بیمه کارمند")]
         public decimal EmployeeIncurance { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("مبلغ بیمه کارفرما")]
         public decimal EmployeerIncurance { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("مبلغ معاف از مالیات")]
         public bool TaxExempt { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("مشمول مالیات")]
         public decimal TaxIncluded { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("مبلغ مالیات")]
         public decimal TaxAmount { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("مساعده")]
         public decimal PayInAdvance { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("وام")]
         public decimal Loan { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("علی الحساب")]
         public decimal InPartPayment { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("سایر کسورات")]
         public decimal OtherDeduction { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("سایر کسوارت")]
         public decimal OtherDeduction1 { get; set; }
 
-        [VerboseName("")]
+        [VerboseName("خالص پرداختی")]
         public decimal NetAmount { get; set; }
 
 
