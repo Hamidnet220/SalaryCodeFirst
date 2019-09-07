@@ -22,5 +22,8 @@ namespace SalaryApp.DataLayer.Core.Domain
         public decimal TotalTaxAmount { get; set; }
         public decimal TotalInsuraceAmount { get; set; }
         public decimal TotalNetAmount { get; set; }
+        public byte Status { get; set; }
+        public bool IsDeleted { get; set; }
+
     }
 }
