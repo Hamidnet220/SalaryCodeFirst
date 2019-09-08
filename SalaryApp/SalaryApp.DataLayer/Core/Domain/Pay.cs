@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SalaryApp.DataLayer.Core.Domain
+﻿namespace SalaryApp.DataLayer.Core.Domain
 {
     public class Pay
     {
@@ -24,6 +18,10 @@ namespace SalaryApp.DataLayer.Core.Domain
         public decimal TotalNetAmount { get; set; }
         public byte Status { get; set; }
         public bool IsDeleted { get; set; }
+        [VerboseName("نوع پرداخت")]
+        public virtual PayType PayType { get; set; }
 
     }
+
+    
 }
