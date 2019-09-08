@@ -51,6 +51,7 @@
     <Compile Include="Core\Domain\AppStatus.cs" />
     <Compile Include="Core\Domain\Education.cs" />
     <Compile Include="Core\Domain\Pay.cs" />
+    <Compile Include="Core\Domain\PayType.cs" />
     <Compile Include="Core\Domain\SalaryPayDetails.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
     <Compile Include="Core\VerboseNameAttribute.cs" />
@@ -126,6 +127,10 @@
     <Compile Include="Migrations\201909080635151_add ilist in pay entity..cs" />
     <Compile Include="Migrations\201909080635151_add ilist in pay entity..Designer.cs">
       <DependentUpon>201909080635151_add ilist in pay entity..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909082022115_add paytype entity and add it to pay entity..cs" />
+    <Compile Include="Migrations\201909082022115_add paytype entity and add it to pay entity..Designer.cs">
+      <DependentUpon>201909082022115_add paytype entity and add it to pay entity..cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
@@ -211,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909080635151_add ilist in pay entity..resx">
       <DependentUpon>201909080635151_add ilist in pay entity..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909082022115_add paytype entity and add it to pay entity..resx">
+      <DependentUpon>201909082022115_add paytype entity and add it to pay entity..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
