@@ -123,6 +123,10 @@
     <Compile Include="Migrations\201909071632596_add employee to salary details..Designer.cs">
       <DependentUpon>201909071632596_add employee to salary details..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909080635151_add ilist in pay entity..cs" />
+    <Compile Include="Migrations\201909080635151_add ilist in pay entity..Designer.cs">
+      <DependentUpon>201909080635151_add ilist in pay entity..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -204,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909071632596_add employee to salary details..resx">
       <DependentUpon>201909071632596_add employee to salary details..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909080635151_add ilist in pay entity..resx">
+      <DependentUpon>201909080635151_add ilist in pay entity..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
