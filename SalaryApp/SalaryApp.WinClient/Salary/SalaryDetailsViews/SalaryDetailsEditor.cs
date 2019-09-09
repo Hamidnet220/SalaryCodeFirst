@@ -16,7 +16,7 @@ namespace SalaryApp.WinClient.Salary.SalaryDetails
 
         private void SalaryDetailsEditor_Load(object sender, EventArgs e)
         {
-            AddAllFields<SalaryPayDetails>();
+            AddTextFields<SalaryPayDetails>();
         }
     }
 }
