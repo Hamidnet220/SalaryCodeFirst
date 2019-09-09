@@ -18,7 +18,7 @@ namespace SalaryApp.DataLayer.Persistence
 
         public DbSet<Workgroup> Workgroup { get; set; }
 
-        public DbSet<FincancialYear> FinancialYears { get; set; }
+        public DbSet<FinancialYear> FinancialYears { get; set; }
 
         public DbSet<Workplace> Workplaces { get; set; }
 
@@ -29,6 +29,8 @@ namespace SalaryApp.DataLayer.Persistence
         public DbSet<AnnualPayDetails> AnnualPayDetails { get; set; }
 
         public DbSet<Education> Educations { get; set; }
+
+        public DbSet<PayType> Paytypes { get; set; }
 
 
         public SalaryContext():base("name=DefaultConnection")

@@ -11,12 +11,13 @@ namespace SalaryApp.DataLayer.Persistence
         public IWorkshopRepository Workshops { get; private set; }
         public ICityRepository Cities { get; private set; }
         public IWorkgroupRepository Workgroups { get; private set; }
-        public IFincancialYearRepository FinancialYears { get; private set; }
+        public IFinancialYearRepository FinancialYears { get; private set; }
         public IWorkPlaceRepository Workplaces { get; private set; }
         public IPayRepository Pays { get; private set; }
         public ISalaryPayDetails SalaryDetails { get; private set; }
         public IAnnualPayDetailRepository AnnualDetails { get; private set; }
         public IEducationRepository Educations { get; private set; }
+        public IPayTypeRepository PayTypes { get; private set; }
 
         private readonly SalaryContext context;
 
@@ -28,12 +29,13 @@ namespace SalaryApp.DataLayer.Persistence
             Workshops = new WorkshopRepository(context);
             Cities = new CityRepository(context);
             Workgroups = new WorkgroupRepository(context);
-            FinancialYears = new FincancialYearRepository(context);
+            FinancialYears = new FinancialYearRepository(context);
             Workplaces = new WorkplaceRepository(context);
             Pays = new PayRepository(context);
             SalaryDetails = new SalaryPayDetailsRepository(context);
             AnnualDetails = new AnnualPayDetailRepository(context);
             Educations = new EducationRepository(context);
+            PayTypes = new PayTypeRepository(context);
         }
 
 
