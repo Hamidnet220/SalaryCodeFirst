@@ -52,10 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseInfoForms\PayViews\PayEditor.cs">
+    <Compile Include="Salary\PayViews\PayEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseInfoForms\PayViews\PayList.cs">
+    <Compile Include="Salary\PayViews\PayList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BaseInfoForms\WorkshopViews\WorkshopEditor.cs">
@@ -99,13 +99,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Salary\AnnualpayDetails\AnnualDetailsList.cs">
+    <Compile Include="Salary\AnnualpayDetailsViews\AnnualDetailsList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Salary\SalaryDetails\SalaryDetailsEditor.cs">
+    <Compile Include="Salary\SalaryDetailsViews\SalaryDetailsEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Salary\SalaryDetails\SalaryDetailsList.cs">
+    <Compile Include="Salary\SalaryDetailsViews\SalaryDetailsList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListBase.cs">

@@ -58,6 +58,13 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
             AddAction("جزئیات پرداخت", button =>
              {
                  var paylist = grid.GetCurrentItem;
+                 if (unitOfWork.SalaryDetails.Find(sd => sd.Pay.Id == paylist.Id).Count() == 0)
+                 {
+                     var result = MessageBox.Show("برای این لیست جزئیاتی تعریف نشده است.میخواهید از لیست های قبل کپی کنید؟", "هشدار", MessageBoxButtons.YesNoCancel);
+                     if (result == DialogResult.No)
+                         return;
+                 }
+
                  var payDetails = new SalaryDetailsList(paylist);
                  payDetails.ShowDialog();
                  

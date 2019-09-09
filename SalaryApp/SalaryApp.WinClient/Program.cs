@@ -21,7 +21,7 @@ namespace SalaryApp.WinClient
         [STAThread]
         static void Main()
         {
-            var frm = new AnnualDetailsList(new Pay());
+            var frm = new PayList();
             frm.ShowDialog();
 
             ////Test education
