@@ -16,7 +16,10 @@ namespace SalaryApp.WinClient
 
 
         protected UnitOfWork unitOfWork;
+        protected virtual string FormTitle { get; set; }
+
         int buttonTop = 0;
+
 
         public ListBase()
         {
@@ -35,7 +38,7 @@ namespace SalaryApp.WinClient
 
         private void ViewBase_Load(object sender, EventArgs e)
         {
-            this.Text = "لیست کارکنان";
+            this.Text = FormTitle;
             this.WindowState = FormWindowState.Maximized;
         }
 
