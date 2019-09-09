@@ -17,6 +17,7 @@ namespace SalaryApp.WinClient.Salary.AnnualpayDetails
 
         public AnnualDetailsList(Pay paylist)
         {
+            this.FormTitle = "لیست عیدی ،سنوات و مرخصی ";
             this.paylist = paylist;
             Load += AnnualDetailsList_Load;
             Load += AddActions;
@@ -26,8 +27,7 @@ namespace SalaryApp.WinClient.Salary.AnnualpayDetails
 
         private void AnnualDetailsList_Load(object sender, EventArgs e)
         {
-            this.Text = "لیست کارکنان";
-
+            
         }
 
         private void PopulateGrid(object sender, EventArgs e)

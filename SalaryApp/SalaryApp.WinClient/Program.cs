@@ -4,6 +4,7 @@ using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
 using SalaryApp.WinClient.BaseInfoForms.PayViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
+using SalaryApp.WinClient.Salary.AnnualpayDetails;
 using SalaryApp.WinClient.Salary.SalaryDetails;
 using System;
 using System.Reflection;
@@ -20,7 +21,7 @@ namespace SalaryApp.WinClient
         [STAThread]
         static void Main()
         {
-            var frm = new PayList();
+            var frm = new AnnualDetailsList(new Pay());
             frm.ShowDialog();
 
             ////Test education

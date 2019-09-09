@@ -15,6 +15,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
         {
             
             InitializeComponent();
+            FormTitle = "لیست کارکنان";
             Load += EmployeeList_Load;
             Load += AddActions;
             Load += PopulateGrid;
@@ -23,8 +24,6 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
-            this.Text = "لیست کارکنان";
-            this.WindowState = FormWindowState.Maximized;
             
         }
 

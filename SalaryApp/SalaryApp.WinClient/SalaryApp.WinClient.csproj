@@ -102,7 +102,6 @@
     <Compile Include="Salary\AnnualpayDetails\AnnualDetailsList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Salary\AnnualpayDetails\FormWindowState.cs" />
     <Compile Include="Salary\SalaryDetails\SalaryDetailsEditor.cs">
       <SubType>Form</SubType>
     </Compile>
