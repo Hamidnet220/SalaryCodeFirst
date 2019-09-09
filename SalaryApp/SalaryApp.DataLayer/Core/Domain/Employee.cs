@@ -29,8 +29,11 @@ namespace SalaryApp.DataLayer.Core.Domain
         public string Mobile { get; set; }
         [VerboseName("تاریخ تولد:")]
         public DateTime? DOB { get; set; }
+
         [VerboseName("محل تولد:")]
+        [ComboBox("City")]
         public int POB { get; set; }
+
         [VerboseName("محل صدور:")]
         public int POI { get; set; }
         [VerboseName("شماره حساب بانکی:")]
