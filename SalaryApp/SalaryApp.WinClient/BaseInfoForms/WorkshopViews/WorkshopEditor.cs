@@ -16,7 +16,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
 
         private void WorkshopEditor_Load(object sender, EventArgs e)
         {
-            AddAllFields<Workshop>();
+            AddTextFields<Workshop>();
         }
     }
 }
