@@ -8,6 +8,7 @@ using SalaryApp.WinClient.Salary.AnnualpayDetails;
 using SalaryApp.WinClient.Salary.SalaryDetails;
 using System;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace SalaryApp.WinClient
 {

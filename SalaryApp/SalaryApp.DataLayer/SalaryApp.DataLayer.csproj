@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\ComboBoxAttribute.cs" />
     <Compile Include="Core\Domain\AnnualPayDetail.cs" />
     <Compile Include="Core\Domain\AppStatus.cs" />
     <Compile Include="Core\Domain\Education.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Core\Domain\PayType.cs" />
     <Compile Include="Core\Domain\SalaryPayDetails.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
+    <Compile Include="Core\Repositories\IPayTypeRepository.cs" />
     <Compile Include="Core\VerboseNameAttribute.cs" />
     <Compile Include="Core\Repositories\IAnnualPayDetailRepository.cs" />
     <Compile Include="Core\Repositories\IEducationRepository.cs" />
@@ -132,6 +134,22 @@
     <Compile Include="Migrations\201909082022115_add paytype entity and add it to pay entity..Designer.cs">
       <DependentUpon>201909082022115_add paytype entity and add it to pay entity..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909091219266_make virtual workshop field in pay.cs" />
+    <Compile Include="Migrations\201909091219266_make virtual workshop field in pay.Designer.cs">
+      <DependentUpon>201909091219266_make virtual workshop field in pay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909091223086_make paytype_Id and WOrkshop_Id in pay entity.cs" />
+    <Compile Include="Migrations\201909091223086_make paytype_Id and WOrkshop_Id in pay entity.Designer.cs">
+      <DependentUpon>201909091223086_make paytype_Id and WOrkshop_Id in pay entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909091834551_make paytype_Id workshop_Id,Financital_Id in pay eneity..cs" />
+    <Compile Include="Migrations\201909091834551_make paytype_Id workshop_Id,Financital_Id in pay eneity..Designer.cs">
+      <DependentUpon>201909091834551_make paytype_Id workshop_Id,Financital_Id in pay eneity..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909091857458_make workshop_Id in financial entity..cs" />
+    <Compile Include="Migrations\201909091857458_make workshop_Id in financial entity..Designer.cs">
+      <DependentUpon>201909091857458_make workshop_Id in financial entity..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -139,16 +157,17 @@
     <Compile Include="Core\Domain\Employee.cs" />
     <Compile Include="Persistence\Repositories\EducationRepository.cs" />
     <Compile Include="Persistence\Repositories\EmployeeRepository.cs" />
-    <Compile Include="Core\Domain\FincancialYear.cs" />
-    <Compile Include="Persistence\Repositories\FincancialYearRepository.cs" />
+    <Compile Include="Core\Domain\FinancialYear.cs" />
+    <Compile Include="Persistence\Repositories\FinancialYearRepository.cs" />
     <Compile Include="Core\Repositories\ICityRepository.cs" />
     <Compile Include="Core\Repositories\IEmployeeRepository.cs" />
-    <Compile Include="Core\Repositories\IFincancialYearRepository.cs" />
+    <Compile Include="Core\Repositories\IFinancialYearRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IWorkgroupRepository.cs" />
     <Compile Include="Core\Repositories\IWorkshopRepository.cs" />
     <Compile Include="Persistence\Repositories\PayRepository.cs" />
+    <Compile Include="Persistence\Repositories\PayTypeRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\Repositories\SalaryPayDetailsRepository.cs" />
     <Compile Include="Persistence\Repositories\WorkplaceRepository.cs" />
@@ -219,6 +238,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909082022115_add paytype entity and add it to pay entity..resx">
       <DependentUpon>201909082022115_add paytype entity and add it to pay entity..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909091219266_make virtual workshop field in pay.resx">
+      <DependentUpon>201909091219266_make virtual workshop field in pay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909091223086_make paytype_Id and WOrkshop_Id in pay entity.resx">
+      <DependentUpon>201909091223086_make paytype_Id and WOrkshop_Id in pay entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909091834551_make paytype_Id workshop_Id,Financital_Id in pay eneity..resx">
+      <DependentUpon>201909091834551_make paytype_Id workshop_Id,Financital_Id in pay eneity..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909091857458_make workshop_Id in financial entity..resx">
+      <DependentUpon>201909091857458_make workshop_Id in financial entity..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

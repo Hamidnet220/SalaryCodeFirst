@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SalaryApp.DataLayer.Core.Repositories
 {
-    public interface IFincancialYearRepository:IRepository<FincancialYear>
+    public interface IFinancialYearRepository:IRepository<FinancialYear>
     {
     }
 }

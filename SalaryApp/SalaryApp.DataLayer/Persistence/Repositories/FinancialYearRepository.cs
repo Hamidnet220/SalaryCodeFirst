@@ -4,9 +4,9 @@ using System.Data.Entity;
 
 namespace SalaryApp.DataLayer.Persistence.Repositories
 {
-    public class FincancialYearRepository : Repository<FincancialYear>,IFincancialYearRepository
+    public class FinancialYearRepository : Repository<FinancialYear>,IFinancialYearRepository
     {
-        public FincancialYearRepository(DbContext context) : base(context)
+        public FinancialYearRepository(DbContext context) : base(context)
         {
 
         }

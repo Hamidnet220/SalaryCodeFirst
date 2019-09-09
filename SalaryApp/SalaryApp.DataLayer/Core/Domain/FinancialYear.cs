@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace SalaryApp.DataLayer.Core.Domain
 {
-    public class FincancialYear
+    public class FinancialYear
     {
        public int Id { get; set; }
        
        [Required] 
        [Index(IsUnique=true)]
        public int Year { get; set; }
-       public Workshop Workshop { get; set; }
+       public int Workshop_Id { get; set; }
        public bool? IsDeleted { get; set; }
     }
 }
