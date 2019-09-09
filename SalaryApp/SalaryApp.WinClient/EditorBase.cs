@@ -1,8 +1,12 @@
 ﻿using SalaryApp.DataLayer.Core;
+using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,48 +44,22 @@ namespace SalaryApp.WinClient
             unitOfWork.Dispose();
         }
 
-        protected void AddAllFields<TModel>()
+        protected void AddTextFields<TModel>()
         {
             foreach (var item in typeof(TModel).GetProperties())
             {
                 try
                 {
+                    var isComboBox = item.GetCustomAttributes(typeof(ComboBoxAttribute), false).OfType<ComboBoxAttribute>().Any();
+
+                    if (isComboBox)
+                        continue;
+
                     var verboseName = item.GetCustomAttributes(typeof(VerboseNameAttribute), false).OfType<VerboseNameAttribute>().FirstOrDefault().VerboseName;
-                    
-                    var textbox = new TextBox();
-                    var label = new Label();
 
-                    textbox.Name = item.Name;
-                    label.Name = item.Name + "Label";
-                    
-                    textbox.Top = top;
-                    label.Top = top;
-
-                    textbox.Size = new System.Drawing.Size(150, 25);
-                    
-                    left=(this.Width - label.Width - 20)-(columnNumber*350);
-
-                    label.Left = left;
-                    textbox.Left =left-textbox.Width;
-
-                    textbox.Anchor = AnchorStyles.Right ;
-                    textbox.Anchor = AnchorStyles.Top;
-
-                    label.Anchor = AnchorStyles.Right;
-                    label.Anchor = AnchorStyles.Top;
-
-                    label.Text = verboseName;
-
-                    this.Controls.Add(label);
-                    this.Controls.Add(textbox);
-
-                    top += 25;
-
-                    if (top >= this.Height-100)
-                    {
-                        top = 25;
-                        columnNumber++;
-                    }
+                    AddLabel(item.Name, verboseName);
+                    AddTextBox(item.Name);
+                    AdjustControls();
 
                 }
                 catch (NullReferenceException)
@@ -92,6 +70,57 @@ namespace SalaryApp.WinClient
             }
         }
 
+        private void AdjustControls()
+        {
+            top += 25;
+
+            if (top >= this.Height - 100)
+            {
+                top = 25;
+                columnNumber++;
+            }
+        }
+
+        private void AddTextBox(string textBoxName)
+        {
+            var textbox = new TextBox();
+            textbox.Name = textBoxName;
+            textbox.Top = top;
+            textbox.Size = new System.Drawing.Size(150, 25);
+            textbox.Left = left - textbox.Width;
+            textbox.Anchor = AnchorStyles.Right;
+            textbox.Anchor = AnchorStyles.Top;
+            this.Controls.Add(textbox);
+        }
+
+        private void AddLabel(string labelName, string verboseName)
+        {
+            var label = new Label();
+            label.Name = labelName + "Label";
+            label.Top = top;
+            left = (this.Width - label.Width - 20) - (columnNumber * 350);
+            label.Left = left;
+            label.Text = verboseName;
+            label.Anchor = AnchorStyles.Right;
+            label.Anchor = AnchorStyles.Top;
+            this.Controls.Add(label);
+        }
+
+        protected void AddComboBox<TEntity>(List<TEntity> items, string displayMemeber, string displayValue,string labelText)
+        {
+            AddLabel(displayMemeber, labelText);
+            var combobox = new ComboBox();
+            combobox.Name = typeof(TEntity).Name;
+            combobox.DataSource = items;
+            combobox.DisplayMember = displayMemeber;
+            combobox.ValueMember = displayValue;
+            combobox.Top = top;
+            combobox.Left = left - combobox.Width;
+            this.Controls.Add(combobox);
+
+            AdjustControls();
+
+        }
 
         private int SetFieldPosition(Control control)
         {
