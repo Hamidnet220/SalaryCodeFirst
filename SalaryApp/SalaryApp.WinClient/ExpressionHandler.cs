@@ -8,6 +8,7 @@ namespace SalaryApp.WinClient
     {
         List<string> visitedProperties = new List<string>();
 
+
         protected override Expression VisitMember(MemberExpression node)
         {
             if (node.Member is PropertyInfo)
@@ -17,6 +18,7 @@ namespace SalaryApp.WinClient
 
         public string GetPropertyName(Expression expression)
         {
+            visitedProperties.Clear();
             Visit(expression);
             visitedProperties.Reverse();
             return string.Join(".",visitedProperties);
