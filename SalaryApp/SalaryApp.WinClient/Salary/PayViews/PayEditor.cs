@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,9 +30,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
         {
 
             AddTextFields<Pay>();
-            AddComboBox<PayType>(unitOfWork.PayTypes.GetAll().ToList(), "PayTitle", "Id","نوع پرداخت");
-            AddComboBox<Workshop>(unitOfWork.Workshops.GetAll().ToList(), "Title", "Id","کارگاه");
-            AddComboBox<FinancialYear>(unitOfWork.FinancialYears.GetAll().ToList(), "Year", "Id","سال مالی");
+            AddComboBox(unitOfWork.PayTypes.GetAll().ToList(),paytype=>paytype.PayTitle, paytype => paytype.Id,"نوع پرداخت");
+            AddComboBox(unitOfWork.Workshops.GetAll().ToList(), workshop=>workshop.Title, workshop=>workshop.Id, "کارگاه");
+            AddComboBox(unitOfWork.FinancialYears.GetAll().ToList(), year=>year.Year,year=>year.Id,"سال مالی");
 
             foreach (var textbox in this.Controls.OfType<TextBox>())
             {
