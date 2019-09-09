@@ -106,14 +106,16 @@ namespace SalaryApp.WinClient
             this.Controls.Add(label);
         }
 
-        protected void AddComboBox<TEntity>(List<TEntity> items, string displayMemeber, string displayValue,string labelText)
+        protected void AddComboBox<TEntity,TPropM,TPropV>(List<TEntity> items, Expression<Func<TEntity, TPropM>> displayMember,
+            Expression<Func<TEntity, TPropV>> displayValue,string labelText)
         {
-            AddLabel(displayMemeber, labelText);
+            var expressionHandler = new ExpressionHandler();
+            AddLabel(expressionHandler.GetPropertyName(displayMember), labelText);
             var combobox = new ComboBox();
             combobox.Name = typeof(TEntity).Name;
             combobox.DataSource = items;
-            combobox.DisplayMember = displayMemeber;
-            combobox.ValueMember = displayValue;
+            combobox.DisplayMember = expressionHandler.GetPropertyName(displayMember);
+            combobox.ValueMember = expressionHandler.GetPropertyName(displayValue);
             combobox.Top = top;
             combobox.Left = left - combobox.Width;
             this.Controls.Add(combobox);
