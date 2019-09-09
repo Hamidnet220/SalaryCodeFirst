@@ -27,7 +27,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
 
         private void EmployeeEditor_Load(object sender, EventArgs e)
         {
-            AddAllFields<Employee>();
+            AddTextFields<Employee>();
             foreach (var textbox in this.Controls.OfType<TextBox>())
             {
                 textbox.DataBindings.Add("Text", employeeEnity, textbox.Name);
