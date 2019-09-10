@@ -13,6 +13,8 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
     public class PayEditor:EditorBase
     {
         Pay payEntity = new Pay();
+        public event EventHandler<Pay> AddEntity;
+
 
         public PayEditor()
         {
@@ -25,24 +27,23 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
         {
             unitOfWork.Pays.Add(payEntity);
             unitOfWork.Complete();
+            if (AddEntity != null)
+                AddEntity(this,payEntity);
         }
         private void PayEditor_Load(object sender, EventArgs e)
         {
 
             AddTextFields<Pay>();
-            AddComboBox(unitOfWork.PayTypes.GetAll().ToList(),paytype=>paytype.PayTitle, paytype => paytype.Id,"نوع پرداخت");
-            AddComboBox(unitOfWork.Workshops.GetAll().ToList(), workshop=>workshop.Title, workshop=>workshop.Id, "کارگاه");
-            AddComboBox(unitOfWork.FinancialYears.GetAll().ToList(), year=>year.Year,year=>year.Id,"سال مالی");
+            AddComboBox(unitOfWork.PayTypes.GetAll().ToList(),paytype=>paytype.PayTitle, paytype => paytype.Id,"نوع پرداخت",payEntity,pay=>new Pay().PayType_Id);
+            AddComboBox(unitOfWork.Workshops.GetAll().ToList(), workshop=>workshop.Title, workshop=>workshop.Id, "کارگاه",payEntity, pay => new Pay().Workshop_Id);
+            AddComboBox(unitOfWork.FinancialYears.GetAll().ToList(), year=>year.Year,year=>year.Id,"سال مالی", payEntity, pay => new Pay().FinancialYear_Id);
 
             foreach (var textbox in this.Controls.OfType<TextBox>())
             {
                 textbox.DataBindings.Add("Text", payEntity, textbox.Name);
             }
 
-            foreach (var comboBox in this.Controls.OfType<ComboBox>())
-            {
-                comboBox.DataBindings.Add("SelectedValue", payEntity,string.Format("{0}_Id",comboBox.Name));
-            }
+           
 
         }
     }
