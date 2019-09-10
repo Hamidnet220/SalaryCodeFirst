@@ -150,6 +150,26 @@
     <Compile Include="Migrations\201909091857458_make workshop_Id in financial entity..Designer.cs">
       <DependentUpon>201909091857458_make workshop_Id in financial entity..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909100601579_add paytype virtual type..cs" />
+    <Compile Include="Migrations\201909100601579_add paytype virtual type..Designer.cs">
+      <DependentUpon>201909100601579_add paytype virtual type..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909100702519_add virtual workshop, virtual Finanactial to pay model..cs" />
+    <Compile Include="Migrations\201909100702519_add virtual workshop, virtual Finanactial to pay model..Designer.cs">
+      <DependentUpon>201909100702519_add virtual workshop, virtual Finanactial to pay model..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101409577_undo changes in pay type..cs" />
+    <Compile Include="Migrations\201909101409577_undo changes in pay type..Designer.cs">
+      <DependentUpon>201909101409577_undo changes in pay type..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101419525_add virutal Paytype in Pay modle..cs" />
+    <Compile Include="Migrations\201909101419525_add virutal Paytype in Pay modle..Designer.cs">
+      <DependentUpon>201909101419525_add virutal Paytype in Pay modle..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909101430574_add virutal workshop in Pay modle..cs" />
+    <Compile Include="Migrations\201909101430574_add virutal workshop in Pay modle..Designer.cs">
+      <DependentUpon>201909101430574_add virutal workshop in Pay modle..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -250,6 +270,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909091857458_make workshop_Id in financial entity..resx">
       <DependentUpon>201909091857458_make workshop_Id in financial entity..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909100601579_add paytype virtual type..resx">
+      <DependentUpon>201909100601579_add paytype virtual type..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909100702519_add virtual workshop, virtual Finanactial to pay model..resx">
+      <DependentUpon>201909100702519_add virtual workshop, virtual Finanactial to pay model..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101409577_undo changes in pay type..resx">
+      <DependentUpon>201909101409577_undo changes in pay type..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101419525_add virutal Paytype in Pay modle..resx">
+      <DependentUpon>201909101419525_add virutal Paytype in Pay modle..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101430574_add virutal workshop in Pay modle..resx">
+      <DependentUpon>201909101430574_add virutal workshop in Pay modle..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
