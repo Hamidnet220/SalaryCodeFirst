@@ -15,11 +15,13 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
     {
         GridControl<Pay> grid;
 
+
         public PayList()
         {
             Load += PayList_Load;
             Load += AddActions;
             Load += PopulateGrid;
+            
         }
 
 
@@ -33,7 +35,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
         private void PopulateGrid(object sender, EventArgs e)
         {
             grid = new GridControl<Pay>(gridPanel);
-
+            
             grid.AddTextBoxColumn(py => new Pay().MonthId, "شناسه ماه");
             grid.AddTextBoxColumn(py => new Pay().EmployeesCount, "تعداد کارکنان");
             grid.AddTextBoxColumn(py => new Pay().Title, "عنوان پرداخت");
@@ -43,12 +45,21 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
             grid.PopulateDataGridView(unitOfWork.Pays.GetAll());
         }
 
+        private void UpdateGrid(object e,Pay pay)
+        {
+            grid.AddItem(pay);
+            grid.ResetBindings();
+        }
+
         private void AddActions(object sender, EventArgs e)
         {
             AddAction("+جدید", button =>
             {
                 var payForm = new PayEditor();
+                payForm.AddEntity += UpdateGrid;
                 payForm.ShowDialog();
+
+                
             });
 
             AddAction("ویرایش", button =>
