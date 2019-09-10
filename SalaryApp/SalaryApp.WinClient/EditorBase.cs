@@ -106,8 +106,8 @@ namespace SalaryApp.WinClient
             this.Controls.Add(label);
         }
 
-        protected void AddComboBox<TEntity,TPropM,TPropV>(List<TEntity> items, Expression<Func<TEntity, TPropM>> displayMember,
-            Expression<Func<TEntity, TPropV>> displayValue,string labelText)
+        protected void AddComboBox<TEntity,TBindModle,TPropM,TPropV,TPropBinig>(List<TEntity> items, Expression<Func<TEntity, TPropM>> displayMember,
+            Expression<Func<TEntity, TPropV>> displayValue,string labelText,TBindModle entityToBind,Expression<Func<TBindModle,TPropBinig>> bindProperty)
         {
             var expressionHandler = new ExpressionHandler();
             AddLabel(expressionHandler.GetPropertyName(displayMember), labelText);
@@ -118,6 +118,7 @@ namespace SalaryApp.WinClient
             combobox.ValueMember = expressionHandler.GetPropertyName(displayValue);
             combobox.Top = top;
             combobox.Left = left - combobox.Width;
+            combobox.DataBindings.Add("SelectedValue", entityToBind, expressionHandler.GetPropertyName(bindProperty));
             this.Controls.Add(combobox);
 
             AdjustControls();
