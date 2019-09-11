@@ -22,7 +22,7 @@ namespace SalaryApp.WinClient
         [STAThread]
         static void Main()
         {
-            var frm = new PayList();
+            var frm = new WorkshopList();
             frm.ShowDialog();
 
             ////Test education

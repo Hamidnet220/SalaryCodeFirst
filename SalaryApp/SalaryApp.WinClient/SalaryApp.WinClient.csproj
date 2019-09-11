@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseInfoForms\WorkgroupViews\WorkgroupEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseInfoForms\WorkgroupViews\WorkgroupList.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Salary\PayViews\PayEditor.cs">
       <SubType>Form</SubType>
     </Compile>

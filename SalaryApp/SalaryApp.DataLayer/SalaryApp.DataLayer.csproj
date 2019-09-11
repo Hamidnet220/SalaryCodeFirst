@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201909101430574_add virutal workshop in Pay modle..Designer.cs">
       <DependentUpon>201909101430574_add virutal workshop in Pay modle..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909101942391_add wrokshop_Id to workgroup entity..cs" />
+    <Compile Include="Migrations\201909101942391_add wrokshop_Id to workgroup entity..Designer.cs">
+      <DependentUpon>201909101942391_add wrokshop_Id to workgroup entity..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -285,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909101430574_add virutal workshop in Pay modle..resx">
       <DependentUpon>201909101430574_add virutal workshop in Pay modle..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101942391_add wrokshop_Id to workgroup entity..resx">
+      <DependentUpon>201909101942391_add wrokshop_Id to workgroup entity..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
