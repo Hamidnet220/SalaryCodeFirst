@@ -32,6 +32,9 @@ namespace SalaryApp.DataLayer.Persistence
 
         public DbSet<PayType> Paytypes { get; set; }
 
+        public DbSet<AppStatus> AppStatus { get; set; }
+
+        public DbSet<User> Users { get; set; }
 
         public SalaryContext():base("name=DefaultConnection")
         {

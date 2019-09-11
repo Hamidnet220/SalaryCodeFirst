@@ -18,6 +18,7 @@ namespace SalaryApp.DataLayer.Persistence
         public IAnnualPayDetailRepository AnnualDetails { get; private set; }
         public IEducationRepository Educations { get; private set; }
         public IPayTypeRepository PayTypes { get; private set; }
+        public IUserRepository Users { get; private set; }
 
         private readonly SalaryContext context;
 
@@ -36,6 +37,8 @@ namespace SalaryApp.DataLayer.Persistence
             AnnualDetails = new AnnualPayDetailRepository(context);
             Educations = new EducationRepository(context);
             PayTypes = new PayTypeRepository(context);
+            Users = new UserRepository(context);
+
         }
 
 
