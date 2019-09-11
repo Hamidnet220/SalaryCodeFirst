@@ -8,6 +8,7 @@ namespace SalaryApp.DataLayer.Core.Domain
 {
     public class AppStatus
     {
+        public int Id { get; set; }
         public int ActiveUserId { get; set; }
         public int ActiveWorkShopId { get; set; }
         public int ActiceFinancialYearId { get; set; }
