@@ -174,9 +174,14 @@
     <Compile Include="Migrations\201909101942391_add wrokshop_Id to workgroup entity..Designer.cs">
       <DependentUpon>201909101942391_add wrokshop_Id to workgroup entity..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909111016510_add Appstatus Table..cs" />
+    <Compile Include="Migrations\201909111016510_add Appstatus Table..Designer.cs">
+      <DependentUpon>201909111016510_add Appstatus Table..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
+    <Compile Include="Persistence\Repositories\AppStatusRepository.cs" />
     <Compile Include="Persistence\Repositories\CityRepository.cs" />
     <Compile Include="Core\Domain\Employee.cs" />
     <Compile Include="Persistence\Repositories\EducationRepository.cs" />
@@ -292,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909101942391_add wrokshop_Id to workgroup entity..resx">
       <DependentUpon>201909101942391_add wrokshop_Id to workgroup entity..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909111016510_add Appstatus Table..resx">
+      <DependentUpon>201909111016510_add Appstatus Table..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
