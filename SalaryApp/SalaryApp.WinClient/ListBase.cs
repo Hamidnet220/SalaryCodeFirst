@@ -50,9 +50,10 @@ namespace SalaryApp.WinClient
             {
                 onClick(btn);
             };
+            btn.Size = new Size(90, 25);
             buttonTop += 27;
             btn.Top = buttonTop;
-            btn.Left = 45;
+            btn.Left = 35;
             oprationPanel.Controls.Add(btn);
 
         }
