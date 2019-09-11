@@ -1,5 +1,6 @@
 ﻿using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Persistence;
+using SalaryApp.WinClient.BaseInfoForms.WorkgroupViews;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
 using System;
@@ -40,7 +41,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
         {
             AddAction("+جدید", button =>
             {
-                var employeeForm = new EmployeeForm(" ");
+                var employeeForm = new WorkshopEditor();
                 employeeForm.ShowDialog();
             });
 
@@ -57,6 +58,13 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
                 unitOfWork.Complete();
                 grid.RemoveCurrentItem();
             });
+
+
+            AddAction(" گروهای کاری", button =>
+             {
+                 var workgroupForm = new WorkgroupList(grid.GetCurrentItem);
+                 workgroupForm.ShowDialog();
+             });
         }
 
        
