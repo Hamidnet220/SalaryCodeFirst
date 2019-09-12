@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SalaryApp.DataLayer.Core.Domain
 {
-    public class AppStatus
+    public static class AppStatus
     {
-        public int Id { get; set; }
-        public int ActiveUserId { get; set; }
-        public int ActiveWorkShopId { get; set; }
-        public int ActiceFinancialYearId { get; set; }
-
+        public static int Id{ get; set; }
+        public static int ActiveUserId { get; set; }
+        public static int ActiveWorkShopId { get; set; }
+        public static int ActiceFinancialYearId { get; set; }
     }
 }
