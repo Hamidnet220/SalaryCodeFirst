@@ -8,6 +8,18 @@ namespace SalaryApp.DataLayer.Migrations
         public override void Up()
         {
             CreateTable(
+               "dbo.Workshops",
+               c => new
+               {
+                   Id = c.Int(nullable: false, identity: true),
+                   Title = c.String(),
+                   Address = c.String(),
+                   Tel = c.String(),
+               })
+               .PrimaryKey(t => t.Id);
+
+
+            CreateTable(
                 "dbo.Cities",
                 c => new
                     {
@@ -21,6 +33,8 @@ namespace SalaryApp.DataLayer.Migrations
         public override void Down()
         {
             DropTable("dbo.Cities");
+            DropTable("dbo.Workshops");
+
         }
     }
 }

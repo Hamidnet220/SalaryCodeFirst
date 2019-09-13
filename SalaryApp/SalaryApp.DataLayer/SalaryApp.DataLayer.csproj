@@ -217,6 +217,14 @@
     <Compile Include="Migrations\201909130305254_DeleteEducation_IdFromPersonEntity.Designer.cs">
       <DependentUpon>201909130305254_DeleteEducation_IdFromPersonEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909132352370_ChangePopleTable.cs" />
+    <Compile Include="Migrations\201909132352370_ChangePopleTable.Designer.cs">
+      <DependentUpon>201909132352370_ChangePopleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909132354145_AddPOB_POI_DOB_ColumnsToPeopleTable.cs" />
+    <Compile Include="Migrations\201909132354145_AddPOB_POI_DOB_ColumnsToPeopleTable.Designer.cs">
+      <DependentUpon>201909132354145_AddPOB_POI_DOB_ColumnsToPeopleTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -367,6 +375,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909130305254_DeleteEducation_IdFromPersonEntity.resx">
       <DependentUpon>201909130305254_DeleteEducation_IdFromPersonEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909132352370_ChangePopleTable.resx">
+      <DependentUpon>201909132352370_ChangePopleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909132354145_AddPOB_POI_DOB_ColumnsToPeopleTable.resx">
+      <DependentUpon>201909132354145_AddPOB_POI_DOB_ColumnsToPeopleTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
