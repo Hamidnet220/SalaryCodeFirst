@@ -51,11 +51,14 @@
     <Compile Include="Core\Domain\AnnualPayDetail.cs" />
     <Compile Include="Core\Domain\AppStatus.cs" />
     <Compile Include="Core\Domain\Education.cs" />
+    <Compile Include="Core\Domain\Employee.cs" />
     <Compile Include="Core\Domain\Pay.cs" />
     <Compile Include="Core\Domain\PayType.cs" />
     <Compile Include="Core\Domain\SalaryPayDetails.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
+    <Compile Include="Core\Repositories\IPersonRepository.cs" />
     <Compile Include="Core\Repositories\IPayTypeRepository.cs" />
+    <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="Core\VerboseNameAttribute.cs" />
     <Compile Include="Core\Repositories\IAnnualPayDetailRepository.cs" />
     <Compile Include="Core\Repositories\IEducationRepository.cs" />
@@ -178,13 +181,49 @@
     <Compile Include="Migrations\201909111016510_add Appstatus Table..Designer.cs">
       <DependentUpon>201909111016510_add Appstatus Table..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909111145558_add Appstatus to dbcontext.cs" />
+    <Compile Include="Migrations\201909111145558_add Appstatus to dbcontext.Designer.cs">
+      <DependentUpon>201909111145558_add Appstatus to dbcontext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909120147323_set key for appstatus..cs" />
+    <Compile Include="Migrations\201909120147323_set key for appstatus..Designer.cs">
+      <DependentUpon>201909120147323_set key for appstatus..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909121736486_add workshop to employee entity..cs" />
+    <Compile Include="Migrations\201909121736486_add workshop to employee entity..Designer.cs">
+      <DependentUpon>201909121736486_add workshop to employee entity..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909122005509_add pay_Id and workgroup_Id to SalaryPayDetails entity..cs" />
+    <Compile Include="Migrations\201909122005509_add pay_Id and workgroup_Id to SalaryPayDetails entity..Designer.cs">
+      <DependentUpon>201909122005509_add pay_Id and workgroup_Id to SalaryPayDetails entity..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909122026128_remove workgroup id and workshop id form employee entity..cs" />
+    <Compile Include="Migrations\201909122026128_remove workgroup id and workshop id form employee entity..Designer.cs">
+      <DependentUpon>201909122026128_remove workgroup id and workshop id form employee entity..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909122035531_add education_id in employee entity..cs" />
+    <Compile Include="Migrations\201909122035531_add education_id in employee entity..Designer.cs">
+      <DependentUpon>201909122035531_add education_id in employee entity..cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130244273_ChangeEpmployeeTableIntoPersonTable.cs" />
+    <Compile Include="Migrations\201909130244273_ChangeEpmployeeTableIntoPersonTable.Designer.cs">
+      <DependentUpon>201909130244273_ChangeEpmployeeTableIntoPersonTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130253325_AddEmployeeTable.cs" />
+    <Compile Include="Migrations\201909130253325_AddEmployeeTable.Designer.cs">
+      <DependentUpon>201909130253325_AddEmployeeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130305254_DeleteEducation_IdFromPersonEntity.cs" />
+    <Compile Include="Migrations\201909130305254_DeleteEducation_IdFromPersonEntity.Designer.cs">
+      <DependentUpon>201909130305254_DeleteEducation_IdFromPersonEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
-    <Compile Include="Persistence\Repositories\AppStatusRepository.cs" />
     <Compile Include="Persistence\Repositories\CityRepository.cs" />
-    <Compile Include="Core\Domain\Employee.cs" />
+    <Compile Include="Core\Domain\Person.cs" />
     <Compile Include="Persistence\Repositories\EducationRepository.cs" />
+    <Compile Include="Persistence\Repositories\PersonRepository.cs" />
     <Compile Include="Persistence\Repositories\EmployeeRepository.cs" />
     <Compile Include="Core\Domain\FinancialYear.cs" />
     <Compile Include="Persistence\Repositories\FinancialYearRepository.cs" />
@@ -199,6 +238,7 @@
     <Compile Include="Persistence\Repositories\PayTypeRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\Repositories\SalaryPayDetailsRepository.cs" />
+    <Compile Include="Persistence\Repositories\UserRepository.cs" />
     <Compile Include="Persistence\Repositories\WorkplaceRepository.cs" />
     <Compile Include="Persistence\SalaryContext.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
@@ -300,6 +340,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909111016510_add Appstatus Table..resx">
       <DependentUpon>201909111016510_add Appstatus Table..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909111145558_add Appstatus to dbcontext.resx">
+      <DependentUpon>201909111145558_add Appstatus to dbcontext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909120147323_set key for appstatus..resx">
+      <DependentUpon>201909120147323_set key for appstatus..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909121736486_add workshop to employee entity..resx">
+      <DependentUpon>201909121736486_add workshop to employee entity..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909122005509_add pay_Id and workgroup_Id to SalaryPayDetails entity..resx">
+      <DependentUpon>201909122005509_add pay_Id and workgroup_Id to SalaryPayDetails entity..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909122026128_remove workgroup id and workshop id form employee entity..resx">
+      <DependentUpon>201909122026128_remove workgroup id and workshop id form employee entity..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909122035531_add education_id in employee entity..resx">
+      <DependentUpon>201909122035531_add education_id in employee entity..cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130244273_ChangeEpmployeeTableIntoPersonTable.resx">
+      <DependentUpon>201909130244273_ChangeEpmployeeTableIntoPersonTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130253325_AddEmployeeTable.resx">
+      <DependentUpon>201909130253325_AddEmployeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130305254_DeleteEducation_IdFromPersonEntity.resx">
+      <DependentUpon>201909130305254_DeleteEducation_IdFromPersonEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

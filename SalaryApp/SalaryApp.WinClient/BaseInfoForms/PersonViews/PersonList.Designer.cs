@@ -1,6 +1,6 @@
-﻿namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
+﻿namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
 {
-    partial class EmployeeList
+    partial class PersonList
     {
         /// <summary>
         /// Required designer variable.

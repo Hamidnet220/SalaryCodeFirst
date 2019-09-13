@@ -5,17 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
 
 namespace SalaryApp.DataLayer.Persistence.Repositories
 {
-    public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
+    public class PersonRepository : Repository<Person>, IPersonRepository
     {
-        public EmployeeRepository(DbContext context) : base(context)
+        public PersonRepository(SalaryContext context):base(context)
         {
+
+        }
+        public IEnumerable<Person> GetByAge(int value)
+        {
+            return SalaryContext.Employee.Where(emp => emp.Age == value);
         }
 
-        public IEnumerable<Employee> GetByNationalCode(string NCode)
+        public IEnumerable<Person> GetByNationalCode(string NCode)
         {
             throw new NotImplementedException();
         }

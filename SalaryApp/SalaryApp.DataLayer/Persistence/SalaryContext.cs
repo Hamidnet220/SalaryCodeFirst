@@ -10,7 +10,7 @@ namespace SalaryApp.DataLayer.Persistence
 {
     public class SalaryContext:DbContext
     {
-        public DbSet<Employee> Employee { get; set; }
+        public DbSet<Person> Employee { get; set; }
 
         public DbSet<Workshop> Workshop { get;set; }
 
@@ -31,8 +31,10 @@ namespace SalaryApp.DataLayer.Persistence
         public DbSet<Education> Educations { get; set; }
 
         public DbSet<PayType> Paytypes { get; set; }
+        
+        public DbSet<Employee> Employees { get; set; }
 
-        public DbSet<AppStatus> AppStatus { get; set; }
+        public DbSet AppStatus;
 
         public DbSet<User> Users { get; set; }
 

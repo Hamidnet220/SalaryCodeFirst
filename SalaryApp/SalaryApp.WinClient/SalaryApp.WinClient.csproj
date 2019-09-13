@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,20 +77,14 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseInfoForms\EmployeeForm.cs">
+    <Compile Include="BaseInfoForms\PersonViews\PersonEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseInfoForms\EmployeeForm.Designer.cs">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseInfoForms\EmployeeViews\EmployeeEditor.cs">
+    <Compile Include="BaseInfoForms\PersonViews\PersonList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseInfoForms\EmployeeViews\EmployeeList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BaseInfoForms\EmployeeViews\EmployeeList.Designer.cs">
-      <DependentUpon>EmployeeList.cs</DependentUpon>
+    <Compile Include="BaseInfoForms\PersonViews\PersonList.Designer.cs">
+      <DependentUpon>PersonList.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseInfoForms\WorkshopViews\WorkshopList.cs">
       <SubType>Form</SubType>
@@ -125,9 +120,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BaseInfoForms\EmployeeForm.resx">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -165,6 +157,8 @@
       <Name>SalaryApp.DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="System\Configuration\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

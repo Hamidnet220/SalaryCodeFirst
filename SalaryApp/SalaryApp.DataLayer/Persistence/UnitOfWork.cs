@@ -7,6 +7,7 @@ namespace SalaryApp.DataLayer.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
+        public IPersonRepository Persons { get; private set; }
         public IEmployeeRepository Employees { get; private set; }
         public IWorkshopRepository Workshops { get; private set; }
         public ICityRepository Cities { get; private set; }
@@ -26,6 +27,7 @@ namespace SalaryApp.DataLayer.Persistence
         {
             this.context = context;
 
+            Persons = new PersonRepository(context);
             Employees = new EmployeeRepository(context);
             Workshops = new WorkshopRepository(context);
             Cities = new CityRepository(context);

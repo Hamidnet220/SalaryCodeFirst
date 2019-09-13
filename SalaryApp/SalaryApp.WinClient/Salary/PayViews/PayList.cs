@@ -1,4 +1,5 @@
 ﻿using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Persistence.Repositories;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
 using SalaryApp.WinClient.Salary.SalaryDetails;
@@ -41,8 +42,8 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
             grid.AddTextBoxColumn(py => new Pay().Title, "عنوان پرداخت");
             grid.AddTextBoxColumn(py => new Pay().TotalGrossAmount, "جمع مبلغ ناخالص");
             grid.AddTextBoxColumn(py => new Pay().Status, "وضعیت");
-
-            grid.PopulateDataGridView(unitOfWork.Pays.GetAll());
+            var activeworkshop = AppStatus.ActiveWorkShopId;
+            grid.PopulateDataGridView(unitOfWork.Pays.Find(p=>p.Workshop_Id== activeworkshop).ToList());
         }
 
         private void UpdateGrid(object e,Pay pay)
@@ -71,11 +72,16 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
                  var paylist = grid.GetCurrentItem;
                  if (unitOfWork.SalaryDetails.Find(sd => sd.Pay.Id == paylist.Id).Count() == 0)
                  {
-                     var result = MessageBox.Show("برای این لیست جزئیاتی تعریف نشده است.میخواهید از لیست های قبل کپی کنید؟", "هشدار", MessageBoxButtons.YesNoCancel);
-                     if (result == DialogResult.No)
-                         return;
+                     var result = MessageBox.Show("برای این لیست جزئیاتی تعریف نشده است.میخواهید از لیست پرسنل استفاده کنید ؟", "هشدار", MessageBoxButtons.YesNoCancel);
+                     if (result == DialogResult.Yes)
+                     {
+                       
+                     }
                  }
 
+
+
+                 
                  var payDetails = new SalaryDetailsList(paylist);
                  payDetails.ShowDialog();
                  

@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace SalaryApp.DataLayer.Core.Repositories
 {
-    public interface IEmployeeRepository:IRepository<Employee>
+    public interface IPersonRepository:IRepository<Person>
     {
-        
+        IEnumerable<Person> GetByAge(int value);
+        IEnumerable<Person> GetByNationalCode(string NCode);
     }
 }

@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public Pay Pay { get; set; }
-        public virtual Employee Employee { get; set; }
+        public virtual Person Employee { get; set; }
         public Workgroup WorkGroup { get; set; }
 
         [VerboseName("پایه روزانه")]
