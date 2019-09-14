@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201909132354145_AddPOB_POI_DOB_ColumnsToPeopleTable.Designer.cs">
       <DependentUpon>201909132354145_AddPOB_POI_DOB_ColumnsToPeopleTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909140002190_AddExplicitylyForeignKeyInEmployeeTable.cs" />
+    <Compile Include="Migrations\201909140002190_AddExplicitylyForeignKeyInEmployeeTable.Designer.cs">
+      <DependentUpon>201909140002190_AddExplicitylyForeignKeyInEmployeeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -381,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909132354145_AddPOB_POI_DOB_ColumnsToPeopleTable.resx">
       <DependentUpon>201909132354145_AddPOB_POI_DOB_ColumnsToPeopleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140002190_AddExplicitylyForeignKeyInEmployeeTable.resx">
+      <DependentUpon>201909140002190_AddExplicitylyForeignKeyInEmployeeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
