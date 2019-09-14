@@ -68,7 +68,8 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
 
             AddAction(" لیست کارکنان", button =>
             {
-                MessageBox.Show("Test");
+                var employeeList = new EmployeeViews.EmployeeList(grid.GetCurrentItem);
+                employeeList.ShowDialog();
             });
         }
 

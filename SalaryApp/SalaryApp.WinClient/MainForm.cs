@@ -19,7 +19,7 @@ namespace SalaryApp.WinClient
         private void MainForm_Load(object sender, EventArgs e)
         {
             AppStatus.ActiceFinancialYearId = 1;
-            AppStatus.ActiveWorkShopId = 3;
+            AppStatus.ActiveWorkShopId = 1;
             AppStatus.ActiveUserId = 1;
         }
             
