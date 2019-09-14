@@ -37,6 +37,19 @@ namespace SalaryApp.WinClient
             this.unitOfWork = new UnitOfWork(new SalaryContext());
             this.WindowState = FormWindowState.Maximized;
             FormClosed += EditorBase_FormClosed;
+
+            Accept.Click += Accept_Click;
+            Cancel.Click += Cancel_Click;
+        }
+
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void Accept_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
 
         private void EditorBase_FormClosed(object sender, FormClosedEventArgs e)
