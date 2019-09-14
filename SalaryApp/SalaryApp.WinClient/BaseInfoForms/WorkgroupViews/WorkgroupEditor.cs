@@ -17,8 +17,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
         {
             this.entity = entity;
             Load += WorkgroupEditor_Load;
-            Accept.Click += Accept_Click;
-            Cancel.Click += Cancel_Click;
+           
         }
 
         private void Cancel_Click(object sender, EventArgs e)
