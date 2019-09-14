@@ -52,7 +52,7 @@
             this.EmployeeListButton.TabIndex = 1;
             this.EmployeeListButton.Text = "ایجاد /ویرایش کارکنان";
             this.EmployeeListButton.UseVisualStyleBackColor = true;
-            this.EmployeeListButton.Click += new System.EventHandler(this.EmployeeListButton_Click);
+            this.EmployeeListButton.Click += new System.EventHandler(this.PersonListButton_Click);
             // 
             // PayButton
             // 

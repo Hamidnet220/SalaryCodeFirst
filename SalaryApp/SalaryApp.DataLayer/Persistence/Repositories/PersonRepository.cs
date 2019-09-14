@@ -14,10 +14,7 @@ namespace SalaryApp.DataLayer.Persistence.Repositories
         {
 
         }
-        public IEnumerable<Person> GetByAge(int value)
-        {
-            return SalaryContext.Employee.Where(emp => emp.Age == value);
-        }
+        
 
         public IEnumerable<Person> GetByNationalCode(string NCode)
         {

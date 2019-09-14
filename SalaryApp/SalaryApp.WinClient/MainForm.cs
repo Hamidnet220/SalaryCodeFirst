@@ -1,12 +1,8 @@
 ﻿using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.DataLayer.Persistence;
-using SalaryApp.DataLayer.Persistence.Repositories;
-using SalaryApp.WinClient.BaseInfoForms;
-using SalaryApp.WinClient.BaseInfoForms.PersonViews;
 using SalaryApp.WinClient.BaseInfoForms.PayViews;
+using SalaryApp.WinClient.BaseInfoForms.PersonViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
 using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace SalaryApp.WinClient
@@ -45,7 +41,7 @@ namespace SalaryApp.WinClient
             payListForm.ShowDialog();
         }
 
-        private void EmployeeListButton_Click(object sender, EventArgs e)
+        private void PersonListButton_Click(object sender, EventArgs e)
         {
             var employeeListForm = new PersonList();
             employeeListForm.ShowDialog();

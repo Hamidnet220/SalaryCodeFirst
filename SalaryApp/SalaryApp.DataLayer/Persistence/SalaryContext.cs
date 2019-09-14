@@ -10,7 +10,7 @@ namespace SalaryApp.DataLayer.Persistence
 {
     public class SalaryContext:DbContext
     {
-        public DbSet<Person> Employee { get; set; }
+        public DbSet<Person> People { get; set; }
 
         public DbSet<Workshop> Workshop { get;set; }
 
