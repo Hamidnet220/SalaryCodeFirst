@@ -36,9 +36,9 @@
             // 
             // ManageWorkshopButton
             // 
-            this.ManageWorkshopButton.Location = new System.Drawing.Point(702, 12);
+            this.ManageWorkshopButton.Location = new System.Drawing.Point(457, 23);
             this.ManageWorkshopButton.Name = "ManageWorkshopButton";
-            this.ManageWorkshopButton.Size = new System.Drawing.Size(154, 115);
+            this.ManageWorkshopButton.Size = new System.Drawing.Size(185, 176);
             this.ManageWorkshopButton.TabIndex = 1;
             this.ManageWorkshopButton.Text = "ایجاد/ویرایش/انتخاب کارگاه";
             this.ManageWorkshopButton.UseVisualStyleBackColor = true;
@@ -46,19 +46,19 @@
             // 
             // EmployeeListButton
             // 
-            this.EmployeeListButton.Location = new System.Drawing.Point(542, 12);
+            this.EmployeeListButton.Location = new System.Drawing.Point(648, 23);
             this.EmployeeListButton.Name = "EmployeeListButton";
-            this.EmployeeListButton.Size = new System.Drawing.Size(154, 115);
+            this.EmployeeListButton.Size = new System.Drawing.Size(208, 176);
             this.EmployeeListButton.TabIndex = 1;
-            this.EmployeeListButton.Text = "ایجاد /ویرایش کارکنان";
+            this.EmployeeListButton.Text = "ایجاد /ویرایش اشخاص";
             this.EmployeeListButton.UseVisualStyleBackColor = true;
             this.EmployeeListButton.Click += new System.EventHandler(this.PersonListButton_Click);
             // 
             // PayButton
             // 
-            this.PayButton.Location = new System.Drawing.Point(382, 12);
+            this.PayButton.Location = new System.Drawing.Point(244, 23);
             this.PayButton.Name = "PayButton";
-            this.PayButton.Size = new System.Drawing.Size(154, 115);
+            this.PayButton.Size = new System.Drawing.Size(207, 176);
             this.PayButton.TabIndex = 1;
             this.PayButton.Text = "ایجاد /ویرایش پرداخت";
             this.PayButton.UseVisualStyleBackColor = true;
@@ -66,9 +66,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(222, 12);
+            this.button4.Location = new System.Drawing.Point(42, 23);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(154, 115);
+            this.button4.Size = new System.Drawing.Size(196, 176);
             this.button4.TabIndex = 1;
             this.button4.Text = "گزارشات";
             this.button4.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(868, 448);
+            this.ClientSize = new System.Drawing.Size(1083, 511);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.PayButton);
             this.Controls.Add(this.EmployeeListButton);
