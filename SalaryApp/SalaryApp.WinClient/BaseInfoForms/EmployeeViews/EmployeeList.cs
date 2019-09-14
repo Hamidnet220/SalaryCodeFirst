@@ -29,7 +29,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             grid.AddTextBoxColumn(emp =>emp.Person.Lastname, "نام خانوادگی");
             grid.AddTextBoxColumn(emp =>emp.Person.FatherName, "نام پدر");
 
-            grid.PopulateDataGridView(unitOfWork.Employees.Find(emps=>emps.Workshop.Id==this.workshop.Id).ToList());
+            grid.PopulateDataGridView(unitOfWork.Employees.Find(emps=>emps.Workgroup.Workshop_Id==this.workshop.Id).ToList());
         }
 
         private void AddActions(object sender, EventArgs e)

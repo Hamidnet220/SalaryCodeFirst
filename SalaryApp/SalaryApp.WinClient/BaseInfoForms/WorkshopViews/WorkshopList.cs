@@ -65,6 +65,11 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
                  var workgroupForm = new WorkgroupList(grid.GetCurrentItem);
                  workgroupForm.ShowDialog();
              });
+
+            AddAction(" لیست کارکنان", button =>
+            {
+                MessageBox.Show("Test");
+            });
         }
 
        
