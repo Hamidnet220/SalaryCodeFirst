@@ -41,14 +41,30 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
         {
             AddAction("+جدید", button =>
             {
-                var employeeForm = new WorkshopEditor();
+                var employeeForm = new WorkshopEditor(new Workshop());
                 employeeForm.ShowDialog();
+
+                if (employeeForm.DialogResult == DialogResult.Cancel)
+                    return;
+                unitOfWork.Workshops.Add(employeeForm.entity);
+                unitOfWork.Complete();
+                grid.AddItem(employeeForm.entity);
+
             });
 
             AddAction("ویرایش", button =>
             {
-                MessageBox.Show("Edit employeee");
-            });
+                var entity = unitOfWork.Workshops.Get(grid.GetCurrentItem.Id);
+                var employeeForm = new WorkshopEditor(entity);
+                employeeForm.ShowDialog();
+
+                if (employeeForm.DialogResult == DialogResult.Cancel)
+                    return;
+
+                unitOfWork.Complete();
+                grid.ResetBindings();
+
+            }); 
 
             AddAction("-حذف", button =>
             {
