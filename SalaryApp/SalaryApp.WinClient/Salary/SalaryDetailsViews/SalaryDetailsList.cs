@@ -34,8 +34,8 @@ namespace SalaryApp.WinClient.Salary.SalaryDetails
         {
             grid = new GridControl<SalaryPayDetails>(gridPanel);
 
-            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Employee.Firstname, "نام");
-            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Employee.Lastname, "نام خانوادگی");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Employee.Person.Firstname, "نام");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Employee.Person.Lastname, "نام خانوادگی");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().DailyRate, "پایه روزانه");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().DaysOfWork, "روز-کارکرد");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().ChildrenCount, "تعداد فرزند");

@@ -16,11 +16,6 @@ namespace SalaryApp.DataLayer.Persistence.Repositories
         }
         
 
-        public IEnumerable<Person> GetByNationalCode(string NCode)
-        {
-            throw new NotImplementedException();
-        }
-
         public SalaryContext SalaryContext
         {
             get { return context as SalaryContext; }

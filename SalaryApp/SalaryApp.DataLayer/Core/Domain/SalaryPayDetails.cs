@@ -7,25 +7,22 @@ using System.Threading.Tasks;
 
 namespace SalaryApp.DataLayer.Core.Domain
 {
+    using System.ComponentModel.DataAnnotations;
     public class SalaryPayDetails
     {
         public int Id { get; set; }
 
         
-
         public int Pay_Id { get; set; }
         [ForeignKey("Pay_Id")]
         public virtual Pay Pay { get; set; }
 
         public int Employee_Id { get; set; }
+
         [VerboseName("نام کارمند")]
         [ForeignKey("Employee_Id")]
-        public virtual Person Employee { get ; set; }
-
-        public int Workgroup_Id { get; set; }
-        [ForeignKey("Workgroup_Id")]
-        public virtual Workgroup WorkGroup { get; set; }
-
+        public virtual Employee Employee { get ; set; }
+        
         [VerboseName("پایه روزانه")]
         public decimal DailyRate { get; set; }
 

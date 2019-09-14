@@ -75,7 +75,22 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
                      var result = MessageBox.Show("برای این لیست جزئیاتی تعریف نشده است.میخواهید از لیست پرسنل استفاده کنید ؟", "هشدار", MessageBoxButtons.YesNoCancel);
                      if (result == DialogResult.Yes)
                      {
-                       
+                         var employees = unitOfWork.Employees.Find(emp => emp.Workgroup.Workshop_Id == grid.GetCurrentItem.Workshop_Id).ToList();
+                         foreach (var emp in employees)
+                         {
+                             unitOfWork.SalaryDetails.Add(new SalaryPayDetails
+                             {
+                                 Employee_Id=emp.Id,
+                                 Pay_Id=grid.GetCurrentItem.Id
+
+                             });
+
+                             unitOfWork.Complete();
+                         }
+
+                         MessageBox.Show("عملیات انقال موفق بود");
+
+
                      }
                  }
 

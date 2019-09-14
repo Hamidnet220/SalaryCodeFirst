@@ -229,6 +229,42 @@
     <Compile Include="Migrations\201909140002190_AddExplicitylyForeignKeyInEmployeeTable.Designer.cs">
       <DependentUpon>201909140002190_AddExplicitylyForeignKeyInEmployeeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909140147453_AddCompositionKeyInSalaryPayDetails.cs" />
+    <Compile Include="Migrations\201909140147453_AddCompositionKeyInSalaryPayDetails.Designer.cs">
+      <DependentUpon>201909140147453_AddCompositionKeyInSalaryPayDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909140200065_foo.cs" />
+    <Compile Include="Migrations\201909140200065_foo.Designer.cs">
+      <DependentUpon>201909140200065_foo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909140206107_ChangeNameOfTables.cs" />
+    <Compile Include="Migrations\201909140206107_ChangeNameOfTables.Designer.cs">
+      <DependentUpon>201909140206107_ChangeNameOfTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909140207335_removeKeyInSalaryDetails.cs" />
+    <Compile Include="Migrations\201909140207335_removeKeyInSalaryDetails.Designer.cs">
+      <DependentUpon>201909140207335_removeKeyInSalaryDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909140208538_AddCompositionKeyInSalaryPayDetails1.cs" />
+    <Compile Include="Migrations\201909140208538_AddCompositionKeyInSalaryPayDetails1.Designer.cs">
+      <DependentUpon>201909140208538_AddCompositionKeyInSalaryPayDetails1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909140211580_ModleBuilderInSalaryContext.cs" />
+    <Compile Include="Migrations\201909140211580_ModleBuilderInSalaryContext.Designer.cs">
+      <DependentUpon>201909140211580_ModleBuilderInSalaryContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909140212549_removeKeyInSalaryDetails1.cs" />
+    <Compile Include="Migrations\201909140212549_removeKeyInSalaryDetails1.Designer.cs">
+      <DependentUpon>201909140212549_removeKeyInSalaryDetails1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909140213279_AddCompositionKeyInSalaryPayDetails2.cs" />
+    <Compile Include="Migrations\201909140213279_AddCompositionKeyInSalaryPayDetails2.Designer.cs">
+      <DependentUpon>201909140213279_AddCompositionKeyInSalaryPayDetails2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909140234516_IdentityIdInsalaryPayDetials.cs" />
+    <Compile Include="Migrations\201909140234516_IdentityIdInsalaryPayDetials.Designer.cs">
+      <DependentUpon>201909140234516_IdentityIdInsalaryPayDetials.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -388,6 +424,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909140002190_AddExplicitylyForeignKeyInEmployeeTable.resx">
       <DependentUpon>201909140002190_AddExplicitylyForeignKeyInEmployeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140147453_AddCompositionKeyInSalaryPayDetails.resx">
+      <DependentUpon>201909140147453_AddCompositionKeyInSalaryPayDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140200065_foo.resx">
+      <DependentUpon>201909140200065_foo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140206107_ChangeNameOfTables.resx">
+      <DependentUpon>201909140206107_ChangeNameOfTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140207335_removeKeyInSalaryDetails.resx">
+      <DependentUpon>201909140207335_removeKeyInSalaryDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140208538_AddCompositionKeyInSalaryPayDetails1.resx">
+      <DependentUpon>201909140208538_AddCompositionKeyInSalaryPayDetails1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140211580_ModleBuilderInSalaryContext.resx">
+      <DependentUpon>201909140211580_ModleBuilderInSalaryContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140212549_removeKeyInSalaryDetails1.resx">
+      <DependentUpon>201909140212549_removeKeyInSalaryDetails1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140213279_AddCompositionKeyInSalaryPayDetails2.resx">
+      <DependentUpon>201909140213279_AddCompositionKeyInSalaryPayDetails2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140234516_IdentityIdInsalaryPayDetials.resx">
+      <DependentUpon>201909140234516_IdentityIdInsalaryPayDetials.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

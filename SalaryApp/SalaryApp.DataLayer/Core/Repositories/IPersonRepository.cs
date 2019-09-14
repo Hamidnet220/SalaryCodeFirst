@@ -9,6 +9,6 @@ namespace SalaryApp.DataLayer.Core.Repositories
 {
     public interface IPersonRepository:IRepository<Person>
     {
-        IEnumerable<Person> GetByNationalCode(string NCode);
+       
     }
 }

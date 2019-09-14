@@ -1,4 +1,5 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using SalaryApp.DataLayer.Core.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,11 +13,11 @@ namespace SalaryApp.DataLayer.Persistence
     {
         public DbSet<Person> People { get; set; }
 
-        public DbSet<Workshop> Workshop { get;set; }
+        public DbSet<Workshop> Workshops { get;set; }
 
-        public DbSet<City> City { get; set; }
+        public DbSet<City> Cities { get; set; }
 
-        public DbSet<Workgroup> Workgroup { get; set; }
+        public DbSet<Workgroup> Workgroups { get; set; }
 
         public DbSet<FinancialYear> FinancialYears { get; set; }
 
@@ -41,6 +42,19 @@ namespace SalaryApp.DataLayer.Persistence
         public SalaryContext():base("name=DefaultConnection")
         {
               
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SalaryPayDetails>()
+           .HasKey(t => new { t.Pay_Id, t.Employee_Id });
+
+
+            modelBuilder.Entity<SalaryPayDetails>()
+                .Property(t => t.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

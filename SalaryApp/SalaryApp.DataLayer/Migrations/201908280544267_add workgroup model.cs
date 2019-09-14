@@ -10,19 +10,19 @@ namespace SalaryApp.DataLayer.Migrations
             CreateTable(
                 "dbo.Workgroups",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        Rate = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Bon = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Maskan = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        ChildrenBenefit = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        IsShift = c.Boolean(),
-                        ShiftRation = c.Single(nullable: false),
-                        TaxExept = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Description = c.String(),
-                        Workshop_Id = c.Int(),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    Title = c.String(),
+                    Rate = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    Bon = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    Maskan = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    ChildrenBenefit = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    IsShift = c.Boolean(),
+                    ShiftRation = c.Single(nullable: false),
+                    TaxExept = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    Description = c.String(),
+                    Workshop_Id = c.Int(),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Workshops", t => t.Workshop_Id)
                 .Index(t => t.Workshop_Id);
