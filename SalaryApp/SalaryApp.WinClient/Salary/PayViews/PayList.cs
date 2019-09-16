@@ -4,6 +4,7 @@ using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
 using SalaryApp.WinClient.Salary.SalaryDetails;
 using System;
+using SalaryApp.DataLayer.Persistence;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
     {
         GridControl<Pay> grid;
 
-
+        
         public PayList()
         {
             Load += PayList_Load;
@@ -111,6 +112,37 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
                 unitOfWork.Complete();
                 grid.RemoveCurrentItem();
             });
+
+            AddAction("محاسبه", button =>
+             {
+                 if (grid.GetCurrentItem.Status == Pay.PayStatus.Locked)
+                     return;
+
+                 var un =new  UnitOfWork(new SalaryContext());
+                 var salaryDetailCount = un.SalaryDetails.Find(sd => sd.Pay_Id == grid.GetCurrentItem.Id).Count();
+
+                 if (salaryDetailCount == 0)
+                     return;
+                 var salaryList = un.SalaryDetails.Find(sd => sd.Pay_Id == grid.GetCurrentItem.Id).ToList();
+
+                 foreach (var item in salaryList)
+                 {
+                     var entity = un.SalaryDetails.Find(sd => sd.Employee_Id == item.Employee_Id).FirstOrDefault();
+                     entity.MonthlyWage = entity.DaysOfWork * entity.DailyRate;
+                     entity.Bon = entity.Employee.Workgroup.Bon;
+                     entity.ChildrenBenefit = entity.Employee.Workgroup.ChildrenBenefit * entity.ChildrenCount;
+                     entity.CommuteBenefit = (decimal)entity.CommuteBenefiRatio * entity.DaysOfWork;
+                     entity.GrossAmount = entity.BadConditionAmount + entity.Bon + entity.ChildrenBenefit + entity.CommuteBenefit + entity.FoodBenefit +
+                               entity.HygieneAmount + entity.InstructionBenefit + entity.Karobar + entity.Maskan + entity.MonthlyWage +
+                               entity.WorkAsStandbyAmount + entity.WorkInHolidayAmount + entity.WorkOvertimeAmount + entity.WrokInFridayAmoutn;
+                     entity.TaxIncluded = entity.GrossAmount;
+                     un.Complete();
+
+                 }
+
+                 un.Dispose();
+
+             });
         }
     }
 }
