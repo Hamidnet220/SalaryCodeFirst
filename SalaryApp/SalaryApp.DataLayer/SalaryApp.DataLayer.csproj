@@ -52,9 +52,11 @@
     <Compile Include="Core\Domain\AppStatus.cs" />
     <Compile Include="Core\Domain\Education.cs" />
     <Compile Include="Core\Domain\Employee.cs" />
+    <Compile Include="Core\Domain\Logsheet.cs" />
     <Compile Include="Core\Domain\Pay.cs" />
     <Compile Include="Core\Domain\PayType.cs" />
     <Compile Include="Core\Domain\SalaryPayDetails.cs" />
+    <Compile Include="Core\Domain\WorkDayStatus.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
     <Compile Include="Core\Repositories\IPersonRepository.cs" />
     <Compile Include="Core\Repositories\IPayTypeRepository.cs" />
@@ -265,6 +267,30 @@
     <Compile Include="Migrations\201909140234516_IdentityIdInsalaryPayDetials.Designer.cs">
       <DependentUpon>201909140234516_IdentityIdInsalaryPayDetials.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909140910347_AddLogsheetTable.cs" />
+    <Compile Include="Migrations\201909140910347_AddLogsheetTable.Designer.cs">
+      <DependentUpon>201909140910347_AddLogsheetTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909150850458_AddDaysToLogsheetTable.cs" />
+    <Compile Include="Migrations\201909150850458_AddDaysToLogsheetTable.Designer.cs">
+      <DependentUpon>201909150850458_AddDaysToLogsheetTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151624000_AddWorkdaysInLogsheet.cs" />
+    <Compile Include="Migrations\201909151624000_AddWorkdaysInLogsheet.Designer.cs">
+      <DependentUpon>201909151624000_AddWorkdaysInLogsheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151659392_RemoveLogsheetTable.cs" />
+    <Compile Include="Migrations\201909151659392_RemoveLogsheetTable.Designer.cs">
+      <DependentUpon>201909151659392_RemoveLogsheetTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151800054_PaystatusEnum.cs" />
+    <Compile Include="Migrations\201909151800054_PaystatusEnum.Designer.cs">
+      <DependentUpon>201909151800054_PaystatusEnum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151816507_PaystatusEnumAdd.cs" />
+    <Compile Include="Migrations\201909151816507_PaystatusEnumAdd.Designer.cs">
+      <DependentUpon>201909151816507_PaystatusEnumAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -451,6 +477,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909140234516_IdentityIdInsalaryPayDetials.resx">
       <DependentUpon>201909140234516_IdentityIdInsalaryPayDetials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909140910347_AddLogsheetTable.resx">
+      <DependentUpon>201909140910347_AddLogsheetTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909150850458_AddDaysToLogsheetTable.resx">
+      <DependentUpon>201909150850458_AddDaysToLogsheetTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151624000_AddWorkdaysInLogsheet.resx">
+      <DependentUpon>201909151624000_AddWorkdaysInLogsheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151659392_RemoveLogsheetTable.resx">
+      <DependentUpon>201909151659392_RemoveLogsheetTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151800054_PaystatusEnum.resx">
+      <DependentUpon>201909151800054_PaystatusEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151816507_PaystatusEnumAdd.resx">
+      <DependentUpon>201909151816507_PaystatusEnumAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

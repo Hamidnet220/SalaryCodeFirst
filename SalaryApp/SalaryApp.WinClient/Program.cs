@@ -22,8 +22,8 @@ namespace SalaryApp.WinClient
         [STAThread]
         static void Main()
         {
-            var frm = new MainForm();
-            frm.ShowDialog();
+            var mainForm = new MainForm();
+            mainForm.ShowDialog();
 
             ////Test education
 
