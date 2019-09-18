@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace SalaryApp.WinClient
 {
@@ -12,6 +13,8 @@ namespace SalaryApp.WinClient
         [STAThread]
         static void Main()
         {
+            Cultures.InitializePersianCulture();
+
             var mainForm = new MainForm();
             mainForm.ShowDialog();
 

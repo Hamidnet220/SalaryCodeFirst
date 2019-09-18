@@ -13,8 +13,19 @@ namespace SalaryApp.WinClient
         {
             InitializeComponent();
             Load += MainForm_Load;
-            
+            var toolStripLabel=new ToolStripLabel();
+            DateTimeTimer.Tick += (obj, e) =>
+            {
+                toolStripLabel.Text = DateTime.Now.ToString("dd MM yyyy hh:mm:ss");
+            };
+
+            DateTimeTimer.Interval = 1000;
+            DateTimeTimer.Start();
+
+            StatusBarStrip.Items.Add(toolStripLabel);
         }
+
+        
 
         private void MainForm_Load(object sender, EventArgs e)
         {

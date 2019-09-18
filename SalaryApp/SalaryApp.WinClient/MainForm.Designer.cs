@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ManageWorkshopButton = new System.Windows.Forms.Button();
             this.EmployeeListButton = new System.Windows.Forms.Button();
             this.PayButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.StatusBarStrip = new System.Windows.Forms.StatusStrip();
+            this.DateTimeTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // ManageWorkshopButton
@@ -73,11 +76,20 @@
             this.button4.Text = "گزارشات";
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // StatusBarStrip
+            // 
+            this.StatusBarStrip.Location = new System.Drawing.Point(0, 489);
+            this.StatusBarStrip.Name = "StatusBarStrip";
+            this.StatusBarStrip.Size = new System.Drawing.Size(1083, 22);
+            this.StatusBarStrip.TabIndex = 2;
+            this.StatusBarStrip.Text = "statusStrip1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1083, 511);
+            this.Controls.Add(this.StatusBarStrip);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.PayButton);
             this.Controls.Add(this.EmployeeListButton);
@@ -88,6 +100,7 @@
             this.Text = "فرم اصلی";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,6 +109,8 @@
         private System.Windows.Forms.Button EmployeeListButton;
         private System.Windows.Forms.Button PayButton;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.StatusStrip StatusBarStrip;
+        private System.Windows.Forms.Timer DateTimeTimer;
     }
 }
 

@@ -71,6 +71,7 @@
     <Compile Include="Core\Repositories\ISalaryPayDetails.cs" />
     <Compile Include="Core\Repositories\IWorkPlaceRepository.cs" />
     <Compile Include="Core\Repositories\IPayRepository.cs" />
+    <Compile Include="Cultures.cs" />
     <Compile Include="ExpressionHandler.cs" />
     <Compile Include="Migrations\201908270458236_InitialModel.cs" />
     <Compile Include="Migrations\201908270458236_InitialModel.Designer.cs">
