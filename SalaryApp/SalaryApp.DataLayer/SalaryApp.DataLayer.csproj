@@ -47,20 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\AttendanceEngin.cs" />
     <Compile Include="Core\ComboBoxAttribute.cs" />
     <Compile Include="Core\Domain\AnnualPayDetail.cs" />
     <Compile Include="Core\Domain\AppStatus.cs" />
     <Compile Include="Core\Domain\Education.cs" />
     <Compile Include="Core\Domain\Employee.cs" />
+    <Compile Include="Core\Domain\IPayDetails.cs" />
     <Compile Include="Core\Domain\Logsheet.cs" />
     <Compile Include="Core\Domain\Pay.cs" />
     <Compile Include="Core\Domain\PayType.cs" />
     <Compile Include="Core\Domain\SalaryPayDetails.cs" />
     <Compile Include="Core\Domain\WorkDayStatus.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
+    <Compile Include="Core\Repositories\ILogsheetRepository.cs" />
     <Compile Include="Core\Repositories\IPersonRepository.cs" />
     <Compile Include="Core\Repositories\IPayTypeRepository.cs" />
     <Compile Include="Core\Repositories\IUserRepository.cs" />
+    <Compile Include="Core\SalaryClaculatorEngin.cs" />
     <Compile Include="Core\VerboseNameAttribute.cs" />
     <Compile Include="Core\Repositories\IAnnualPayDetailRepository.cs" />
     <Compile Include="Core\Repositories\IEducationRepository.cs" />
@@ -291,12 +295,21 @@
     <Compile Include="Migrations\201909151816507_PaystatusEnumAdd.Designer.cs">
       <DependentUpon>201909151816507_PaystatusEnumAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909161006332_AddStandayAmountRateInWorkgroupTable.cs" />
+    <Compile Include="Migrations\201909161006332_AddStandayAmountRateInWorkgroupTable.Designer.cs">
+      <DependentUpon>201909161006332_AddStandayAmountRateInWorkgroupTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909170030365_AddLogDayInLogsheetTable.cs" />
+    <Compile Include="Migrations\201909170030365_AddLogDayInLogsheetTable.Designer.cs">
+      <DependentUpon>201909170030365_AddLogDayInLogsheetTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
     <Compile Include="Persistence\Repositories\CityRepository.cs" />
     <Compile Include="Core\Domain\Person.cs" />
     <Compile Include="Persistence\Repositories\EducationRepository.cs" />
+    <Compile Include="Persistence\Repositories\LogsheetRepository.cs" />
     <Compile Include="Persistence\Repositories\PersonRepository.cs" />
     <Compile Include="Persistence\Repositories\EmployeeRepository.cs" />
     <Compile Include="Core\Domain\FinancialYear.cs" />
@@ -495,6 +508,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909151816507_PaystatusEnumAdd.resx">
       <DependentUpon>201909151816507_PaystatusEnumAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909161006332_AddStandayAmountRateInWorkgroupTable.resx">
+      <DependentUpon>201909161006332_AddStandayAmountRateInWorkgroupTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909170030365_AddLogDayInLogsheetTable.resx">
+      <DependentUpon>201909170030365_AddLogDayInLogsheetTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
