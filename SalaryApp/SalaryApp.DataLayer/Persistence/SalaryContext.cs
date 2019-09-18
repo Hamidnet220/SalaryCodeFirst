@@ -39,6 +39,8 @@ namespace SalaryApp.DataLayer.Persistence
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Logsheet> Logsheets { get; set; }
+
         public SalaryContext():base("name=DefaultConnection")
         {
               
@@ -47,12 +49,20 @@ namespace SalaryApp.DataLayer.Persistence
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SalaryPayDetails>()
-           .HasKey(t => new { t.Pay_Id, t.Employee_Id });
+                .HasKey(t => new {t.PayId, t.EmployeeId});
+                
+           
+            
 
 
             modelBuilder.Entity<SalaryPayDetails>()
                 .Property(t => t.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            modelBuilder.Entity<Logsheet>()
+                .HasKey(t => new {t.PayId, t.EmployeeId})
+                .Property(t=>t.DayStatus).HasMaxLength(61);
+                
 
             base.OnModelCreating(modelBuilder);
         }
