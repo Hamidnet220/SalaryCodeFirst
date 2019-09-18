@@ -1,14 +1,4 @@
-﻿using SalaryApp.DataLayer.Core;
-using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.DataLayer.Persistence;
-using SalaryApp.WinClient.BaseInfoForms.PersonViews;
-using SalaryApp.WinClient.BaseInfoForms.PayViews;
-using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
-using SalaryApp.WinClient.Salary.AnnualpayDetails;
-using SalaryApp.WinClient.Salary.SalaryDetails;
-using System;
-using System.Reflection;
-using System.Windows.Forms;
+﻿using System;
 
 namespace SalaryApp.WinClient
 {

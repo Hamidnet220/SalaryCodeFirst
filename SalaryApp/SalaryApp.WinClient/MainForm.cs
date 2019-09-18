@@ -1,9 +1,9 @@
 ﻿using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.WinClient.BaseInfoForms.PayViews;
 using SalaryApp.WinClient.BaseInfoForms.PersonViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
 using System;
 using System.Windows.Forms;
+using SalaryApp.WinClient.Salary.PayViews;
 
 namespace SalaryApp.WinClient
 {
