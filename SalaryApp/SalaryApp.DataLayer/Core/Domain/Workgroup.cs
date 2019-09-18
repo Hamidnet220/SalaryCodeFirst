@@ -23,6 +23,9 @@ namespace SalaryApp.DataLayer.Core.Domain
         [VerboseName("مسکن")]
         public decimal Maskan { get; set; }
 
+        [VerboseName("مبلغ جایگزینی")]
+        public decimal StandbayAmount { get; set; }
+
         [VerboseName("مبلغ حق اولاد")]
         public decimal ChildrenBenefit { get; set; }
 
