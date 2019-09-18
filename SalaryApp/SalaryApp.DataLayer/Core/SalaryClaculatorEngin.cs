@@ -20,9 +20,13 @@ namespace SalaryApp.DataLayer.Core
 
         private void CalaculateSalary()
         {
-            var rate = salaryDetails.Employee.Workgroup.Rate ;
+            var rate = salaryDetails.DailyRate ;
 
-            salaryDetails.MonthlyWage = salaryDetails.DaysOfWork * rate;
+            var netDaysOfwork = salaryDetails.DaysOfWork-salaryDetails.AbsentDays;
+
+            var effectiveDaysOfWork = netDaysOfwork - salaryDetails.LeaveDays;
+
+            salaryDetails.MonthlyWage = netDaysOfwork * rate;
 
             salaryDetails.Bon = salaryDetails.Employee.Workgroup.Bon;
 
@@ -36,23 +40,59 @@ namespace SalaryApp.DataLayer.Core
 
             salaryDetails.WorkAsStandbyAmount = salaryDetails.Employee.Workgroup.StandbayAmount;
 
+            salaryDetails.WorkOvertimeAmount = (decimal) ((salaryDetails.WorkOvertimeHr / 7.33) * 1.4) * rate;
+
             salaryDetails.ChildrenBenefit = salaryDetails.Employee.Workgroup.ChildrenBenefit * salaryDetails.ChildrenCount;
 
-            salaryDetails.CommuteBenefit = (decimal)salaryDetails.CommuteBenefiRatio * salaryDetails.DaysOfWork;
+            salaryDetails.CommuteBenefit = (decimal)salaryDetails.CommuteBenefiRatio * netDaysOfwork * rate;
 
-            salaryDetails.GrossAmount = salaryDetails.BadConditionAmount + salaryDetails.Bon +
-                                        salaryDetails.ChildrenBenefit + salaryDetails.CommuteBenefit +
-                                        salaryDetails.FoodBenefit + salaryDetails.HygieneAmount + salaryDetails.InstructionBenefit +
-                                        salaryDetails.Karobar + salaryDetails.Maskan + salaryDetails.MonthlyWage +
-                                        salaryDetails.WorkAsStandbyAmount + salaryDetails.WorkInHolidayAmount +
-                                        salaryDetails.WorkOvertimeAmount + salaryDetails.WrokInFridayAmoutn;
+            salaryDetails.BadConditionAmount =(decimal) salaryDetails.BadConditionRatio * netDaysOfwork * rate;
+
+            salaryDetails.GrossAmount = salaryDetails.BadConditionAmount +
+                                        salaryDetails.Bon +
+                                        salaryDetails.ChildrenBenefit +
+                                        salaryDetails.CommuteBenefit +
+                                        salaryDetails.FoodBenefit + 
+                                        salaryDetails.HygieneAmount +
+                                        salaryDetails.InstructionBenefit +
+                                        salaryDetails.Karobar +
+                                        salaryDetails.Maskan +
+                                        salaryDetails.MonthlyWage +
+                                        salaryDetails.WorkAsStandbyAmount + 
+                                        salaryDetails.WorkInHolidayAmount +
+                                        salaryDetails.WorkOvertimeAmount +
+                                        salaryDetails.WrokInFridayAmoutn ;
 
             salaryDetails.TaxIncluded = salaryDetails.GrossAmount;
 
-            salaryDetails.NetAmount = salaryDetails.GrossAmount;
+            if (salaryDetails.TaxExempt)
+                salaryDetails.TaxAmount = 0;
+            else
+            {
+                if (salaryDetails.TaxIncluded <= salaryDetails.Employee.Workgroup.TaxExept)
+                    salaryDetails.TaxAmount = 0;
+                else
+                    salaryDetails.TaxAmount=(salaryDetails.TaxIncluded-salaryDetails.Employee.Workgroup.TaxExept)* (decimal)0.05;
+            }
+
+            salaryDetails.InsuranceIncluded = salaryDetails.GrossAmount - salaryDetails.ChildrenBenefit;
+
+            salaryDetails.EmployeeIncurance = salaryDetails.InsuranceIncluded * (decimal) 0.07;
+
+            salaryDetails.EmployeerIncurance = salaryDetails.InsuranceIncluded * (decimal) 0.23;
+
+            
+
+            salaryDetails.NetAmount = salaryDetails.GrossAmount -
+                                      salaryDetails.EmployeeIncurance -
+                                      salaryDetails.TaxAmount-salaryDetails.Loan-
+                                      salaryDetails.PayInAdvance-
+                                      salaryDetails.OtherDeduction-salaryDetails.OtherDeduction1;
 
 
         }
+
+        
         
         public decimal GetGrossAmount()
         {
