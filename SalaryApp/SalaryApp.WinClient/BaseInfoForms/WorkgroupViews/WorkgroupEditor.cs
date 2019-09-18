@@ -20,15 +20,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
            
         }
 
-        private void Cancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
-
-        private void Accept_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-        }
+       
         private void WorkgroupEditor_Load(object sender, EventArgs e)
         {
 
