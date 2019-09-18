@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.CustomeControls;
@@ -128,9 +129,22 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 var un = new UnitOfWork(new SalaryContext());
 
                 var attendances = un.Logsheets.Find(l=>l.PayId==_grid.GetCurrentItem.Id).ToList();
+                
+                var openFileDialog=new OpenFileDialog();
+                if(openFileDialog.ShowDialog()==DialogResult.Cancel)
+                    return;
+                var path = openFileDialog.FileName;
+                var textfile = File.ReadAllLines(path).ToList();
+                var sumLeavs = 0;
+                foreach (var line in textfile)
+                {
+                    var record = line.Split(',');
+                    var leavs = record.Where(d => d.ToString()=="م").ToList();
+                    
+                    sumLeavs += leavs.Count;
+                }
 
-
-
+                MessageBox.Show(sumLeavs.ToString());
             });
 
 
