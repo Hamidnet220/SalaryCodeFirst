@@ -1,14 +1,10 @@
 ﻿using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.DataLayer.Persistence.Repositories;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
 using SalaryApp.WinClient.Salary.SalaryDetails;
 using System;
 using SalaryApp.DataLayer.Persistence;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalaryApp.WinClient.BaseInfoForms.PayViews
@@ -29,7 +25,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
 
         private void PayList_Load(object sender, EventArgs e)
         {
-            this.Text = "لیست پرداخت ها";
+            this.Text = @"لیست پرداخت ها";
             this.WindowState = FormWindowState.Maximized;
 
         }
@@ -71,9 +67,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
             AddAction("جزئیات پرداخت", button =>
              {
                  var paylist = grid.GetCurrentItem;
-                 if (unitOfWork.SalaryDetails.Find(sd => sd.Pay.Id == paylist.Id).Count() == 0)
+                 if (!unitOfWork.SalaryDetails.Find(sd => sd.Pay.Id == paylist.Id).Any())
                  {
-                     var result = MessageBox.Show("برای این لیست جزئیاتی تعریف نشده است.میخواهید از لیست پرسنل استفاده کنید ؟", "هشدار", MessageBoxButtons.YesNoCancel);
+                     var result = MessageBox.Show(@"برای این لیست جزئیاتی تعریف نشده است.میخواهید از لیست پرسنل استفاده کنید ؟", @"هشدار", MessageBoxButtons.YesNoCancel);
                      if (result == DialogResult.Yes)
                      {
                          var employees = unitOfWork.Employees.Find(emp => emp.Workgroup.Workshop_Id == grid.GetCurrentItem.Workshop_Id).ToList();
@@ -81,15 +77,15 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
                          {
                              unitOfWork.SalaryDetails.Add(new SalaryPayDetails
                              {
-                                 Employee_Id=emp.Id,
-                                 Pay_Id=grid.GetCurrentItem.Id
+                                 EmployeeId=emp.Id,
+                                 PayId=grid.GetCurrentItem.Id
 
                              });
 
                              unitOfWork.Complete();
                          }
 
-                         MessageBox.Show("عملیات انقال موفق بود");
+                         MessageBox.Show(@"عملیات انقال موفق بود");
 
 
                      }
@@ -113,34 +109,47 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
                 grid.RemoveCurrentItem();
             });
 
+
+            AddAction("بروزرسانی کارکرد", button =>
+            {
+                var un = new UnitOfWork(new SalaryContext());
+
+                var attendances = un.Logsheets.Find(l=>l.PayId==grid.GetCurrentItem.Id).ToList();
+
+
+
+            });
+
+
             AddAction("محاسبه", button =>
              {
                  if (grid.GetCurrentItem.Status == Pay.PayStatus.Locked)
-                     return;
-
-                 var un =new  UnitOfWork(new SalaryContext());
-                 var salaryDetailCount = un.SalaryDetails.Find(sd => sd.Pay_Id == grid.GetCurrentItem.Id).Count();
-
-                 if (salaryDetailCount == 0)
-                     return;
-                 var salaryList = un.SalaryDetails.Find(sd => sd.Pay_Id == grid.GetCurrentItem.Id).ToList();
-
-                 foreach (var item in salaryList)
                  {
-                     var entity = un.SalaryDetails.Find(sd => sd.Employee_Id == item.Employee_Id).FirstOrDefault();
-                     entity.MonthlyWage = entity.DaysOfWork * entity.DailyRate;
-                     entity.Bon = entity.Employee.Workgroup.Bon;
-                     entity.ChildrenBenefit = entity.Employee.Workgroup.ChildrenBenefit * entity.ChildrenCount;
-                     entity.CommuteBenefit = (decimal)entity.CommuteBenefiRatio * entity.DaysOfWork;
-                     entity.GrossAmount = entity.BadConditionAmount + entity.Bon + entity.ChildrenBenefit + entity.CommuteBenefit + entity.FoodBenefit +
-                               entity.HygieneAmount + entity.InstructionBenefit + entity.Karobar + entity.Maskan + entity.MonthlyWage +
-                               entity.WorkAsStandbyAmount + entity.WorkInHolidayAmount + entity.WorkOvertimeAmount + entity.WrokInFridayAmoutn;
-                     entity.TaxIncluded = entity.GrossAmount;
-                     un.Complete();
-
+                     MessageBox.Show(@"حقوق این ماه قفل شده و امکان محاسبه دوباره وجود ندارد ",@"خطا");
+                     return;
                  }
 
-                 un.Dispose();
+                 using (var un = new UnitOfWork(new SalaryContext()))
+                 {
+                     if (un.SalaryDetails.Find(sd => sd.PayId == grid.GetCurrentItem.Id).Any())
+                     {
+                         MessageBox.Show(@"برای این ماه جزئیاتی تعریف نشده.", @"خطا");
+                         return;
+                     }
+
+                     var salaryList = un.SalaryDetails.Find(sd => sd.PayId == grid.GetCurrentItem.Id).ToList();
+
+                     foreach (var entity in salaryList)
+                     {
+                         IPayDetails payDetail = new DataLayer.Core.SalaryClaculatorEngin(entity);
+
+                         un.Complete();
+                     }
+
+                     MessageBox.Show(@"محاسبه حقوق با موفقیت انجام شد.", @"پیام سیستم");
+
+                 }
+                
 
              });
         }
