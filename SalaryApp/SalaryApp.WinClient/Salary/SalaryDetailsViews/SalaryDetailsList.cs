@@ -91,6 +91,15 @@ namespace SalaryApp.WinClient.Salary.SalaryDetails
 
             AddAction("ویرایش", button =>
             {
+                var entity = unitOfWork.SalaryDetails.Find(sd=>sd.Id==grid.GetCurrentItem.Id).FirstOrDefault();
+                var salarDetailsEditor=new SalaryDetailsEditor(entity);
+                salarDetailsEditor.ShowDialog();
+                
+                if(salarDetailsEditor.DialogResult==DialogResult.Cancel)
+                    return;
+
+                unitOfWork.Complete();
+
             });
 
             AddAction("-حذف", button =>
