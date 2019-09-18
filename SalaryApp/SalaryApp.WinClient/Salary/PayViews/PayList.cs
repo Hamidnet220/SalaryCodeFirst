@@ -122,8 +122,10 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
 
 
             AddAction("محاسبه", button =>
-             {
-                 if (grid.GetCurrentItem.Status == Pay.PayStatus.Locked)
+            {
+                var currentPay = grid.GetCurrentItem;
+
+                 if (currentPay.Status == Pay.PayStatus.Locked)
                  {
                      MessageBox.Show(@"حقوق این ماه قفل شده و امکان محاسبه دوباره وجود ندارد ",@"خطا");
                      return;
@@ -131,13 +133,13 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
 
                  using (var un = new UnitOfWork(new SalaryContext()))
                  {
-                     if (un.SalaryDetails.Find(sd => sd.PayId == grid.GetCurrentItem.Id).Any())
+                     if (!un.SalaryDetails.Find(sd => sd.PayId == currentPay.Id).Any())
                      {
                          MessageBox.Show(@"برای این ماه جزئیاتی تعریف نشده.", @"خطا");
                          return;
                      }
 
-                     var salaryList = un.SalaryDetails.Find(sd => sd.PayId == grid.GetCurrentItem.Id).ToList();
+                     var salaryList = un.SalaryDetails.Find(sd => sd.PayId == currentPay.Id).ToList();
 
                      foreach (var entity in salaryList)
                      {
@@ -146,11 +148,16 @@ namespace SalaryApp.WinClient.BaseInfoForms.PayViews
                          un.Complete();
                      }
 
+
+                     un.Pays.Get(currentPay.Id).EmployeesCount = salaryList.Count();
+
+                     un.Complete();
+
                      MessageBox.Show(@"محاسبه حقوق با موفقیت انجام شد.", @"پیام سیستم");
 
                  }
                 
-
+                 grid.ResetBindings();
              });
         }
     }
