@@ -13,14 +13,14 @@ namespace SalaryApp.DataLayer.Core.Domain
         public int Id { get; set; }
 
         
-        public int Pay_Id { get; set; }
-        [ForeignKey("Pay_Id")]
+        public int PayId { get; set; }
+        [ForeignKey("PayId")]
         public virtual Pay Pay { get; set; }
 
-        public int Employee_Id { get; set; }
+        public int EmployeeId { get; set; }
 
         [VerboseName("نام کارمند")]
-        [ForeignKey("Employee_Id")]
+        [ForeignKey("EmployeeId")]
         public virtual Employee Employee { get ; set; }
         
         [VerboseName("پایه روزانه")]
