@@ -107,7 +107,7 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
 
                 unitOfWork.SalaryDetails.Remove(grid.GetCurrentItem);
                 unitOfWork.Complete();
-                grid.RemoveCurrentItem();
+                grid.ResetBindings();
             });
         }
 

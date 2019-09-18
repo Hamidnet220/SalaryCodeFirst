@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace SalaryApp.WinClient
+namespace SalaryApp.DataLayer
 {
     public class ExpressionHandler: System.Linq.Expressions.ExpressionVisitor
     {

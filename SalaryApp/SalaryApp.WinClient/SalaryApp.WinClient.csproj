@@ -95,7 +95,6 @@
     <Compile Include="BaseInfoForms\WorkshopViews\WorkshopList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExpressionHandler.cs" />
     <Compile Include="CustomeControls\GridView.cs" />
     <Compile Include="GeneralClass\MessagesClass.cs" />
     <Compile Include="MainForm.cs">
