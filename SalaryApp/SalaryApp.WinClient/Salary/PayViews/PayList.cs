@@ -138,9 +138,19 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 var sumLeavs = 0;
                 foreach (var line in textfile)
                 {
-                    var record = line.Split(',');
-                    var leavs = record.Where(d => d.ToString()=="م").ToList();
-                    
+                    var fields = line.Split(',');
+                    var leavs = fields.Where(d => d.ToString()=="م").ToList();
+                    var ncode = fields[3];
+
+                    var payDetails = unitOfWork.SalaryDetails.Find(sd => sd.Employee.Person.NationalCode == ncode)
+                        .FirstOrDefault();
+
+                    if (payDetails != null)
+                        payDetails
+                            .LeaveDays = (byte)leavs.Count;
+                        
+                    unitOfWork.Complete();
+
                     sumLeavs += leavs.Count;
                 }
 
