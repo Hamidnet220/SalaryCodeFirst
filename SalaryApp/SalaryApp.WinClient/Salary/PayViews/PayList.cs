@@ -59,9 +59,14 @@ namespace SalaryApp.WinClient.Salary.PayViews
             {
                 var payForm = new PayEditor(new Pay());
                 payForm.AddEntity += UpdateGrid;
-                payForm.ShowDialog();
+                var result=payForm.ShowDialog();
+                if (result == DialogResult.Cancel)
+                    return;
 
-                
+                unitOfWork.Pays.Add(payForm.entity);
+                unitOfWork.Complete();
+
+
             });
 
             AddAction("ویرایش", button =>
@@ -140,14 +145,23 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 {
                     var fields = line.Split(',');
                     var leavs = fields.Where(d => d.ToString()=="م").ToList();
+                    var workDays = fields.Where(d => d.ToString()=="ص"||
+                                                     d.ToString()=="ع"||
+                                                     d.ToString()=="ش" ||
+                                                     d.ToString()=="ر" ||
+                                                     d.ToString()=="آ" ||
+                                                     d.ToString() == "م").ToList();
                     var ncode = fields[3];
 
                     var payDetails = unitOfWork.SalaryDetails.Find(sd => sd.Employee.Person.NationalCode == ncode)
                         .FirstOrDefault();
 
                     if (payDetails != null)
-                        payDetails
-                            .LeaveDays = (byte)leavs.Count;
+                    {
+                        payDetails.LeaveDays = (byte)leavs.Count;
+                        payDetails.DaysOfWork = (byte) workDays.Count;
+                    }
+
                         
                     unitOfWork.Complete();
 
