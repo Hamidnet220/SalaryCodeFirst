@@ -39,7 +39,7 @@
             // 
             // ManageWorkshopButton
             // 
-            this.ManageWorkshopButton.Location = new System.Drawing.Point(457, 23);
+            this.ManageWorkshopButton.Location = new System.Drawing.Point(551, 28);
             this.ManageWorkshopButton.Name = "ManageWorkshopButton";
             this.ManageWorkshopButton.Size = new System.Drawing.Size(185, 176);
             this.ManageWorkshopButton.TabIndex = 1;
@@ -49,7 +49,7 @@
             // 
             // EmployeeListButton
             // 
-            this.EmployeeListButton.Location = new System.Drawing.Point(648, 23);
+            this.EmployeeListButton.Location = new System.Drawing.Point(742, 28);
             this.EmployeeListButton.Name = "EmployeeListButton";
             this.EmployeeListButton.Size = new System.Drawing.Size(208, 176);
             this.EmployeeListButton.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             // PayButton
             // 
-            this.PayButton.Location = new System.Drawing.Point(244, 23);
+            this.PayButton.Location = new System.Drawing.Point(338, 28);
             this.PayButton.Name = "PayButton";
             this.PayButton.Size = new System.Drawing.Size(207, 176);
             this.PayButton.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(42, 23);
+            this.button4.Location = new System.Drawing.Point(136, 28);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(196, 176);
             this.button4.TabIndex = 1;
@@ -80,6 +80,7 @@
             // 
             this.StatusBarStrip.Location = new System.Drawing.Point(0, 489);
             this.StatusBarStrip.Name = "StatusBarStrip";
+            this.StatusBarStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StatusBarStrip.Size = new System.Drawing.Size(1083, 22);
             this.StatusBarStrip.TabIndex = 2;
             this.StatusBarStrip.Text = "statusStrip1";

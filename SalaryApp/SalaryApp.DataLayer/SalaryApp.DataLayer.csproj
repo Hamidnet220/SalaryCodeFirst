@@ -305,6 +305,14 @@
     <Compile Include="Migrations\201909170030365_AddLogDayInLogsheetTable.Designer.cs">
       <DependentUpon>201909170030365_AddLogDayInLogsheetTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909190258449_DeletePayId.cs" />
+    <Compile Include="Migrations\201909190258449_DeletePayId.Designer.cs">
+      <DependentUpon>201909190258449_DeletePayId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909190327057_RemoveForiengKeyInSalaryDetail.cs" />
+    <Compile Include="Migrations\201909190327057_RemoveForiengKeyInSalaryDetail.Designer.cs">
+      <DependentUpon>201909190327057_RemoveForiengKeyInSalaryDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -516,6 +524,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909170030365_AddLogDayInLogsheetTable.resx">
       <DependentUpon>201909170030365_AddLogDayInLogsheetTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909190258449_DeletePayId.resx">
+      <DependentUpon>201909190258449_DeletePayId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909190327057_RemoveForiengKeyInSalaryDetail.resx">
+      <DependentUpon>201909190327057_RemoveForiengKeyInSalaryDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
