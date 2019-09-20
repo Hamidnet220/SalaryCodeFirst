@@ -37,8 +37,11 @@
             this.DateTimeTimer = new System.Windows.Forms.Timer(this.components);
             this.ManPage = new System.Windows.Forms.TabPage();
             this.MainTabControl = new System.Windows.Forms.TabControl();
+            this.CloseCurrentView = new System.Windows.Forms.LinkLabel();
+            this.TopeBar = new System.Windows.Forms.Panel();
             this.ManPage.SuspendLayout();
             this.MainTabControl.SuspendLayout();
+            this.TopeBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // ManageWorkshopButton
@@ -98,7 +101,7 @@
             this.ManPage.Location = new System.Drawing.Point(4, 23);
             this.ManPage.Name = "ManPage";
             this.ManPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ManPage.Size = new System.Drawing.Size(1075, 462);
+            this.ManPage.Size = new System.Drawing.Size(1075, 436);
             this.ManPage.TabIndex = 0;
             this.ManPage.Text = "صفحه اصلی";
             this.ManPage.UseVisualStyleBackColor = true;
@@ -107,13 +110,33 @@
             // 
             this.MainTabControl.Controls.Add(this.ManPage);
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTabControl.Location = new System.Drawing.Point(0, 0);
+            this.MainTabControl.Location = new System.Drawing.Point(0, 26);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.MainTabControl.RightToLeftLayout = true;
             this.MainTabControl.SelectedIndex = 0;
-            this.MainTabControl.Size = new System.Drawing.Size(1083, 489);
+            this.MainTabControl.Size = new System.Drawing.Size(1083, 463);
             this.MainTabControl.TabIndex = 3;
+            // 
+            // CloseCurrentView
+            // 
+            this.CloseCurrentView.AutoSize = true;
+            this.CloseCurrentView.Location = new System.Drawing.Point(9, 6);
+            this.CloseCurrentView.Name = "CloseCurrentView";
+            this.CloseCurrentView.Size = new System.Drawing.Size(14, 14);
+            this.CloseCurrentView.TabIndex = 2;
+            this.CloseCurrentView.TabStop = true;
+            this.CloseCurrentView.Text = "X";
+            this.CloseCurrentView.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CloseCurrentView_LinkClicked);
+            // 
+            // TopeBar
+            // 
+            this.TopeBar.Controls.Add(this.CloseCurrentView);
+            this.TopeBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopeBar.Location = new System.Drawing.Point(0, 0);
+            this.TopeBar.Name = "TopeBar";
+            this.TopeBar.Size = new System.Drawing.Size(1083, 26);
+            this.TopeBar.TabIndex = 4;
             // 
             // MainForm
             // 
@@ -122,6 +145,7 @@
             this.ClientSize = new System.Drawing.Size(1083, 511);
             this.Controls.Add(this.MainTabControl);
             this.Controls.Add(this.StatusBarStrip);
+            this.Controls.Add(this.TopeBar);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -129,6 +153,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ManPage.ResumeLayout(false);
             this.MainTabControl.ResumeLayout(false);
+            this.TopeBar.ResumeLayout(false);
+            this.TopeBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,6 +169,8 @@
         private System.Windows.Forms.Timer DateTimeTimer;
         private System.Windows.Forms.TabPage ManPage;
         private System.Windows.Forms.TabControl MainTabControl;
+        private System.Windows.Forms.LinkLabel CloseCurrentView;
+        private System.Windows.Forms.Panel TopeBar;
     }
 }
 

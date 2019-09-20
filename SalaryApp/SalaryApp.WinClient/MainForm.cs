@@ -65,5 +65,10 @@ namespace SalaryApp.WinClient
                 return viewEngin;
             }
         }
+
+        private void CloseCurrentView_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            viewEngin.CloseViewTab(MainTabControl.SelectedTab);
+        }
     }
 }
