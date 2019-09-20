@@ -14,17 +14,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
         {
             InitializeComponent();
             ViewTitle = "لیست اشخاص";
-            Load += PersonList_Load;
-            Load += AddActions;
-            Load += PopulateGrid;
         }
 
-
-        private void PersonList_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void PopulateGrid(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             grid = new GridControl<Person>(this);
             grid.AddTextBoxColumn(emp => new Person().Firstname, "نام");
@@ -36,10 +28,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
             grid.AddTextBoxColumn(emp => new Person().InsuranceId, "شماره بیمه");
 
             grid.PopulateDataGridView(unitOfWork.Persons.GetAll());
-        }
 
-        private void AddActions(object sender, EventArgs e)
-        {
             AddAction("+جدید", button =>
             {
                 var editor = ViewEngin.ViewInForm<PersonEditor>(p => p.Entity = new Person());
@@ -73,6 +62,11 @@ namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
                 unitOfWork.Complete();
                 grid.RemoveCurrentItem();
             });
+
+
+            base.OnLoad(e);
         }
+
+
     }
 }

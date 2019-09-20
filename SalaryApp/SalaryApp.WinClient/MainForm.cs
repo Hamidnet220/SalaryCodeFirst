@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
 using SalaryApp.WinClient.BaseInfoForms.PersonViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
 using SalaryApp.WinClient.Salary.PayViews;
@@ -36,6 +37,7 @@ namespace SalaryApp.WinClient
 
         private void EmployeeInfoMenu_Click(object sender, EventArgs e)
         {
+            viewEngin.ViewInTab<EmployeeList>();
         }
 
         private void ManageWorkshopButton_Click(object sender, EventArgs e)
@@ -51,7 +53,7 @@ namespace SalaryApp.WinClient
 
         private void PersonListButton_Click(object sender, EventArgs e)
         {
-           
+            viewEngin.ViewInTab<PersonList>();
         }
 
         public ViewEngin ViewEngin
