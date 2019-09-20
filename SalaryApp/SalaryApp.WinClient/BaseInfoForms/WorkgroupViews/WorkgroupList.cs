@@ -10,22 +10,14 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
     public class WorkgroupList : ViewsBase
     {
         private GridControl<Workgroup> grid;
-        private readonly Workshop workshop;
+        public Workshop workshop { get; set; }
 
-        public WorkgroupList(Workshop workshop)
+        public WorkgroupList()
         {
-            this.workshop = workshop;
-            Load += WorkgroupList_Load;
-            Load += AddActions;
-            Load += PopulateGrid;
+            this.ViewTitle = "لیست گروهای کاری کارگاه";
         }
 
-        private void WorkgroupList_Load(object sender, EventArgs e)
-        {
-            this.ViewTitle = "لیست پرداخت ها";
-        }
-
-        private void PopulateGrid(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             grid = new GridControl<Workgroup>(this);
 
@@ -38,10 +30,8 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
             grid.AddTextBoxColumn(py => new Workgroup().Description, "توضیحات");
 
             grid.PopulateDataGridView(unitOfWork.Workgroups.Find(wg => wg.Workshop_Id == workshop.Id).ToList());
-        }
 
-        private void AddActions(object sender, EventArgs e)
-        {
+
             AddAction("+جدید", button =>
             {
                 var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = new Workgroup());
@@ -56,7 +46,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
             AddAction("ویرایش", button =>
             {
                 var entity = unitOfWork.Workgroups.Get(grid.GetCurrentItem.Id);
-                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity =entity);
+                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = entity);
 
                 if (workgroupEditor.DialogResult == DialogResult.Cancel)
                     return;
@@ -73,7 +63,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
                 foreach (var property in entity.GetType().GetProperties())
                     property.SetValue(newEntity, property.GetValue(entity));
 
-                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity =(Workgroup) newEntity);
+                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = (Workgroup)newEntity);
 
                 if (workgroupEditor.DialogResult == DialogResult.Cancel)
                     return;
@@ -95,6 +85,11 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
                 unitOfWork.Complete();
                 grid.RemoveCurrentItem();
             });
+
+
+            base.OnLoad(e);
         }
+
+     
     }
 }

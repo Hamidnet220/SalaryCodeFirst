@@ -57,7 +57,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
 
             AddAction(" گروهای کاری", button =>
             {
-                var workgroupForm = new WorkgroupList(grid.GetCurrentItem);
+                ViewEngin.ViewInForm<WorkgroupList>(w=>w.workshop=grid.GetCurrentItem,
+                    displayAsDialog:true,sideButtonBar:true);
+
             });
 
             AddAction(" لیست کارکنان", button =>
