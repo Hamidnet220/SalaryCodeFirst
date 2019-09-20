@@ -1,11 +1,8 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.DataLayer.Core.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
+using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Core.Repositories;
 
 namespace SalaryApp.DataLayer.Persistence.Repositories
 {
@@ -15,14 +12,14 @@ namespace SalaryApp.DataLayer.Persistence.Repositories
         {
         }
 
-        public IEnumerable<Employee> GetByNationalCode(string NCode)
-        {
-            throw new NotImplementedException();
-        }
-
         public SalaryContext SalaryContext
         {
             get { return context as SalaryContext; }
+        }
+
+        public IEnumerable<Employee> GetByNationalCode(string NCode)
+        {
+            throw new NotImplementedException();
         }
     }
 }

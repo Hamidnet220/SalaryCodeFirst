@@ -4,7 +4,7 @@ using SalaryApp.DataLayer.Core.Repositories;
 
 namespace SalaryApp.DataLayer.Persistence.Repositories
 {
-    class WorkplaceRepository : Repository<Workplace>, IWorkPlaceRepository
+    internal class WorkplaceRepository : Repository<Workplace>, IWorkPlaceRepository
     {
         public WorkplaceRepository(DbContext context) : base(context)
         {

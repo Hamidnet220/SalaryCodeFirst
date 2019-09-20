@@ -1,44 +1,42 @@
+using System.Data.Entity.Migrations;
+
 namespace SalaryApp.DataLayer.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class AddLogDayInLogsheetTable : DbMigration
     {
         public override void Up()
         {
-            RenameColumn(table: "dbo.SalaryPayDetails", name: "Employee_Id", newName: "EmployeeId");
-            RenameColumn(table: "dbo.SalaryPayDetails", name: "Pay_Id", newName: "PayId");
-            RenameIndex(table: "dbo.SalaryPayDetails", name: "IX_Pay_Id", newName: "IX_PayId");
-            RenameIndex(table: "dbo.SalaryPayDetails", name: "IX_Employee_Id", newName: "IX_EmployeeId");
+            RenameColumn("dbo.SalaryPayDetails", "Employee_Id", "EmployeeId");
+            RenameColumn("dbo.SalaryPayDetails", "Pay_Id", "PayId");
+            RenameIndex("dbo.SalaryPayDetails", "IX_Pay_Id", "IX_PayId");
+            RenameIndex("dbo.SalaryPayDetails", "IX_Employee_Id", "IX_EmployeeId");
             CreateTable(
-                "dbo.Logsheets",
-                c => new
+                    "dbo.Logsheets",
+                    c => new
                     {
-                        PayId = c.Int(nullable: false),
-                        EmployeeId = c.Int(nullable: false),
-                        Id = c.Int(nullable: false),
-                        DayStatus = c.String(maxLength: 61),
+                        PayId = c.Int(false),
+                        EmployeeId = c.Int(false),
+                        Id = c.Int(false),
+                        DayStatus = c.String(maxLength: 61)
                     })
-                .PrimaryKey(t => new { t.PayId, t.EmployeeId })
-                .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: false)
-                .ForeignKey("dbo.Pays", t => t.PayId, cascadeDelete: false)
+                .PrimaryKey(t => new {t.PayId, t.EmployeeId})
+                .ForeignKey("dbo.Employees", t => t.EmployeeId, false)
+                .ForeignKey("dbo.Pays", t => t.PayId, false)
                 .Index(t => t.PayId)
                 .Index(t => t.EmployeeId);
-            
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Logsheets", "PayId", "dbo.Pays");
             DropForeignKey("dbo.Logsheets", "EmployeeId", "dbo.Employees");
-            DropIndex("dbo.Logsheets", new[] { "EmployeeId" });
-            DropIndex("dbo.Logsheets", new[] { "PayId" });
+            DropIndex("dbo.Logsheets", new[] {"EmployeeId"});
+            DropIndex("dbo.Logsheets", new[] {"PayId"});
             DropTable("dbo.Logsheets");
-            RenameIndex(table: "dbo.SalaryPayDetails", name: "IX_EmployeeId", newName: "IX_Employee_Id");
-            RenameIndex(table: "dbo.SalaryPayDetails", name: "IX_PayId", newName: "IX_Pay_Id");
-            RenameColumn(table: "dbo.SalaryPayDetails", name: "PayId", newName: "Pay_Id");
-            RenameColumn(table: "dbo.SalaryPayDetails", name: "EmployeeId", newName: "Employee_Id");
+            RenameIndex("dbo.SalaryPayDetails", "IX_EmployeeId", "IX_Employee_Id");
+            RenameIndex("dbo.SalaryPayDetails", "IX_PayId", "IX_Pay_Id");
+            RenameColumn("dbo.SalaryPayDetails", "PayId", "Pay_Id");
+            RenameColumn("dbo.SalaryPayDetails", "EmployeeId", "Employee_Id");
         }
     }
 }

@@ -4,7 +4,7 @@ namespace SalaryApp.DataLayer.Core
 {
     public class AttendanceEngin
     {
-        Logsheet logsheet;
+        private Logsheet logsheet;
 
         public AttendanceEngin(Logsheet logsheet)
         {
@@ -13,7 +13,6 @@ namespace SalaryApp.DataLayer.Core
 
         private void AnalyzeAttendance()
         {
-            
         }
     }
 }

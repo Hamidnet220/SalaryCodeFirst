@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace SalaryApp.DataLayer.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class undochangesinpaytype : DbMigration
     {
         public override void Up()
@@ -10,14 +9,14 @@ namespace SalaryApp.DataLayer.Migrations
             DropForeignKey("dbo.Pays", "FinancialYear_Id", "dbo.FinancialYears");
             DropForeignKey("dbo.Pays", "PayType_Id", "dbo.PayTypes");
             DropForeignKey("dbo.Pays", "Workshop_Id", "dbo.Workshops");
-            DropIndex("dbo.Pays", new[] { "FinancialYear_Id" });
-            DropIndex("dbo.Pays", new[] { "PayType_Id" });
-            DropIndex("dbo.Pays", new[] { "Workshop_Id" });
-            AlterColumn("dbo.Pays", "FinancialYear_Id", c => c.Int(nullable: false));
-            AlterColumn("dbo.Pays", "PayType_Id", c => c.Int(nullable: false));
-            AlterColumn("dbo.Pays", "Workshop_Id", c => c.Int(nullable: false));
+            DropIndex("dbo.Pays", new[] {"FinancialYear_Id"});
+            DropIndex("dbo.Pays", new[] {"PayType_Id"});
+            DropIndex("dbo.Pays", new[] {"Workshop_Id"});
+            AlterColumn("dbo.Pays", "FinancialYear_Id", c => c.Int(false));
+            AlterColumn("dbo.Pays", "PayType_Id", c => c.Int(false));
+            AlterColumn("dbo.Pays", "Workshop_Id", c => c.Int(false));
         }
-        
+
         public override void Down()
         {
             AlterColumn("dbo.Pays", "Workshop_Id", c => c.Int());

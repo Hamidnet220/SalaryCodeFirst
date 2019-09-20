@@ -1,10 +1,10 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
+﻿using System.Data.Entity;
+using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Core.Repositories;
-using System.Data.Entity;
 
 namespace SalaryApp.DataLayer.Persistence.Repositories
 {
-    public class PayRepository : Repository<Pay>,IPayRepository
+    public class PayRepository : Repository<Pay>, IPayRepository
     {
         public PayRepository(DbContext context) : base(context)
         {

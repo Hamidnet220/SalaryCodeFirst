@@ -1,25 +1,23 @@
+using System.Data.Entity.Migrations;
+
 namespace SalaryApp.DataLayer.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class addAppstatusTable : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.AppStatus",
-                c => new
+                    "dbo.AppStatus",
+                    c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        ActiveUserId = c.Int(nullable: false),
-                        ActiveWorkShopId = c.Int(nullable: false),
-                        ActiceFinancialYearId = c.Int(nullable: false),
+                        Id = c.Int(false, true),
+                        ActiveUserId = c.Int(false),
+                        ActiveWorkShopId = c.Int(false),
+                        ActiceFinancialYearId = c.Int(false)
                     })
                 .PrimaryKey(t => t.Id);
-            
         }
-        
+
         public override void Down()
         {
             DropTable("dbo.AppStatus");

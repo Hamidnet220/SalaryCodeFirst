@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace SalaryApp.WinClient
 {
-    static class Program
+    internal static class Program
     {
-
-        
         /// <summary>
-        /// The main entry point for the application.
+        ///     The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Cultures.InitializePersianCulture();
 
@@ -140,7 +137,6 @@ namespace SalaryApp.WinClient
             //    unitOfWork.Complete();
 
             //}
-
 
 
             //Application.EnableVisualStyles();

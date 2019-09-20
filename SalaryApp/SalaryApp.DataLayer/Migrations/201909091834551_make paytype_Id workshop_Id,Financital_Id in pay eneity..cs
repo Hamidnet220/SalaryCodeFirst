@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace SalaryApp.DataLayer.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class makepaytype_Idworkshop_IdFinancital_Idinpayeneity : DbMigration
     {
         public override void Up()
@@ -10,14 +9,14 @@ namespace SalaryApp.DataLayer.Migrations
             DropForeignKey("dbo.Pays", "FinancialYear_Id", "dbo.FincancialYears");
             DropForeignKey("dbo.Pays", "PayType_Id1", "dbo.PayTypes");
             DropForeignKey("dbo.Pays", "Workshop_Id1", "dbo.Workshops");
-            DropIndex("dbo.Pays", new[] { "FinancialYear_Id" });
-            DropIndex("dbo.Pays", new[] { "PayType_Id1" });
-            DropIndex("dbo.Pays", new[] { "Workshop_Id1" });
-            AlterColumn("dbo.Pays", "FinancialYear_Id", c => c.Int(nullable: false));
+            DropIndex("dbo.Pays", new[] {"FinancialYear_Id"});
+            DropIndex("dbo.Pays", new[] {"PayType_Id1"});
+            DropIndex("dbo.Pays", new[] {"Workshop_Id1"});
+            AlterColumn("dbo.Pays", "FinancialYear_Id", c => c.Int(false));
             DropColumn("dbo.Pays", "PayType_Id1");
             DropColumn("dbo.Pays", "Workshop_Id1");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.Pays", "Workshop_Id1", c => c.Int());

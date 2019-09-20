@@ -1,34 +1,24 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SalaryApp.DataLayer.Core.Domain;
 
-namespace SalaryApp.WinClient.Salary.SalaryDetails
+namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
 {
-    public class SalaryDetailsEditor:EditorBase
+    public class SalaryDetailsEditor : EditorBase<SalaryPayDetails>
     {
-        public SalaryPayDetails entity { get; private set; }
-
-        public SalaryDetailsEditor(SalaryPayDetails entity)
+        public SalaryDetailsEditor()
         {
-            this.entity = entity;
             Load += SalaryDetailsEditor_Load;
         }
+
 
         private void SalaryDetailsEditor_Load(object sender, EventArgs e)
         {
             AddTextFields<SalaryPayDetails>();
 
-            foreach (var textbox in this.Controls.OfType<TextBox>())
-            {
-                textbox.DataBindings.Add("Text", entity, textbox.Name);
-            }
+            foreach (var textbox in Controls.OfType<TextBox>())
+                textbox.DataBindings.Add("Text", Entity, textbox.Name);
         }
-
-
-       
     }
 }

@@ -1,17 +1,16 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.DataLayer.Persistence;
-using SalaryApp.WinClient.CustomeControls;
-using SalaryApp.WinClient.GeneralClass;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.WinClient.CustomeControls;
+using SalaryApp.WinClient.GeneralClass;
 
 namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
 {
-    public class WorkgroupList:ListBase
+    public class WorkgroupList : ViewsBase
     {
-        GridControl<Workgroup> grid;
-        Workshop workshop;
+        private GridControl<Workgroup> grid;
+        private readonly Workshop workshop;
 
         public WorkgroupList(Workshop workshop)
         {
@@ -19,18 +18,16 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
             Load += WorkgroupList_Load;
             Load += AddActions;
             Load += PopulateGrid;
-
         }
 
         private void WorkgroupList_Load(object sender, EventArgs e)
         {
-            this.Text = "لیست پرداخت ها";
-            this.WindowState = FormWindowState.Maximized;
+            this.ViewTitle = "لیست پرداخت ها";
         }
 
         private void PopulateGrid(object sender, EventArgs e)
         {
-            grid = new GridControl<Workgroup>(gridPanel);
+            grid = new GridControl<Workgroup>(this);
 
             grid.AddTextBoxColumn(py => new Workgroup().Title, "عنوان");
             grid.AddTextBoxColumn(py => new Workgroup().Rate, "پایه روزانه");
@@ -40,36 +37,31 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
             grid.AddTextBoxColumn(py => new Workgroup().ShiftRation, "درصد شیفت");
             grid.AddTextBoxColumn(py => new Workgroup().Description, "توضیحات");
 
-            grid.PopulateDataGridView(unitOfWork.Workgroups.Find(wg=>wg.Workshop_Id==this.workshop.Id).ToList());
+            grid.PopulateDataGridView(unitOfWork.Workgroups.Find(wg => wg.Workshop_Id == workshop.Id).ToList());
         }
 
         private void AddActions(object sender, EventArgs e)
         {
             AddAction("+جدید", button =>
             {
-                var workgroupEditor = new WorkgroupEditor(new Workgroup());
-                workgroupEditor.ShowDialog();
-
+                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = new Workgroup());
                 if (workgroupEditor.DialogResult == DialogResult.Cancel)
                     return;
 
-                unitOfWork.Workgroups.Add(workgroupEditor.entity);
+                unitOfWork.Workgroups.Add(workgroupEditor.Entity);
                 unitOfWork.Complete();
-                grid.AddItem(workgroupEditor.entity);
-
+                grid.AddItem(workgroupEditor.Entity);
             });
 
             AddAction("ویرایش", button =>
             {
                 var entity = unitOfWork.Workgroups.Get(grid.GetCurrentItem.Id);
-                var workgroupEditor = new WorkgroupEditor(entity);
-                workgroupEditor.ShowDialog();
+                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity =entity);
 
                 if (workgroupEditor.DialogResult == DialogResult.Cancel)
                     return;
 
                 unitOfWork.Complete();
-                
             });
 
             AddAction("کپی", button =>
@@ -79,25 +71,24 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
                 var newEntity = Activator.CreateInstance(typeSource);
 
                 foreach (var property in entity.GetType().GetProperties())
-                {
                     property.SetValue(newEntity, property.GetValue(entity));
-                }
 
-                var workgroupEditor = new WorkgroupEditor((Workgroup)newEntity);
-                workgroupEditor.ShowDialog();
+                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity =(Workgroup) newEntity);
 
                 if (workgroupEditor.DialogResult == DialogResult.Cancel)
                     return;
 
-                unitOfWork.Workgroups.Add(workgroupEditor.entity);
+                unitOfWork.Workgroups.Add(workgroupEditor.Entity);
                 unitOfWork.Complete();
-                grid.AddItem(workgroupEditor.entity);
+                grid.AddItem(workgroupEditor.Entity);
             });
 
 
             AddAction("-حذف", button =>
             {
-                if (MessageBox.Show(MessagesClass.DeleteConfirm, MessagesClass.CriticalCaption, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                if (
+                    MessageBox.Show(MessagesClass.DeleteConfirm, MessagesClass.CriticalCaption, MessageBoxButtons.YesNo) !=
+                    DialogResult.Yes)
                     return;
 
                 unitOfWork.Workgroups.Remove(grid.GetCurrentItem);
@@ -106,5 +97,4 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
             });
         }
     }
-
 }

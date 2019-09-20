@@ -1,13 +1,9 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using SalaryApp.DataLayer.Core.Domain;
 
 namespace SalaryApp.DataLayer.Core.Repositories
 {
-    public interface IWorkshopRepository:IRepository<Workshop>
+    public interface IWorkshopRepository : IRepository<Workshop>
     {
         IEnumerable<Workshop> GetByTitle(string value);
     }

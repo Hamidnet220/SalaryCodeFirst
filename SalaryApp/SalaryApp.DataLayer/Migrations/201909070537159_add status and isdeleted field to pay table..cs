@@ -1,16 +1,15 @@
+using System.Data.Entity.Migrations;
+
 namespace SalaryApp.DataLayer.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class addstatusandisdeletedfieldtopaytable : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Pays", "Status", c => c.Byte(nullable: false, defaultValue:1));
-            AddColumn("dbo.Pays", "IsDeleted", c => c.Boolean(nullable: false));
+            AddColumn("dbo.Pays", "Status", c => c.Byte(false, defaultValue: 1));
+            AddColumn("dbo.Pays", "IsDeleted", c => c.Boolean(false));
         }
-        
+
         public override void Down()
         {
             DropColumn("dbo.Pays", "IsDeleted");

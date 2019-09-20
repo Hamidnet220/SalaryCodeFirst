@@ -7,23 +7,23 @@ public class Cultures
 {
     public static void InitializePersianCulture()
     {
-        InitializeCulture("fa-ir", new[] { "ی", "د", "س", "چ", "پ", "ج", "ش" },
-                          new[] { "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه" },
-                          new[]
-                              {
-                                      "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی",
-                                      "بهمن", "اسفند", ""
-                              },
-                          new[]
-                              {
-                                      "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی",
-                                      "بهمن", "اسفند", ""
-                              }, "ق.ظ. ", "ب.ظ. ", "yyyy/MM/dd", new PersianCalendar());
+        InitializeCulture("fa-ir", new[] {"ی", "د", "س", "چ", "پ", "ج", "ش"},
+            new[] {"یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"},
+            new[]
+            {
+                "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی",
+                "بهمن", "اسفند", ""
+            },
+            new[]
+            {
+                "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی",
+                "بهمن", "اسفند", ""
+            }, "ق.ظ. ", "ب.ظ. ", "yyyy/MM/dd", new PersianCalendar());
     }
 
     public static void InitializeCulture(string culture, string[] abbreviatedDayNames, string[] dayNames,
-                                         string[] abbreviatedMonthNames, string[] monthNames, string amDesignator,
-                                         string pmDesignator, string shortDatePattern, Calendar calendar)
+        string[] abbreviatedMonthNames, string[] monthNames, string amDesignator,
+        string pmDesignator, string shortDatePattern, Calendar calendar)
     {
         var calture = new CultureInfo(culture);
         var info = calture.DateTimeFormat;
@@ -40,7 +40,8 @@ public class Cultures
         var fieldInfo = type.GetField("calendar", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
         if (fieldInfo != null)
             fieldInfo.SetValue(info, cal);
-        var field = typeof(CultureInfo).GetField("calendar", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
+        var field = typeof(CultureInfo).GetField("calendar",
+            BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
         if (field != null)
             field.SetValue(calture, cal);
         Thread.CurrentThread.CurrentCulture = calture;

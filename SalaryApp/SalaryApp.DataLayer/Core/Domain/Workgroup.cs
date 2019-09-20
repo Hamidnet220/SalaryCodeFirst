@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SalaryApp.DataLayer.Core.Domain
 {
@@ -40,6 +35,7 @@ namespace SalaryApp.DataLayer.Core.Domain
 
         [VerboseName("توضیحات")]
         public string Description { get; set; }
+
         public int Workshop_Id { get; set; }
 
         [ForeignKey("Workshop_Id")]

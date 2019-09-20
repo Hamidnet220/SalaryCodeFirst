@@ -1,9 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
+
 namespace SalaryApp.DataLayer.Core.Domain
 {
     public class Pay
     {
+        public enum PayStatus
+        {
+            Unlock = 0,
+            Locked = 1,
+            Modified = 2
+        }
 
         public int Id { get; set; }
 
@@ -39,16 +45,5 @@ namespace SalaryApp.DataLayer.Core.Domain
         public PayStatus Status { get; set; }
 
         public bool IsDeleted { get; set; }
-
-
-        public enum PayStatus
-        {
-            Unlock = 0,
-            Locked = 1,
-            Modified = 2
-        }
-
     }
-
-
 }

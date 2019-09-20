@@ -1,15 +1,10 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Core.Repositories;
 
 namespace SalaryApp.DataLayer.Persistence.Repositories
 {
-    public class UserRepository : Repository<User>,IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
         public UserRepository(DbContext context) : base(context)
         {

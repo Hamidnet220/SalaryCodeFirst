@@ -4,14 +4,14 @@ using System.Windows.Forms;
 using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
-using SalaryApp.WinClient.Salary.SalaryDetails;
 
 namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
 {
-    public class SalaryDetailsList:ListBase
+    public class SalaryDetailsList : ViewsBase
     {
-        GridControl<SalaryPayDetails> grid;
-        Pay paylist;
+        private GridControl<SalaryPayDetails> grid;
+        private readonly Pay paylist;
+
         public SalaryDetailsList(Pay paylist)
         {
             this.paylist = paylist;
@@ -23,14 +23,12 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
 
         private void SalaryDetailsList_Load(object sender, EventArgs e)
         {
-            this.Text = @"لیست کارکنان";
-            this.WindowState = FormWindowState.Maximized;
-
+            this.ViewTitle = @"لیست کارکنان";
         }
 
         private void PopulateGrid(object sender, EventArgs e)
         {
-            grid = new GridControl<SalaryPayDetails>(gridPanel);
+            grid = new GridControl<SalaryPayDetails>(this);
 
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().Employee.Person.Firstname, "نام");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().Employee.Person.Lastname, "نام خانوادگی");
@@ -45,7 +43,7 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().WorkAsStandbyDays, "جایگزینی-روز");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().AbsentDays, "غیبت-روز");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().MonthlyWage, "حقوق ماهانه");
-            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Bon,"بن");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().Bon, "بن");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().Maskan, "مسکن");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().Karobar, "خواروبار");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().ChildrenBenefit, "حق اولاد");
@@ -77,32 +75,30 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().NetAmount, "خالص پرداختی");
 
             grid.EnableHrScrollBar();
-            grid.PopulateDataGridView(unitOfWork.SalaryDetails.Find(payDitalis=>payDitalis.Pay.Id==paylist.Id).ToList());
+            grid.PopulateDataGridView(
+                unitOfWork.SalaryDetails.Find(payDitalis => payDitalis.Pay.Id == paylist.Id).ToList());
         }
 
         private void AddActions(object sender, EventArgs e)
         {
-            AddAction("+جدید", button =>
-            {
-               
-            });
+            AddAction("+جدید", button => { });
 
             AddAction("ویرایش", button =>
             {
-                var entity = unitOfWork.SalaryDetails.Find(sd=>sd.Id==grid.GetCurrentItem.Id).FirstOrDefault();
-                var salarDetailsEditor=new SalaryDetailsEditor(entity);
-                salarDetailsEditor.ShowDialog();
-                
-                if(salarDetailsEditor.DialogResult==DialogResult.Cancel)
+                var entity = unitOfWork.SalaryDetails.Find(sd => sd.Id == grid.GetCurrentItem.Id).FirstOrDefault();
+                var salarDetailsEditor = ViewEngin.ViewInForm<SalaryDetailsEditor>(ed => ed.Entity = entity);
+
+                if (salarDetailsEditor.DialogResult == DialogResult.Cancel)
                     return;
 
                 unitOfWork.Complete();
-
             });
 
             AddAction("-حذف", button =>
             {
-                if (MessageBox.Show(MessagesClass.DeleteConfirm, MessagesClass.CriticalCaption, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                if (
+                    MessageBox.Show(MessagesClass.DeleteConfirm, MessagesClass.CriticalCaption, MessageBoxButtons.YesNo) !=
+                    DialogResult.Yes)
                     return;
 
                 unitOfWork.SalaryDetails.Remove(grid.GetCurrentItem);
@@ -110,6 +106,5 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
                 grid.ResetBindings();
             });
         }
-
     }
 }

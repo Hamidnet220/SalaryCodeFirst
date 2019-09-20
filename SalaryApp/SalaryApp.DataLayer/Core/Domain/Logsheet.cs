@@ -7,7 +7,7 @@ namespace SalaryApp.DataLayer.Core.Domain
         public int Id { get; set; }
 
         public int PayId { get; set; }
-        
+
         public virtual Pay Pay { get; set; }
 
         public int EmployeeId { get; set; }

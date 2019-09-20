@@ -1,43 +1,43 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SalaryApp.DataLayer.Core.Domain;
 
 namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
 {
-    public class PersonEditor:EditorBase
+    public class PersonEditor : EditorBase<Person>
     {
-        public Person entity { get; private set; }
-
-        public PersonEditor(Person entity):base()
+        public PersonEditor()
         {
-            this.entity = entity;
             Load += EmployeeEditor_Load;
             Accept.Click += Accept_Click;
             Cancel.Click += Cancel_Click;
-
         }
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void Accept_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-
+            DialogResult = DialogResult.OK;
         }
 
         private void EmployeeEditor_Load(object sender, EventArgs e)
         {
-            AddTextFields<DataLayer.Core.Domain.Person>();
-            foreach (var textbox in this.Controls.OfType<TextBox>())
+            AddTextFields<Person>();
+            foreach (var textbox in Controls.OfType<TextBox>())
+                textbox.DataBindings.Add("Text", Entity, textbox.Name);
+        }
+
+        public override string ViewTitle
+        {
+            get
             {
-                textbox.DataBindings.Add("Text", entity, textbox.Name);
+                if (Entity.Id == 0)
+                   return "ثبت مشخصات هویتی جدید";
+                return  "ویرایش مشخصات هویتی";
             }
 
             

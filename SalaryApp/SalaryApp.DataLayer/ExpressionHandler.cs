@@ -4,9 +4,9 @@ using System.Reflection;
 
 namespace SalaryApp.DataLayer
 {
-    public class ExpressionHandler: System.Linq.Expressions.ExpressionVisitor
+    public class ExpressionHandler : ExpressionVisitor
     {
-        List<string> visitedProperties = new List<string>();
+        private readonly List<string> visitedProperties = new List<string>();
 
 
         protected override Expression VisitMember(MemberExpression node)
@@ -21,7 +21,7 @@ namespace SalaryApp.DataLayer
             visitedProperties.Clear();
             Visit(expression);
             visitedProperties.Reverse();
-            return string.Join(".",visitedProperties);
+            return string.Join(".", visitedProperties);
         }
     }
 }

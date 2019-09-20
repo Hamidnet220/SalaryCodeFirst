@@ -1,19 +1,21 @@
-﻿using SalaryApp.DataLayer.Core.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using SalaryApp.DataLayer.Core.Repositories;
 
 namespace SalaryApp.DataLayer.Persistence.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DbContext context;
+
         public Repository(DbContext context)
         {
-            this.context=context;
+            this.context = context;
         }
+
         public void Add(TEntity entity)
         {
             context.Set<TEntity>().Add(entity);

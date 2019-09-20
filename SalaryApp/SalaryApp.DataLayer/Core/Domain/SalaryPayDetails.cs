@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SalaryApp.DataLayer.Core.Domain
 {
-    using System.ComponentModel.DataAnnotations;
     public class SalaryPayDetails
     {
         public int Id { get; set; }
 
-        
+
         public int PayId { get; set; }
+
         [ForeignKey("PayId")]
         public virtual Pay Pay { get; set; }
 
@@ -21,8 +16,8 @@ namespace SalaryApp.DataLayer.Core.Domain
 
         [VerboseName("نام کارمند")]
         [ForeignKey("EmployeeId")]
-        public virtual Employee Employee { get ; set; }
-        
+        public virtual Employee Employee { get; set; }
+
         [VerboseName("پایه روزانه")]
         public decimal DailyRate { get; set; }
 
@@ -151,7 +146,5 @@ namespace SalaryApp.DataLayer.Core.Domain
 
         [VerboseName("خالص پرداختی")]
         public decimal NetAmount { get; set; }
-
-
     }
 }

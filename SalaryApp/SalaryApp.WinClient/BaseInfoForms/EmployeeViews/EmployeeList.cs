@@ -1,19 +1,15 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.DataLayer.Persistence;
-using SalaryApp.WinClient.CustomeControls;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.WinClient.CustomeControls;
 
 namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
 {
-    public class EmployeeList:ListBase
+    public class EmployeeList : ViewsBase
     {
-        Workshop workshop=null;
-        GridControl<Employee> grid;
+        private GridControl<Employee> grid;
+        private readonly Workshop workshop;
 
         public EmployeeList(Workshop workshop)
         {
@@ -24,25 +20,25 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
 
         private void PopulateGrid(object sender, EventArgs e)
         {
-            grid = new GridControl<Employee>(gridPanel);
-            grid.AddTextBoxColumn(emp =>emp.Person.Firstname, "نام");
-            grid.AddTextBoxColumn(emp =>emp.Person.Lastname, "نام خانوادگی");
-            grid.AddTextBoxColumn(emp =>emp.Person.FatherName, "نام پدر");
+            grid = new GridControl<Employee>(this);
+            grid.AddTextBoxColumn(emp => emp.Person.Firstname, "نام");
+            grid.AddTextBoxColumn(emp => emp.Person.Lastname, "نام خانوادگی");
+            grid.AddTextBoxColumn(emp => emp.Person.FatherName, "نام پدر");
 
-            grid.PopulateDataGridView(unitOfWork.Employees.Find(emps=>emps.Workgroup.Workshop_Id==this.workshop.Id).ToList());
+            grid.PopulateDataGridView(
+                unitOfWork.Employees.Find(emps => emps.Workgroup.Workshop_Id == workshop.Id).ToList());
         }
 
         private void AddActions(object sender, EventArgs e)
         {
             AddAction("+جدید", button =>
             {
-                var employeeEditor = new EmployeeEditor(new Employee());
-                employeeEditor.ShowDialog();
+                var employeeEditor = ViewEngin.ViewInForm<EmployeeEditor>(ed=>ed.Entity=new Employee());
 
                 if (employeeEditor.DialogResult != DialogResult.OK)
                     return;
 
-                unitOfWork.Employees.Add(employeeEditor.entity);
+                unitOfWork.Employees.Add(employeeEditor.Entity);
                 unitOfWork.Complete();
                 grid.ResetBindings();
             });
@@ -50,8 +46,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             AddAction("ویرایش", button =>
             {
                 var entity = unitOfWork.Employees.Get(grid.GetCurrentItem.Id);
-                var employeeEditro = new EmployeeEditor(entity);
-                employeeEditro.ShowDialog();
+                var employeeEditro =ViewEngin.ViewInForm<EmployeeEditor>(ed=>ed.Entity=entity);
 
                 if (employeeEditro.DialogResult == DialogResult.Cancel)
                     return;
@@ -63,9 +58,6 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
                 unitOfWork.Employees.Remove(grid.GetCurrentItem);
                 grid.RemoveCurrentItem();
             });
-
-
-           
         }
     }
 }

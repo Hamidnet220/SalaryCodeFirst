@@ -1,25 +1,23 @@
+using System.Data.Entity.Migrations;
+
 namespace SalaryApp.DataLayer.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class addAppstatustodbcontext : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Users",
-                c => new
+                    "dbo.Users",
+                    c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(false, true),
                         Username = c.String(),
                         Password = c.String(),
-                        CreatedDate = c.DateTime(nullable: false),
+                        CreatedDate = c.DateTime(false)
                     })
                 .PrimaryKey(t => t.Id);
-            
         }
-        
+
         public override void Down()
         {
             DropTable("dbo.Users");

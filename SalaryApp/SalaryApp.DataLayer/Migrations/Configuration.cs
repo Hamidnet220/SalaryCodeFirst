@@ -1,18 +1,16 @@
+using System.Data.Entity.Migrations;
+using SalaryApp.DataLayer.Persistence;
+
 namespace SalaryApp.DataLayer.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<SalaryApp.DataLayer.Persistence.SalaryContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SalaryContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SalaryApp.DataLayer.Persistence.SalaryContext context)
+        protected override void Seed(SalaryContext context)
         {
             //  This method will be called after migrating to the latest version.
 

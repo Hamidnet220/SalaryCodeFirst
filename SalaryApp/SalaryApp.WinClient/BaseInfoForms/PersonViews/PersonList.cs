@@ -1,22 +1,19 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using SalaryApp.DataLayer.Persistence;
+﻿using System;
+using System.Windows.Forms;
+using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
-using System;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
 {
-    public partial class PersonList : ListBase
+    public partial class PersonList : ViewsBase
     {
-        GridControl<DataLayer.Core.Domain.Person> grid;
+        private GridControl<Person> grid;
 
         public PersonList()
         {
-            
             InitializeComponent();
-            FormTitle = "لیست اشخاص";
+            ViewTitle = "لیست اشخاص";
             Load += PersonList_Load;
             Load += AddActions;
             Load += PopulateGrid;
@@ -25,19 +22,18 @@ namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
 
         private void PersonList_Load(object sender, EventArgs e)
         {
-            
         }
 
         private void PopulateGrid(object sender, EventArgs e)
         {
-            grid = new GridControl<DataLayer.Core.Domain.Person>(gridPanel);
-            grid.AddTextBoxColumn(emp => new DataLayer.Core.Domain.Person().Firstname, "نام");
-            grid.AddTextBoxColumn(emp => new DataLayer.Core.Domain.Person().Lastname, "نام خانوادگی");
-            grid.AddTextBoxColumn(emp => new DataLayer.Core.Domain.Person().FatherName, "نام پدر");
-            grid.AddTextBoxColumn(emp => new DataLayer.Core.Domain.Person().NationalCode, "کد ملی");
-            grid.AddTextBoxColumn(emp => new DataLayer.Core.Domain.Person().IdNumber, "شماره شناسنامه");
-            grid.AddTextBoxColumn(emp => new DataLayer.Core.Domain.Person().BankAccount, "شماره حساب");
-            grid.AddTextBoxColumn(emp => new DataLayer.Core.Domain.Person().InsuranceId, "شماره بیمه");
+            grid = new GridControl<Person>(this);
+            grid.AddTextBoxColumn(emp => new Person().Firstname, "نام");
+            grid.AddTextBoxColumn(emp => new Person().Lastname, "نام خانوادگی");
+            grid.AddTextBoxColumn(emp => new Person().FatherName, "نام پدر");
+            grid.AddTextBoxColumn(emp => new Person().NationalCode, "کد ملی");
+            grid.AddTextBoxColumn(emp => new Person().IdNumber, "شماره شناسنامه");
+            grid.AddTextBoxColumn(emp => new Person().BankAccount, "شماره حساب");
+            grid.AddTextBoxColumn(emp => new Person().InsuranceId, "شماره بیمه");
 
             grid.PopulateDataGridView(unitOfWork.Persons.GetAll());
         }
@@ -46,22 +42,19 @@ namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
         {
             AddAction("+جدید", button =>
             {
-                var personForm = new PersonEditor(new Person());
-                var resutl=personForm.ShowDialog();
+                var editor = ViewEngin.ViewInForm<PersonEditor>(p => p.Entity = new Person());
 
-                if (resutl != DialogResult.OK)
+                if (editor.DialogResult != DialogResult.OK)
                     return;
-                unitOfWork.Persons.Add(personForm.entity);
+                unitOfWork.Persons.Add(editor.Entity);
                 unitOfWork.Complete();
-                grid.AddItem(personForm.entity);
-                
+                grid.AddItem(editor.Entity);
             });
 
             AddAction("ویرایش", button =>
             {
                 var entity = unitOfWork.Persons.Get(grid.GetCurrentItem.Id);
-                var personForm = new PersonEditor(entity);
-                personForm.ShowDialog();
+                var personForm = ViewEngin.ViewInForm<PersonEditor>(ed => ed.Entity = entity);
 
                 if (personForm.DialogResult == DialogResult.Cancel)
                     return;
@@ -71,7 +64,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
 
             AddAction("-حذف", button =>
             {
-                if (MessageBox.Show(MessagesClass.DeleteConfirm, MessagesClass.CriticalCaption, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                if (
+                    MessageBox.Show(MessagesClass.DeleteConfirm, MessagesClass.CriticalCaption, MessageBoxButtons.YesNo) !=
+                    DialogResult.Yes)
                     return;
 
                 unitOfWork.Persons.Remove(grid.GetCurrentItem);
@@ -79,7 +74,5 @@ namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
                 grid.RemoveCurrentItem();
             });
         }
-        
-        
     }
 }

@@ -1,7 +1,6 @@
 ﻿using SalaryApp.DataLayer.Core;
 using SalaryApp.DataLayer.Core.Repositories;
 using SalaryApp.DataLayer.Persistence.Repositories;
-using System;
 
 namespace SalaryApp.DataLayer.Persistence
 {
@@ -10,36 +9,7 @@ namespace SalaryApp.DataLayer.Persistence
         private readonly SalaryContext context;
 
 
-        public IPersonRepository Persons { get; private set; }
-
-        public IEmployeeRepository Employees { get; private set; }
-
-        public IWorkshopRepository Workshops { get; private set; }
-
-        public ICityRepository Cities { get; private set; }
-
-        public IWorkgroupRepository Workgroups { get; private set; }
-
-        public IFinancialYearRepository FinancialYears { get; private set; }
-
-        public IWorkPlaceRepository Workplaces { get; private set; }
-
-        public IPayRepository Pays { get; private set; }
-
-        public ISalaryPayDetails SalaryDetails { get; private set; }
-
-        public IAnnualPayDetailRepository AnnualDetails { get; private set; }
-
-        public IEducationRepository Educations { get; private set; }
-
-        public IPayTypeRepository PayTypes { get; private set; }
-
-        public IUserRepository Users { get; private set; }
-
-        public ILogsheetRepository Logsheets { get; private set; }
-
-
-        public UnitOfWork(SalaryContext context)    
+        public UnitOfWork(SalaryContext context)
         {
             this.context = context;
 
@@ -70,9 +40,36 @@ namespace SalaryApp.DataLayer.Persistence
             Users = new UserRepository(context);
 
             Logsheets = new LogsheetRepository(context);
-
         }
 
+
+        public IPersonRepository Persons { get; private set; }
+
+        public IWorkshopRepository Workshops { get; private set; }
+
+        public ICityRepository Cities { get; private set; }
+
+        public IWorkgroupRepository Workgroups { get; private set; }
+
+        public IFinancialYearRepository FinancialYears { get; private set; }
+
+        public IWorkPlaceRepository Workplaces { get; private set; }
+
+        public IPayRepository Pays { get; private set; }
+
+        public ISalaryPayDetails SalaryDetails { get; private set; }
+
+        public IAnnualPayDetailRepository AnnualDetails { get; private set; }
+
+        public IEducationRepository Educations { get; private set; }
+
+        public IPayTypeRepository PayTypes { get; private set; }
+
+        public IUserRepository Users { get; private set; }
+
+        public ILogsheetRepository Logsheets { get; private set; }
+
+        public IEmployeeRepository Employees { get; }
 
 
         public int Complete()

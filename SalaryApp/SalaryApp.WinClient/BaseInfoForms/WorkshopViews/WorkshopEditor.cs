@@ -1,31 +1,28 @@
-﻿using SalaryApp.DataLayer.Core.Domain;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SalaryApp.DataLayer.Core.Domain;
 
 namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
 {
-    public class WorkshopEditor:EditorBase
+    public class WorkshopEditor : EditorBase<Workshop>
     {
-        public Workshop entity { get; private set; }
-        
-        public WorkshopEditor(Workshop entity)
+        public WorkshopEditor()
         {
-            this.entity = entity;
-            Load += WorkshopEditor_Load;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            AddTextFields<Workshop>();
+
+            foreach (var textbox in Controls.OfType<TextBox>())
+                textbox.DataBindings.Add("Text", Entity, textbox.Name);
+            base.OnLoad(e);
         }
 
         private void WorkshopEditor_Load(object sender, EventArgs e)
         {
-            AddTextFields<Workshop>();
-
-            foreach (var textbox in this.Controls.OfType<TextBox>())
-            {
-                textbox.DataBindings.Add("Text", entity, textbox.Name);
-            }
+            
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SalaryApp.DataLayer.Core.Domain
 {
@@ -15,10 +10,11 @@ namespace SalaryApp.DataLayer.Core.Domain
         [StringLength(150)]
         [VerboseName("عنوان کارگاه")]
         public string Title { get; set; }
+
         [VerboseName("آدرس کارگاه")]
         public string Address { get; set; }
+
         [VerboseName("تلفن کارگاه")]
         public string Tel { get; set; }
-        
     }
 }

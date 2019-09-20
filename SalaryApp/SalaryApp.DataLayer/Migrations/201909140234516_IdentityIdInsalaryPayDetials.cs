@@ -1,18 +1,17 @@
+using System.Data.Entity.Migrations;
+
 namespace SalaryApp.DataLayer.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class IdentityIdInsalaryPayDetials : DbMigration
     {
         public override void Up()
         {
-            AlterColumn("dbo.SalaryPayDetails", "Id", c => c.Int(nullable: false, identity: true));
+            AlterColumn("dbo.SalaryPayDetails", "Id", c => c.Int(false, true));
         }
-        
+
         public override void Down()
         {
-            AlterColumn("dbo.SalaryPayDetails", "Id", c => c.Int(nullable: false));
+            AlterColumn("dbo.SalaryPayDetails", "Id", c => c.Int(false));
         }
     }
 }

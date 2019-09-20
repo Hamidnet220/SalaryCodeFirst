@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SalaryApp.DataLayer;
 
 namespace SalaryApp.WinClient.CustomeControls
 {
-    public class GridControl<TModel> where TModel:class
+    public class GridControl<TModel> where TModel : class
     {
-        DataGridView grid;
-        BindingSource bindingSource;
+        private BindingSource bindingSource;
+        private readonly DataGridView grid;
 
 
         public GridControl(Control container)
@@ -26,7 +23,11 @@ namespace SalaryApp.WinClient.CustomeControls
             SetupDataGridView();
         }
 
-        
+        public TModel GetCurrentItem
+        {
+            get { return bindingSource.Current as TModel; }
+        }
+
 
         private void SetupDataGridView()
         {
@@ -35,6 +36,7 @@ namespace SalaryApp.WinClient.CustomeControls
             grid.AllowUserToAddRows = false;
             grid.AllowUserToResizeColumns = false;
             grid.AutoGenerateColumns = false;
+            grid.BringToFront();
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grid.RowsDefaultCellStyle.BackColor = Color.LightGray;
@@ -42,14 +44,14 @@ namespace SalaryApp.WinClient.CustomeControls
             grid.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
-        public GridControl<TModel> AddTextBoxColumn<TProperty>(Expression<Func<TModel,TProperty>> selector, string title)
+        public GridControl<TModel> AddTextBoxColumn<TProperty>(Expression<Func<TModel, TProperty>> selector,
+            string title)
         {
             var propertyName = new ExpressionHandler().GetPropertyName(selector);
-            grid.Columns.Add(new DataGridViewTextBoxColumn()
+            grid.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = title,
-                DataPropertyName=propertyName
-
+                DataPropertyName = propertyName
             });
 
             return this;
@@ -64,7 +66,6 @@ namespace SalaryApp.WinClient.CustomeControls
 
         public GridControl<TModel> PopulateDataGridView(IEnumerable<TModel> data)
         {
-
             bindingSource = new BindingSource();
             bindingSource.DataSource = data;
             grid.DataSource = bindingSource;
@@ -89,29 +90,21 @@ namespace SalaryApp.WinClient.CustomeControls
             bindingSource.Add(entity);
             bindingSource.ResetBindings(true);
         }
-        
-        public TModel GetCurrentItem
-        {
-            get{ return bindingSource.Current as TModel; }
-        }
 
 
         private void Grid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if ((grid.Rows[e.RowIndex].DataBoundItem != null) &&
-                (grid.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
-            {
+            if (grid.Rows[e.RowIndex].DataBoundItem != null &&
+                grid.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
                 e.Value = BindProperty(
-                grid.Rows[e.RowIndex].DataBoundItem,
-                grid.Columns[e.ColumnIndex].DataPropertyName
-              );
-            }
+                    grid.Rows[e.RowIndex].DataBoundItem,
+                    grid.Columns[e.ColumnIndex].DataPropertyName
+                );
         }
 
         private string BindProperty(object property, string propertyName)
         {
-
-            string retValue = "";
+            var retValue = "";
 
             if (propertyName.Contains("."))
             {
@@ -121,33 +114,26 @@ namespace SalaryApp.WinClient.CustomeControls
                 leftPropertyName = propertyName.Substring(0, propertyName.IndexOf("."));
                 arrayProperties = property.GetType().GetProperties();
 
-                foreach (PropertyInfo propertyInfo in arrayProperties)
-                {
+                foreach (var propertyInfo in arrayProperties)
                     if (propertyInfo.Name == leftPropertyName)
                     {
                         retValue = BindProperty(
-                          propertyInfo.GetValue(property, null),
-                          propertyName.Substring(propertyName.IndexOf(".") + 1));
+                            propertyInfo.GetValue(property, null),
+                            propertyName.Substring(propertyName.IndexOf(".") + 1));
                         break;
                     }
-                }
-
             }
             else
             {
-
                 Type propertyType;
                 PropertyInfo propertyInfo;
 
                 propertyType = property.GetType();
                 propertyInfo = propertyType.GetProperty(propertyName);
                 retValue = propertyInfo.GetValue(property, null).ToString();
-
             }
 
             return retValue;
-
         }
-
     }
 }
