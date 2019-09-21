@@ -10,7 +10,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
     {
         public EmployeeEditor()
         {
-
+           
         }
 
         protected override void OnLoad(EventArgs e)
@@ -45,7 +45,19 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
                 textbox.DataBindings.Add("Text", Entity, textbox.Name);
 
 
+
             base.OnLoad(e);
+        }
+
+        public override string ViewTitle
+        {
+            get
+            {
+                if (Entity.Id == 0)
+                    return "ایجاد کارمند جدید";
+                return "ویرایش کارمند";
+
+            }
         }
     }
 }
