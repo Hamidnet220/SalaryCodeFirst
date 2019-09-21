@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.CustomeControls;
 
 namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
@@ -9,17 +11,16 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
     public class EmployeeList : ViewsBase
     {
         private GridControl<Employee> grid;
-        private readonly Workshop workshop;
+        public  Workshop workshop { get; set; }
 
-        public EmployeeList(Workshop workshop)
+        public EmployeeList()
         {
-            this.workshop = workshop;
-            Load += PopulateGrid;
-            Load += AddActions;
+            ViewTitle = "لیست کارکنان کارگاه";
         }
 
-        private void PopulateGrid(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
+
             grid = new GridControl<Employee>(this);
             grid.AddTextBoxColumn(emp => emp.Person.Firstname, "نام");
             grid.AddTextBoxColumn(emp => emp.Person.Lastname, "نام خانوادگی");
@@ -27,13 +28,10 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
 
             grid.PopulateDataGridView(
                 unitOfWork.Employees.Find(emps => emps.Workgroup.Workshop_Id == workshop.Id).ToList());
-        }
 
-        private void AddActions(object sender, EventArgs e)
-        {
             AddAction("+جدید", button =>
             {
-                var employeeEditor = ViewEngin.ViewInForm<EmployeeEditor>(ed=>ed.Entity=new Employee());
+                var employeeEditor = ViewEngin.ViewInForm<EmployeeEditor>(ed => ed.Entity = new Employee(),true);
 
                 if (employeeEditor.DialogResult != DialogResult.OK)
                     return;
@@ -41,12 +39,17 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
                 unitOfWork.Employees.Add(employeeEditor.Entity);
                 unitOfWork.Complete();
                 grid.ResetBindings();
+                
+                var contxt =new SalaryContext();
+                contxt.Employees.Include(em => em.Person);
+                var employee = contxt.Employees.Find(employeeEditor.Entity.Id);
+                grid.AddItem(employee);
             });
 
             AddAction("ویرایش", button =>
             {
                 var entity = unitOfWork.Employees.Get(grid.GetCurrentItem.Id);
-                var employeeEditro =ViewEngin.ViewInForm<EmployeeEditor>(ed=>ed.Entity=entity);
+                var employeeEditro = ViewEngin.ViewInForm<EmployeeEditor>(ed => ed.Entity = entity);
 
                 if (employeeEditro.DialogResult == DialogResult.Cancel)
                     return;
@@ -58,6 +61,11 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
                 unitOfWork.Employees.Remove(grid.GetCurrentItem);
                 grid.RemoveCurrentItem();
             });
+
+
+
+            base.OnLoad(e);
         }
+
     }
 }
