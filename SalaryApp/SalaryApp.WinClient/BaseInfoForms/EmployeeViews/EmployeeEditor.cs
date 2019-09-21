@@ -22,7 +22,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             if (Entity.Id == 0)
             {
                 var personIdAdded =
-                    context.Employees.Where(p => p.Workgroup.Workshop_Id ==AppStatus.ActiveWorkShopId)
+                    context.Employees.Where(p => p.Workgroup.Workshop_Id == AppSetting.AppStatus.ActiveWorkShopId)
                         .Select(p => p.Person_Id)
                         .ToList();
                 var persons = context.People.Where(p => !personIdAdded.Contains(p.Id)).ToList();
@@ -36,10 +36,10 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             }
 
 
-            AddComboBox(unitOfWork.Workgroups.Find(w => w.Workshop_Id == AppStatus.ActiveWorkShopId).ToList(),
+            AddComboBox(unitOfWork.Workgroups.Find(w => w.Workshop_Id == AppSetting.AppStatus.ActiveWorkShopId).ToList(),
                 w => w.Title, w => w.Id, "انتخاب گروه کاری", Entity, emp => emp.Workgroup_Id);
 
-            AddComboBox(unitOfWork.Workplaces.Find(w => w.Workshop.Id == AppStatus.ActiveWorkShopId).ToList(),
+            AddComboBox(unitOfWork.Workplaces.Find(w => w.Workshop.Id == AppSetting.AppStatus.ActiveWorkShopId).ToList(),
                 w => w.Title, w => w.Id, "انتخاب محل کار", Entity, emp => emp.Workplace_Id);
 
             foreach (var textbox in Controls.OfType<TextBox>())
