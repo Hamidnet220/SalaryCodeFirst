@@ -40,6 +40,8 @@ namespace SalaryApp.DataLayer.Persistence
 
         public DbSet<Logsheet> Logsheets { get; set; }
 
+        public DbSet<AppStatus> AppStatuse { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SalaryPayDetails>()
