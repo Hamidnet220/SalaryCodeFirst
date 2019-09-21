@@ -31,11 +31,7 @@ namespace SalaryApp.WinClient
             internal set;
         }
 
-        public AppStatus AppStatus
-        {
-            get;
-            set;
-        }
+        
 
         protected virtual string FormTitle { get; set; }
 
