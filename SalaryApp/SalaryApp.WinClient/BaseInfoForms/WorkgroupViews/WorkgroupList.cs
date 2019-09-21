@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
 
@@ -34,7 +35,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
 
             AddAction("+جدید", button =>
             {
-                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = new Workgroup());
+                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = new Workgroup(),true);
                 if (workgroupEditor.DialogResult == DialogResult.Cancel)
                     return;
 
@@ -46,7 +47,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
             AddAction("ویرایش", button =>
             {
                 var entity = unitOfWork.Workgroups.Get(grid.GetCurrentItem.Id);
-                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = entity);
+                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = entity,true);
 
                 if (workgroupEditor.DialogResult == DialogResult.Cancel)
                     return;
@@ -56,14 +57,20 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
 
             AddAction("کپی", button =>
             {
-                var entity = unitOfWork.Workgroups.Get(grid.GetCurrentItem.Id);
-                Type typeSource = entity.GetType();
-                var newEntity = Activator.CreateInstance(typeSource);
+                var context=new SalaryContext();
+                context.Configuration.ProxyCreationEnabled = false;
+                var entity = context.Workgroups.Find(grid.GetCurrentItem.Id);
+                var container =new StructureMap.Container();
+                var newEntity = container.GetInstance(entity.GetType());
 
                 foreach (var property in entity.GetType().GetProperties())
-                    property.SetValue(newEntity, property.GetValue(entity));
+                {
+                    if(property.Name=="Id")
+                        continue;
 
-                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = (Workgroup)newEntity);
+                    property.SetValue(newEntity, property.GetValue(entity));
+                }
+                var workgroupEditor = ViewEngin.ViewInForm<WorkgroupEditor>(ed => ed.Entity = (Workgroup)newEntity,true);
 
                 if (workgroupEditor.DialogResult == DialogResult.Cancel)
                     return;
@@ -71,6 +78,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkgroupViews
                 unitOfWork.Workgroups.Add(workgroupEditor.Entity);
                 unitOfWork.Complete();
                 grid.AddItem(workgroupEditor.Entity);
+                context.Dispose();
             });
 
 
