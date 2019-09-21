@@ -57,14 +57,14 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
 
             AddAction(" گروهای کاری", button =>
             {
-                ViewEngin.ViewInForm<WorkgroupList>(w=>w.workshop=grid.GetCurrentItem,
-                    displayAsDialog:true,sideButtonBar:true);
+                ViewEngin.ViewInTab<WorkgroupList>(w=>w.workshop=grid.GetCurrentItem,
+                    sideButtonBar:true);
 
             });
 
             AddAction(" لیست کارکنان", button =>
             {
-                var employeeList = new EmployeeList(grid.GetCurrentItem);
+                ViewEngin.ViewInTab<EmployeeList>(view => view.workshop = grid.GetCurrentItem);
             });
 
 
