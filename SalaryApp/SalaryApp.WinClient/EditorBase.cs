@@ -33,25 +33,22 @@ namespace SalaryApp.WinClient
             InitializeComponent();
 
             Accept.Click += Accept_Click;
-
             Cancel.Click += Cancel_Click;
         }
 
-        private void Cancel_Click(object sender, EventArgs e)
+        
+        protected void Cancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            CloseView(dialogResult: DialogResult.Cancel);
+
         }
 
-        private void Accept_Click(object sender, EventArgs e)
+        protected void Accept_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+           CloseView(dialogResult:DialogResult.OK);
         }
 
-        private void EditorBase_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            unitOfWork.Dispose();
-        }
-
+       
         protected void AddTextFields<TModel>()
         {
             foreach (var item in typeof(TModel).GetProperties())
