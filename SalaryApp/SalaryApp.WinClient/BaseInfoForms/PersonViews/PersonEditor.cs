@@ -10,19 +10,9 @@ namespace SalaryApp.WinClient.BaseInfoForms.PersonViews
         public PersonEditor()
         {
             Load += EmployeeEditor_Load;
-            Accept.Click += Accept_Click;
-            Cancel.Click += Cancel_Click;
         }
 
-        private void Cancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
-
-        private void Accept_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-        }
+       
 
         private void EmployeeEditor_Load(object sender, EventArgs e)
         {
