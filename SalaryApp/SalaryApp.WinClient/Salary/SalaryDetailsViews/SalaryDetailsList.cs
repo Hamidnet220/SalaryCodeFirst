@@ -10,23 +10,15 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
     public class SalaryDetailsList : ViewsBase
     {
         private GridControl<SalaryPayDetails> grid;
-        private readonly Pay paylist;
-
-        public SalaryDetailsList(Pay paylist)
+        public Pay Pay { get; set; }
+        public SalaryDetailsList()
         {
-            this.paylist = paylist;
-            Load += SalaryDetailsList_Load;
-            Load += AddActions;
-            Load += PopulateGrid;
+            this.ViewTitle = @"جزئیات پرداخت";
         }
 
 
-        private void SalaryDetailsList_Load(object sender, EventArgs e)
-        {
-            this.ViewTitle = @"لیست کارکنان";
-        }
 
-        private void PopulateGrid(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             grid = new GridControl<SalaryPayDetails>(this);
 
@@ -76,11 +68,9 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
 
             grid.EnableHrScrollBar();
             grid.PopulateDataGridView(
-                unitOfWork.SalaryDetails.Find(payDitalis => payDitalis.Pay.Id == paylist.Id).ToList());
-        }
+                unitOfWork.SalaryDetails.Find(payDitalis => payDitalis.Pay.Id == Pay.Id).ToList());
 
-        private void AddActions(object sender, EventArgs e)
-        {
+
             AddAction("+جدید", button => { });
 
             AddAction("ویرایش", button =>
@@ -105,6 +95,10 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
                 unitOfWork.Complete();
                 grid.ResetBindings();
             });
+
+            base.OnLoad(e);
         }
+
+       
     }
 }
