@@ -313,6 +313,10 @@
     <Compile Include="Migrations\201909190327057_RemoveForiengKeyInSalaryDetail.Designer.cs">
       <DependentUpon>201909190327057_RemoveForiengKeyInSalaryDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909210836205_ChangeAppStatusModel.cs" />
+    <Compile Include="Migrations\201909210836205_ChangeAppStatusModel.Designer.cs">
+      <DependentUpon>201909210836205_ChangeAppStatusModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -530,6 +534,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909190327057_RemoveForiengKeyInSalaryDetail.resx">
       <DependentUpon>201909190327057_RemoveForiengKeyInSalaryDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909210836205_ChangeAppStatusModel.resx">
+      <DependentUpon>201909210836205_ChangeAppStatusModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

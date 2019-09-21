@@ -22,7 +22,7 @@ namespace SalaryApp.WinClient.BaseInfoForms.EmployeeViews
             if (Entity.Id == 0)
             {
                 var personIdAdded =
-                    context.Employees.Where(p => p.Workgroup.Workshop_Id == AppStatus.ActiveWorkShopId)
+                    context.Employees.Where(p => p.Workgroup.Workshop_Id ==AppStatus.ActiveWorkShopId)
                         .Select(p => p.Person_Id)
                         .ToList();
                 var persons = context.People.Where(p => !personIdAdded.Contains(p.Id)).ToList();
