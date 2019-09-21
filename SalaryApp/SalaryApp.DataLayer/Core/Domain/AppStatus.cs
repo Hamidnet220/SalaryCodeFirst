@@ -1,10 +1,22 @@
-﻿namespace SalaryApp.DataLayer.Core.Domain
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SalaryApp.DataLayer.Core.Domain
 {
-    public static class AppStatus
+    public class AppStatus
     {
-        public static int Id { get; set; }
-        public static int ActiveUserId { get; set; }
-        public static int ActiveWorkShopId { get; set; }
-        public static int ActiceFinancialYearId { get; set; }
+        public int Id { get; set; }
+
+        public int ActiveUserId { get; set; }
+        [ForeignKey("ActiveUserId")]
+        public virtual  User User { get; set; }
+
+        public int ActiveWorkShopId { get; set; }
+        [ForeignKey("ActiveWorkShopId")]
+        public virtual Workshop Workshop { get; set; }
+
+
+        public int ActiceFinancialYearId { get; set; }
+        [ForeignKey("ActiceFinancialYearId")]
+        public virtual FinancialYear FinancialYear { get; set; }
     }
 }
