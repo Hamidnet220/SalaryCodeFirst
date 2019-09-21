@@ -31,12 +31,12 @@ namespace SalaryApp.WinClient.Salary.PayViews
             _grid.AddTextBoxColumn(py => new Pay().Title, "عنوان پرداخت");
             _grid.AddTextBoxColumn(py => new Pay().TotalGrossAmount, "جمع مبلغ ناخالص");
             _grid.AddTextBoxColumn(py => new Pay().Status, "وضعیت");
-            var activeworkshop = AppStatus.ActiveWorkShopId;
+            var activeworkshop = AppSetting.AppStatus.ActiveWorkShopId;
             _grid.PopulateDataGridView(unitOfWork.Pays.Find(p => p.Workshop_Id == activeworkshop).ToList());
 
             AddAction("+جدید", button =>
             {
-                var editor = ViewEngin.ViewInForm<PayEditor>(ed => ed.Entity = new Pay());
+                var editor = ViewEngin.ViewInForm<PayEditor>(ed => ed.Entity = new Pay(),true);
                 if (editor.DialogResult == DialogResult.Cancel)
                     return;
 
@@ -85,7 +85,7 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 }
 
 
-                var payDetails = ViewEngin.ViewInForm<SalaryDetailsList>(null);
+                var payDetails = ViewEngin.ViewInForm<SalaryDetailsList>(view=>view.Pay=_grid.GetCurrentItem,true);
 
 
             });
