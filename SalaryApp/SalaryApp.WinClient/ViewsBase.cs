@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Persistence;
 
 namespace SalaryApp.WinClient
@@ -28,6 +29,12 @@ namespace SalaryApp.WinClient
         {
             get;
             internal set;
+        }
+
+        public AppStatus AppStatus
+        {
+            get;
+            set;
         }
 
         protected virtual string FormTitle { get; set; }

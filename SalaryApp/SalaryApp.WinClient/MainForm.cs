@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
 using SalaryApp.WinClient.BaseInfoForms.PersonViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkshopViews;
@@ -11,24 +13,35 @@ namespace SalaryApp.WinClient
     public partial class MainForm : Form
     {
         private ViewEngin viewEngin;
-
+        private AppStatus appStatus;
         public MainForm()
         {
             InitializeComponent();
             viewEngin = new ViewEngin(this.MainTabControl);
             Load += MainForm_Load;
             var toolStripLabel = new ToolStripLabel();
-            DateTimeTimer.Tick += (obj, e) => { toolStripLabel.Text = DateTime.Now.ToString("dd MM yyyy hh:mm:ss"); };
+            DateTimeTimer.Tick += (obj, e) => { toolStripLabel.Text = DateTime.Now.ToString(" hh:mm - yyyy/MM/dd"); };
 
             DateTimeTimer.Interval = 1000;
             DateTimeTimer.Start();
 
             StatusBarStrip.Items.Add(toolStripLabel);
+
+            var context =new SalaryContext();
+            appStatus = context.AppStatuse.FirstOrDefault();
+            var activeWorkshopLabel = new ToolStripLabel();
+            activeWorkshopLabel.Text ="کارگاه فعال: "+ AppStatus.Workshop.Title;
+            StatusBarStrip.Items.Add(activeWorkshopLabel);
+
+            var activeUserabel = new ToolStripLabel();
+            activeUserabel.Text ="کاربر فعال:"+ AppStatus.User.Username;
+            StatusBarStrip.Items.Add(activeUserabel);
         }
 
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             AppStatus.ActiceFinancialYearId = 1;
             AppStatus.ActiveWorkShopId = 1;
             AppStatus.ActiveUserId = 1;
@@ -66,6 +79,16 @@ namespace SalaryApp.WinClient
             }
         }
 
+
+        public AppStatus AppStatus
+        {
+            get
+            {
+                if(appStatus==null)
+                    appStatus=new AppStatus();
+                return appStatus;
+            }
+        }
         private void CloseCurrentView_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             viewEngin.CloseViewTab(MainTabControl.SelectedTab);
