@@ -9,16 +9,17 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
     {
         public SalaryDetailsEditor()
         {
-            Load += SalaryDetailsEditor_Load;
         }
 
-
-        private void SalaryDetailsEditor_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             AddTextFields<SalaryPayDetails>();
 
             foreach (var textbox in Controls.OfType<TextBox>())
                 textbox.DataBindings.Add("Text", Entity, textbox.Name);
+            base.OnLoad(e);
         }
+
+        
     }
 }
