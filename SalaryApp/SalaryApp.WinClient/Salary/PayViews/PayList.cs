@@ -74,7 +74,10 @@ namespace SalaryApp.WinClient.Salary.PayViews
                             unitOfWork.SalaryDetails.Add(new SalaryPayDetails
                             {
                                 EmployeeId = emp.Id,
-                                PayId = _grid.GetCurrentItem.Id
+                                PayId = _grid.GetCurrentItem.Id,
+                                DailyRate = emp.Workgroup.Rate,
+
+                                
                             });
 
                             unitOfWork.Complete();
