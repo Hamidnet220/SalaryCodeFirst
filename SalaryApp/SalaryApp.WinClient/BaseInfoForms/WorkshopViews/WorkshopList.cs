@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkgroupViews;
 using SalaryApp.WinClient.CustomeControls;
@@ -20,6 +22,18 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
 
         protected override void OnLoad(EventArgs e)
         {
+
+            AddAction("فعال سازی", button =>
+            {
+                AppSetting.AppStatus.ActiveWorkShopId = grid.GetCurrentItem.Id;
+                var context=new SalaryContext();
+                var appstatus=context.AppStatuse.FirstOrDefault();
+                appstatus.ActiveWorkShopId = AppSetting.AppStatus.ActiveWorkShopId;
+                context.SaveChanges();
+                context.Dispose();
+                
+            });
+
             AddAction("+جدید", button =>
             {
                 var workshopEditor = ViewEngin.ViewInForm<WorkshopEditor>(ed => ed.Entity = new Workshop());
