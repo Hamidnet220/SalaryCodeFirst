@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSetting.cs" />
     <Compile Include="BaseInfoForms\EmployeeViews\EmployeeEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>

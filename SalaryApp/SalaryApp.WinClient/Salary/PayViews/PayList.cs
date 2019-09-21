@@ -85,7 +85,7 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 }
 
 
-                var payDetails = ViewEngin.ViewInForm<SalaryDetailsList>(view=>view.Pay=_grid.GetCurrentItem,true);
+                var payDetails = ViewEngin.ViewInForm<SalaryDetailsList>(view=>view.Pay=_grid.GetCurrentItem,true,sideButtonBar:true);
 
 
             });
@@ -124,6 +124,9 @@ namespace SalaryApp.WinClient.Salary.PayViews
                                                      d.ToString() == "ر" ||
                                                      d.ToString() == "آ" ||
                                                      d.ToString() == "م").ToList();
+
+                    var absetn = fields.Where(d => ToString() == "غ").ToList();
+
                     var ncode = fields[3];
 
                     var payDetails = unitOfWork.SalaryDetails.Find(sd => sd.Employee.Person.NationalCode == ncode)
@@ -133,6 +136,8 @@ namespace SalaryApp.WinClient.Salary.PayViews
                     {
                         payDetails.LeaveDays = (byte)leavs.Count;
                         payDetails.DaysOfWork = (byte)workDays.Count;
+                        payDetails.AbsentDays = (byte) absetn.Count;
+
                     }
 
 
