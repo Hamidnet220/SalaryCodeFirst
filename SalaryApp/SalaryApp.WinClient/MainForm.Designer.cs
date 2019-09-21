@@ -46,7 +46,7 @@
             // 
             // ManageWorkshopButton
             // 
-            this.ManageWorkshopButton.Location = new System.Drawing.Point(744, 37);
+            this.ManageWorkshopButton.Location = new System.Drawing.Point(530, 37);
             this.ManageWorkshopButton.Name = "ManageWorkshopButton";
             this.ManageWorkshopButton.Size = new System.Drawing.Size(185, 176);
             this.ManageWorkshopButton.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // EmployeeListButton
             // 
-            this.EmployeeListButton.Location = new System.Drawing.Point(530, 37);
+            this.EmployeeListButton.Location = new System.Drawing.Point(721, 37);
             this.EmployeeListButton.Name = "EmployeeListButton";
             this.EmployeeListButton.Size = new System.Drawing.Size(208, 176);
             this.EmployeeListButton.TabIndex = 1;
