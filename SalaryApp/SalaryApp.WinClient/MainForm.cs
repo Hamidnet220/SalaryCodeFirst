@@ -17,6 +17,8 @@ namespace SalaryApp.WinClient
         public MainForm()
         {
             InitializeComponent();
+            
+
             viewEngin = new ViewEngin(this.MainTabControl);
             Load += MainForm_Load;
             var toolStripLabel = new ToolStripLabel();
@@ -27,24 +29,26 @@ namespace SalaryApp.WinClient
 
             StatusBarStrip.Items.Add(toolStripLabel);
 
-            var context =new SalaryContext();
-            appStatus = context.AppStatuse.FirstOrDefault();
+            Load += SetStatusBar;
+        }
+
+        private void SetStatusBar(object sender, EventArgs e)
+        {
+            var context = new SalaryContext();
+            AppSetting.AppStatus = context.AppStatuse.FirstOrDefault();
             var activeWorkshopLabel = new ToolStripLabel();
-            activeWorkshopLabel.Text ="کارگاه فعال: "+ AppStatus.Workshop.Title;
+            activeWorkshopLabel.Text = "کارگاه فعال: " + AppSetting.AppStatus.Workshop.Title;
             StatusBarStrip.Items.Add(activeWorkshopLabel);
 
             var activeUserabel = new ToolStripLabel();
-            activeUserabel.Text ="کاربر فعال:"+ AppStatus.User.Username;
+            activeUserabel.Text = "کاربر فعال:" + AppSetting.AppStatus.User.Username;
             StatusBarStrip.Items.Add(activeUserabel);
         }
 
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-            AppStatus.ActiceFinancialYearId = 1;
-            AppStatus.ActiveWorkShopId = 1;
-            AppStatus.ActiveUserId = 1;
+           
         }
 
 
