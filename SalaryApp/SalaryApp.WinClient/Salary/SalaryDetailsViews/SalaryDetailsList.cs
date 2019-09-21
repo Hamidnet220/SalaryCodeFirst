@@ -76,7 +76,7 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
             AddAction("ویرایش", button =>
             {
                 var entity = unitOfWork.SalaryDetails.Find(sd => sd.Id == grid.GetCurrentItem.Id).FirstOrDefault();
-                var salarDetailsEditor = ViewEngin.ViewInForm<SalaryDetailsEditor>(ed => ed.Entity = entity);
+                var salarDetailsEditor = ViewEngin.ViewInForm<SalaryDetailsEditor>(ed => ed.Entity = entity,true);
 
                 if (salarDetailsEditor.DialogResult == DialogResult.Cancel)
                     return;
