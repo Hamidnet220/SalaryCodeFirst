@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
+using System.Linq;
+using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Persistence;
 
 namespace SalaryApp.WinClient
 {
@@ -14,6 +18,32 @@ namespace SalaryApp.WinClient
 
             var mainForm = new MainForm();
             mainForm.ShowDialog();
+
+
+            //***Add employee to workshop manually
+
+            //var context = new SalaryContext();
+            //var personIdAdded =
+            //       context.Employees.Where(p => p.Workgroup.Workshop_Id == 1)
+            //           .Select(p => p.Person_Id)
+            //           .ToList();
+            //var persons = context.People.Where(p => !personIdAdded.Contains(p.Id)).ToList();
+
+            //foreach (var person in persons)
+            //{
+            //    var emp = new Employee
+            //    {
+            //        Person_Id = person.Id,
+            //        Workgroup_Id = 1,
+            //        Workplace_Id = 1
+            //    };
+
+            //    context.Employees.Add(emp);
+            //    context.SaveChanges();
+            //}
+
+
+
 
             ////Test education
 
