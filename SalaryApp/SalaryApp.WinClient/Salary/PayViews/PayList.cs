@@ -185,6 +185,12 @@ namespace SalaryApp.WinClient.Salary.PayViews
                     un.Complete();
 
                     MessageBox.Show(@"محاسبه حقوق با موفقیت انجام شد.", @"پیام سیستم");
+
+                    var context =new SalaryContext();
+                    var sumGrossAmount =
+                        context.SalaryPayDetails.Where(s => s.PayId == _grid.GetCurrentItem.Id).Sum(g => g.GrossAmount);
+                    currentPay.TotalGrossAmount = sumGrossAmount;
+                    context.SaveChanges();
                 }
 
                 _grid.ResetBindings();
