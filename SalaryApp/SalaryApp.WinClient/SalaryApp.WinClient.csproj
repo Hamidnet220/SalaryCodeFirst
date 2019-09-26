@@ -112,6 +112,12 @@
     <Compile Include="Salary\AnnualpayDetailsViews\AnnualDetailsList.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Salary\PayViews\SourceSelectView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Salary\PayViews\SourceSelectView.Designer.cs">
+      <DependentUpon>SourceSelectView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\SalaryDetailsViews\SalaryDetailsEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>

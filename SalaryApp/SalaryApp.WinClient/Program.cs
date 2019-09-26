@@ -27,7 +27,7 @@ namespace SalaryApp.WinClient
             //       context.Employees.Where(p => p.Workgroup.Workshop_Id == 1)
             //           .Select(p => p.Person_Id)
             //           .ToList();
-            //var persons = context.People.Where(p => !personIdAdded.Contains(p.Id)).ToList();
+            //var persons = context.People.ToList();
 
             //foreach (var person in persons)
             //{
