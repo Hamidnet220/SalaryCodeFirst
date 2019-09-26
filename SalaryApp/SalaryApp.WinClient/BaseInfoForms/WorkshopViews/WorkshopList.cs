@@ -5,6 +5,7 @@ using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.BaseInfoForms.EmployeeViews;
 using SalaryApp.WinClient.BaseInfoForms.WorkgroupViews;
+using SalaryApp.WinClient.BaseInfoForms.WorkplaceViews;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
 
@@ -75,6 +76,14 @@ namespace SalaryApp.WinClient.BaseInfoForms.WorkshopViews
                     sideButtonBar:true);
 
             });
+
+            AddAction(" موقعیت ها", button =>
+            {
+                ViewEngin.ViewInTab<WorkplaceListView>(w => w.workshop = grid.GetCurrentItem,
+                    sideButtonBar: true);
+
+            });
+
 
             AddAction(" لیست کارکنان", button =>
             {

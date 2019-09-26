@@ -329,6 +329,10 @@
     <Compile Include="Migrations\201909262020403_foo1.Designer.cs">
       <DependentUpon>201909262020403_foo1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909262130143_AddWorkshopForeignKeyWorkplaceTable.cs" />
+    <Compile Include="Migrations\201909262130143_AddWorkshopForeignKeyWorkplaceTable.Designer.cs">
+      <DependentUpon>201909262130143_AddWorkshopForeignKeyWorkplaceTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -558,6 +562,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909262020403_foo1.resx">
       <DependentUpon>201909262020403_foo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909262130143_AddWorkshopForeignKeyWorkplaceTable.resx">
+      <DependentUpon>201909262130143_AddWorkshopForeignKeyWorkplaceTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

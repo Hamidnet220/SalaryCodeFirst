@@ -69,6 +69,18 @@
     <Compile Include="BaseInfoForms\WorkgroupViews\WorkgroupList.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="BaseInfoForms\WorkplaceViews\WorkplaceEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BaseInfoForms\WorkplaceViews\WorkplaceEditor.Designer.cs">
+      <DependentUpon>WorkplaceEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseInfoForms\WorkplaceViews\WorkplaceListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BaseInfoForms\WorkplaceViews\WorkplaceListView.Designer.cs">
+      <DependentUpon>WorkplaceListView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\PayViews\PayEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
