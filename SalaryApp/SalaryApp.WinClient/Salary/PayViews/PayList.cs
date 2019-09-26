@@ -16,6 +16,12 @@ namespace SalaryApp.WinClient.Salary.PayViews
     {
         private GridControl<Pay> _grid;
 
+        public enum SourceType
+        {
+            Logsheet,
+            LastMonth,
+            EmployeeList
+        }
 
         public PayList()
         {
@@ -61,29 +67,16 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 var paylist = _grid.GetCurrentItem;
                 if (!unitOfWork.SalaryDetails.Find(sd => sd.Pay.Id == paylist.Id).Any())
                 {
-                    var result =
-                        MessageBox.Show(@"برای این لیست جزئیاتی تعریف نشده است.میخواهید از لیست پرسنل استفاده کنید ؟",
-                            @"هشدار", MessageBoxButtons.YesNoCancel);
-                    if (result == DialogResult.Yes)
+                    var result = ViewEngin.ViewInForm<SourceSelectView>(null,displayAsDialog: true,sideButtonBar:true);
+
+                    if (result.SourceType == SourceType.EmployeeList)
                     {
-                        var employees =
-                            unitOfWork.Employees.Find(
-                                emp => emp.Workgroup.Workshop_Id == _grid.GetCurrentItem.Workshop_Id).ToList();
-                        foreach (var emp in employees)
-                        {
-                            unitOfWork.SalaryDetails.Add(new SalaryPayDetails
-                            {
-                                EmployeeId = emp.Id,
-                                PayId = _grid.GetCurrentItem.Id,
-                                DailyRate = emp.Workgroup.Rate,
-
-                                
-                            });
-
-                            unitOfWork.Complete();
-                        }
-
-                        MessageBox.Show(@"عملیات انقال موفق بود");
+                        ImportFromEmployeeList();
+                    }
+                    else if (result.SourceType == SourceType.Logsheet)
+                    {
+                       //TODO:Implemet import data from logsheet file
+                        MessageBox.Show("import data from logsheet");
                     }
                 }
 
@@ -231,6 +224,27 @@ namespace SalaryApp.WinClient.Salary.PayViews
             base.OnLoad(e); 
         }
 
-       
+        private void ImportFromEmployeeList()
+        {
+            var employees =
+                unitOfWork.Employees.Find(
+                    emp => emp.Workgroup.Workshop_Id == _grid.GetCurrentItem.Workshop_Id).ToList();
+            foreach (var emp in employees)
+            {
+                unitOfWork.SalaryDetails.Add(new SalaryPayDetails
+                {
+                    EmployeeId = emp.Id,
+                    PayId = _grid.GetCurrentItem.Id,
+                    DailyRate = emp.Workgroup.Rate,
+
+
+                });
+
+                unitOfWork.Complete();
+            }
+
+            MessageBox.Show(@"عملیات انقال موفق بود");
+        }
+
     }
 }
