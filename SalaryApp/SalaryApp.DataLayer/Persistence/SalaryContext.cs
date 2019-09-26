@@ -44,8 +44,7 @@ namespace SalaryApp.DataLayer.Persistence
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<SalaryPayDetails>()
-                .HasKey(t => new {t.PayId, t.EmployeeId});
+          
 
 
             modelBuilder.Entity<SalaryPayDetails>()
