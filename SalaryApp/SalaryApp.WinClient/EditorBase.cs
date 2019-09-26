@@ -63,19 +63,23 @@ namespace SalaryApp.WinClient
                     var verboseNameAttribute = item.GetCustomAttributes(typeof(VerboseNameAttribute), false)
                         .OfType<VerboseNameAttribute>()
                         .FirstOrDefault();
-                    if (verboseNameAttribute != null)
-                    {
+
+
+                    if (verboseNameAttribute == null)
+                        continue;
+
                         var verboseName =
                             verboseNameAttribute
                                 .VerboseName;
 
                         AddLabel(item.Name, verboseName);
-                    }
-                    AddTextBox(item.Name);
-                    AdjustControls();
+                        AddTextBox(item.Name);
+                        AdjustControls();
+
                 }
                 catch (NullReferenceException)
                 {
+
                 }
         }
 
