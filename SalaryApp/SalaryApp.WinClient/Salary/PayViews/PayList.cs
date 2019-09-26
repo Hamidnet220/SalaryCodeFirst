@@ -67,7 +67,8 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 var paylist = _grid.GetCurrentItem;
                 if (!unitOfWork.SalaryDetails.Find(sd => sd.Pay.Id == paylist.Id).Any())
                 {
-                    var result = ViewEngin.ViewInForm<SourceSelectView>(null,displayAsDialog: true,sideButtonBar:true);
+                    var result = ViewEngin.ViewInForm<SourceSelectView>(view=>view.Pay=_grid.GetCurrentItem,
+                        displayAsDialog: true,sideButtonBar:true);
 
                     if (result.SourceType == SourceType.EmployeeList)
                     {
