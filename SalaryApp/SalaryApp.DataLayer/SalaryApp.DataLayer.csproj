@@ -317,6 +317,18 @@
     <Compile Include="Migrations\201909210836205_ChangeAppStatusModel.Designer.cs">
       <DependentUpon>201909210836205_ChangeAppStatusModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909261732306_DeleteEmployeeIdAndPayId.cs" />
+    <Compile Include="Migrations\201909261732306_DeleteEmployeeIdAndPayId.Designer.cs">
+      <DependentUpon>201909261732306_DeleteEmployeeIdAndPayId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909261828169_AddEmployeeIdAndPayId.cs" />
+    <Compile Include="Migrations\201909261828169_AddEmployeeIdAndPayId.Designer.cs">
+      <DependentUpon>201909261828169_AddEmployeeIdAndPayId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909262020403_foo1.cs" />
+    <Compile Include="Migrations\201909262020403_foo1.Designer.cs">
+      <DependentUpon>201909262020403_foo1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -537,6 +549,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909210836205_ChangeAppStatusModel.resx">
       <DependentUpon>201909210836205_ChangeAppStatusModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909261732306_DeleteEmployeeIdAndPayId.resx">
+      <DependentUpon>201909261732306_DeleteEmployeeIdAndPayId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909261828169_AddEmployeeIdAndPayId.resx">
+      <DependentUpon>201909261828169_AddEmployeeIdAndPayId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909262020403_foo1.resx">
+      <DependentUpon>201909262020403_foo1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
