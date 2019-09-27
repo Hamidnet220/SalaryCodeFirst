@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -77,7 +78,6 @@ namespace SalaryApp.WinClient.Salary.PayViews
                     else if (result.SourceType == SourceType.Logsheet)
                     {
                        //TODO:Implemet import data from logsheet file
-                        MessageBox.Show("import data from logsheet");
                     }
                 }
 
@@ -220,6 +220,42 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 curretnPayList.Status = Pay.PayStatus.Locked;
                 unitOfWork.Complete();
                 MessageBox.Show(@"لیست مورد نظر قفل شد.", @"پیام سیستم");
+            });
+
+            AddAction("ایجاد فایل های مالیات", button =>
+            {
+                //TODO:Create Tax file for selected pay list
+
+                using (var context=new SalaryContext())
+                {
+                    var salarylist =
+                        context.SalaryPayDetails.Where(sd => sd.PayId == _grid.GetCurrentItem.Id).ToList();
+                    var employees =new List<Employee>();
+                    foreach (var item in salarylist)
+                    {
+                        employees.Add(item.Employee);
+                    }
+
+                    var personFileLines=new List<string>();
+                    foreach (var employee in employees)
+                    {
+                        personFileLines.Add($"1,1,{employee.Person.NationalCode},{employee.Person.Firstname},{employee.Person.Lastname},103,0,2,نگهبان,2,,{employee.Person.InsuranceId},,,13960801,1,{employee.Workplace.Title},2,1,,1,,");
+
+                    }
+
+                    var browserDialog=new FolderBrowserDialog();
+                    if(browserDialog.ShowDialog()==DialogResult.Cancel)
+                        return;
+                    var taxDirectory = Directory.CreateDirectory(browserDialog.SelectedPath);
+                    var path = Path.Combine(taxDirectory.FullName, "Persons.txt");
+
+                    File.WriteAllLines(path,personFileLines);
+
+
+
+                }
+
+
             });
 
             base.OnLoad(e); 
