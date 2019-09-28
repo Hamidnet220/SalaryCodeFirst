@@ -235,11 +235,19 @@ namespace SalaryApp.WinClient.Salary.PayViews
                     var taxtGenerator = new TaxFileGenerator<AnnualPayDetails>(_grid.GetCurrentItem);
                     taxtGenerator.GenerateTaxFiles();
                 }
-               
-               
+                else if (payDescription == PayDiscription.Bonus)
+                {
+                    var taxtGenerator = new TaxFileGenerator<BonusPayDetails>(_grid.GetCurrentItem);
+                    taxtGenerator.GenerateTaxFiles();
+                }
+
+
             });
 
-            
+            AddAction("ایجاد گزارش", button =>
+            {
+                //TODO:generate pay report
+            });
 
             base.OnLoad(e);
         }
