@@ -10,30 +10,23 @@ namespace SalaryApp.WinClient.Salary.AnnualpayDetailsViews
     public class AnnualDetailsList : ViewsBase
     {
         private GridControl<AnnualPayDetails> grid;
-        private readonly Pay paylist;
+        public Pay Pay { get; set; }
 
-        public AnnualDetailsList(Pay paylist)
+        public AnnualDetailsList()
         {
-            //this.FormTitle = "لیست عیدی ،سنوات و مرخصی ";
-            this.paylist = paylist;
-            Load += AnnualDetailsList_Load;
-            Load += AddActions;
-            Load += PopulateGrid;
+          ViewTitle = "لیست عیدی ،سنوات و مرخصی ";
         }
 
 
-        private void AnnualDetailsList_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-        }
 
-        private void PopulateGrid(object sender, EventArgs e)
-        {
             grid = new GridControl<AnnualPayDetails>(this);
 
-            grid.AddTextBoxColumn(sd => new AnnualPayDetails().Employee.Firstname, "نام");
-            grid.AddTextBoxColumn(sd => new AnnualPayDetails().Employee.Lastname, "نام خانوادگی");
+            grid.AddTextBoxColumn(sd => new AnnualPayDetails().Employee.Person.Firstname, "نام");
+            grid.AddTextBoxColumn(sd => new AnnualPayDetails().Employee.Person.Lastname, "نام خانوادگی");
             grid.AddTextBoxColumn(sd => new AnnualPayDetails().DailyRate, "پایه روزانه");
-            grid.AddTextBoxColumn(sd => new AnnualPayDetails().TotalDaysOfWork, "کارکرد-مفید");
+            grid.AddTextBoxColumn(sd => new AnnualPayDetails().DaysOfWork, "کارکرد-مفید");
             grid.AddTextBoxColumn(sd => new AnnualPayDetails().TotalAbsentDays, "تعداد غیبت");
             grid.AddTextBoxColumn(sd => new AnnualPayDetails().TotalLeaveDays, "تعداد مرخصی");
             grid.AddTextBoxColumn(sd => new AnnualPayDetails().InPartPayment, "علی الحساب   ");
@@ -43,11 +36,9 @@ namespace SalaryApp.WinClient.Salary.AnnualpayDetailsViews
 
             grid.EnableHrScrollBar();
             grid.PopulateDataGridView(
-                unitOfWork.AnnualDetails.Find(payDitalis => payDitalis.Pay.Id == paylist.Id).ToList());
-        }
+                unitOfWork.AnnualDetails.Find(payDitalis => payDitalis.Pay.Id == Pay.Id).ToList());
 
-        private void AddActions(object sender, EventArgs e)
-        {
+
             AddAction("+جدید", button => { });
 
             AddAction("ویرایش", button => { });
@@ -63,6 +54,10 @@ namespace SalaryApp.WinClient.Salary.AnnualpayDetailsViews
                 unitOfWork.Complete();
                 grid.RemoveCurrentItem();
             });
+
+            base.OnLoad(e);
         }
+
+        
     }
 }

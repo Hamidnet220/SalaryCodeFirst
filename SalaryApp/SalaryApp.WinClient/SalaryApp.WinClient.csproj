@@ -81,6 +81,19 @@
     <Compile Include="BaseInfoForms\WorkplaceViews\WorkplaceListView.Designer.cs">
       <DependentUpon>WorkplaceListView.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomeControls\TaxFileGenerator.cs" />
+    <Compile Include="Salary\Bonus\BonusEditorView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Salary\Bonus\BonusEditorView.Designer.cs">
+      <DependentUpon>BonusEditorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary\Bonus\BonusListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Salary\Bonus\BonusListView.Designer.cs">
+      <DependentUpon>BonusListView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\PayViews\PayEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>

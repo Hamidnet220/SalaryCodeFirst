@@ -42,6 +42,8 @@ namespace SalaryApp.DataLayer.Persistence
 
         public DbSet<AppStatus> AppStatuse { get; set; }
 
+        public DbSet<BonusPayDetails> BonusPayDetailses { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
           

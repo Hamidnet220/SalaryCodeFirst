@@ -2,7 +2,7 @@
 
 namespace SalaryApp.DataLayer.Core.Domain
 {
-    public class SalaryPayDetails
+    public class SalaryPayDetails: IPayDetails
     {
         public int Id { get; set; }
 
@@ -22,7 +22,7 @@ namespace SalaryApp.DataLayer.Core.Domain
         public decimal DailyRate { get; set; }
 
         [VerboseName("روز کارکرد")]
-        public byte DaysOfWork { get; set; }
+        public int DaysOfWork { get; set; }
 
         [VerboseName("تعداد فرزند")]
         public byte ChildrenCount { get; set; }
@@ -121,7 +121,7 @@ namespace SalaryApp.DataLayer.Core.Domain
         public decimal EmployeerIncurance { get; set; }
 
         [VerboseName("مبلغ معاف از مالیات")]
-        public bool TaxExempt { get; set; }
+        public bool IsTaxExempt { get; set; }
 
         [VerboseName("مشمول مالیات")]
         public decimal TaxIncluded { get; set; }
@@ -146,5 +146,7 @@ namespace SalaryApp.DataLayer.Core.Domain
 
         [VerboseName("خالص پرداختی")]
         public decimal NetAmount { get; set; }
+
+        
     }
 }

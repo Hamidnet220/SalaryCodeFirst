@@ -40,6 +40,8 @@ namespace SalaryApp.DataLayer.Persistence
             Users = new UserRepository(context);
 
             Logsheets = new LogsheetRepository(context);
+
+            BonusPayDetails=new BonusPayDetailsRepository(context);
         }
 
 
@@ -69,8 +71,9 @@ namespace SalaryApp.DataLayer.Persistence
 
         public ILogsheetRepository Logsheets { get; private set; }
 
-        public IEmployeeRepository Employees { get; }
+        public IEmployeeRepository Employees { get; private set; }
 
+        public IBonusPayDetails BonusPayDetails { get; private set; }
 
         public int Complete()
         {

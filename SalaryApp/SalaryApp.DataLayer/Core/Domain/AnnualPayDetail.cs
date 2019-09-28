@@ -1,17 +1,27 @@
-﻿namespace SalaryApp.DataLayer.Core.Domain
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SalaryApp.DataLayer.Core.Domain
 {
-    public class AnnualPayDetails
+    public class AnnualPayDetails: IPayDetails
     {
         public int Id { get; set; }
-        public Pay Pay { get; set; }
-        public virtual Person Employee { get; set; }
+
+        public int PayId { get; set; }
+
+        [ForeignKey("PayId")]
+        public virtual Pay Pay { get; set; }
+
+        public int EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public virtual Employee Employee { get; set; }
+
         public Workgroup WorkGroup { get; set; }
 
         [VerboseName("پایه روزانه")]
         public decimal DailyRate { get; set; }
 
         [VerboseName("پایه روزانه")]
-        public int TotalDaysOfWork { get; set; }
+        public int DaysOfWork { get; set; }
 
         [VerboseName("جمع کل مرخصی")]
         public int TotalLeaveDays { get; set; }
@@ -78,5 +88,6 @@
 
         [VerboseName("توضیحات")]
         public string Description { get; set; }
+
     }
 }

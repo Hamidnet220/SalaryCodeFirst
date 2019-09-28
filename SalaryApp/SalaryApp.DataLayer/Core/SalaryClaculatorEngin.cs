@@ -3,7 +3,7 @@ using SalaryApp.DataLayer.Core.Domain;
 
 namespace SalaryApp.DataLayer.Core
 {
-    public class SalaryClaculatorEngin : IPayDetails
+    public class SalaryClaculatorEngin 
     {
         private readonly SalaryPayDetails salaryDetails;
 
@@ -83,7 +83,7 @@ namespace SalaryApp.DataLayer.Core
 
             salaryDetails.TaxIncluded = salaryDetails.GrossAmount;
 
-            if (salaryDetails.TaxExempt)
+            if (salaryDetails.IsTaxExempt)
             {
                 salaryDetails.TaxAmount = 0;
             }

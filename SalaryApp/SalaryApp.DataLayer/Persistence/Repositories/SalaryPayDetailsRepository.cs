@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Core.Repositories;
+using ISalaryPayDetails = SalaryApp.DataLayer.Core.Repositories.ISalaryPayDetails;
 
 namespace SalaryApp.DataLayer.Persistence.Repositories
 {

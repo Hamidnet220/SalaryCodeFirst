@@ -51,15 +51,17 @@
     <Compile Include="Core\ComboBoxAttribute.cs" />
     <Compile Include="Core\Domain\AnnualPayDetail.cs" />
     <Compile Include="Core\Domain\AppStatus.cs" />
+    <Compile Include="Core\Domain\BonusPayDetails.cs" />
     <Compile Include="Core\Domain\Education.cs" />
     <Compile Include="Core\Domain\Employee.cs" />
-    <Compile Include="Core\Domain\IPayDetails.cs" />
     <Compile Include="Core\Domain\Logsheet.cs" />
     <Compile Include="Core\Domain\Pay.cs" />
     <Compile Include="Core\Domain\PayType.cs" />
+    <Compile Include="Core\Domain\IPayDetails.cs" />
     <Compile Include="Core\Domain\SalaryPayDetails.cs" />
     <Compile Include="Core\Domain\WorkDayStatus.cs" />
     <Compile Include="Core\Domain\Workplace.cs" />
+    <Compile Include="Core\Repositories\IBonusPayDetails.cs" />
     <Compile Include="Core\Repositories\ILogsheetRepository.cs" />
     <Compile Include="Core\Repositories\IPersonRepository.cs" />
     <Compile Include="Core\Repositories\IPayTypeRepository.cs" />
@@ -333,9 +335,30 @@
     <Compile Include="Migrations\201909262130143_AddWorkshopForeignKeyWorkplaceTable.Designer.cs">
       <DependentUpon>201909262130143_AddWorkshopForeignKeyWorkplaceTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909271151530_ChangeSalaryDetailsAndAnnualDetailsTable.cs" />
+    <Compile Include="Migrations\201909271151530_ChangeSalaryDetailsAndAnnualDetailsTable.Designer.cs">
+      <DependentUpon>201909271151530_ChangeSalaryDetailsAndAnnualDetailsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909271906229_AddPayDescriptionInPaytypTable.cs" />
+    <Compile Include="Migrations\201909271906229_AddPayDescriptionInPaytypTable.Designer.cs">
+      <DependentUpon>201909271906229_AddPayDescriptionInPaytypTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909271910004_ModifyPayDescriptionInPaytypTable.cs" />
+    <Compile Include="Migrations\201909271910004_ModifyPayDescriptionInPaytypTable.Designer.cs">
+      <DependentUpon>201909271910004_ModifyPayDescriptionInPaytypTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909280534439_AddBonusPayDetailTable.cs" />
+    <Compile Include="Migrations\201909280534439_AddBonusPayDetailTable.Designer.cs">
+      <DependentUpon>201909280534439_AddBonusPayDetailTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909280706124_AddGrossAmountToBonusDetailTable.cs" />
+    <Compile Include="Migrations\201909280706124_AddGrossAmountToBonusDetailTable.Designer.cs">
+      <DependentUpon>201909280706124_AddGrossAmountToBonusDetailTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
+    <Compile Include="Persistence\Repositories\BonusPayDetailsRepository.cs" />
     <Compile Include="Persistence\Repositories\CityRepository.cs" />
     <Compile Include="Core\Domain\Person.cs" />
     <Compile Include="Persistence\Repositories\EducationRepository.cs" />
@@ -565,6 +588,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909262130143_AddWorkshopForeignKeyWorkplaceTable.resx">
       <DependentUpon>201909262130143_AddWorkshopForeignKeyWorkplaceTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909271151530_ChangeSalaryDetailsAndAnnualDetailsTable.resx">
+      <DependentUpon>201909271151530_ChangeSalaryDetailsAndAnnualDetailsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909271906229_AddPayDescriptionInPaytypTable.resx">
+      <DependentUpon>201909271906229_AddPayDescriptionInPaytypTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909271910004_ModifyPayDescriptionInPaytypTable.resx">
+      <DependentUpon>201909271910004_ModifyPayDescriptionInPaytypTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909280534439_AddBonusPayDetailTable.resx">
+      <DependentUpon>201909280534439_AddBonusPayDetailTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909280706124_AddGrossAmountToBonusDetailTable.resx">
+      <DependentUpon>201909280706124_AddGrossAmountToBonusDetailTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -57,7 +57,7 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().InsuranceExempt, "معاف از بیمه");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().InsuranceIncluded, "مشمول بیمه");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().EmployeerIncurance, "بیمه کارفرما");
-            grid.AddTextBoxColumn(sd => new SalaryPayDetails().TaxExempt, "معاف از مالیات");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().IsTaxExempt, "معاف از مالیات");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().TaxIncluded, "مشمول مالیات");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().TaxAmount, "مبلغ مالیات");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().PayInAdvance, "مساعده");

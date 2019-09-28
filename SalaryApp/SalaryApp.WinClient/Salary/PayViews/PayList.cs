@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -9,6 +8,8 @@ using SalaryApp.DataLayer.Core.Domain;
 using SalaryApp.DataLayer.Persistence;
 using SalaryApp.WinClient.CustomeControls;
 using SalaryApp.WinClient.GeneralClass;
+using SalaryApp.WinClient.Salary.AnnualpayDetailsViews;
+using SalaryApp.WinClient.Salary.Bonus;
 using SalaryApp.WinClient.Salary.SalaryDetailsViews;
 
 namespace SalaryApp.WinClient.Salary.PayViews
@@ -26,7 +27,6 @@ namespace SalaryApp.WinClient.Salary.PayViews
 
         public PayList()
         {
-            
             ViewTitle = @"لیست پرداخت ها";
         }
 
@@ -37,13 +37,15 @@ namespace SalaryApp.WinClient.Salary.PayViews
             _grid.AddTextBoxColumn(py => new Pay().EmployeesCount, "تعداد کارکنان");
             _grid.AddTextBoxColumn(py => new Pay().Title, "عنوان پرداخت");
             _grid.AddTextBoxColumn(py => new Pay().TotalGrossAmount, "جمع مبلغ ناخالص");
+            _grid.AddTextBoxColumn(py => new Pay().TotalTaxAmount, "جمع مبلغ مالیات");
+            _grid.AddTextBoxColumn(py => new Pay().TotalNetAmount, "جمع خالص پرداختی");
             _grid.AddTextBoxColumn(py => new Pay().Status, "وضعیت");
             var activeworkshop = AppSetting.AppStatus.ActiveWorkShopId;
             _grid.PopulateDataGridView(unitOfWork.Pays.Find(p => p.Workshop_Id == activeworkshop).ToList());
 
             AddAction("+جدید", button =>
             {
-                var editor = ViewEngin.ViewInForm<PayEditor>(ed => ed.Entity = new Pay(),true);
+                var editor = ViewEngin.ViewInForm<PayEditor>(ed => ed.Entity = new Pay(), true);
                 if (editor.DialogResult == DialogResult.Cancel)
                     return;
 
@@ -55,7 +57,7 @@ namespace SalaryApp.WinClient.Salary.PayViews
             {
                 var entity = unitOfWork.Pays.Get(_grid.GetCurrentItem.Id);
 
-                var editor = ViewEngin.ViewInForm<PayEditor>(ed=>ed.Entity=entity);
+                var editor = ViewEngin.ViewInForm<PayEditor>(ed => ed.Entity = entity);
 
                 if (editor.DialogResult == DialogResult.Cancel)
                     return;
@@ -65,25 +67,23 @@ namespace SalaryApp.WinClient.Salary.PayViews
 
             AddAction("جزئیات پرداخت", button =>
             {
-                var paylist = _grid.GetCurrentItem;
-                if (!unitOfWork.SalaryDetails.Find(sd => sd.Pay.Id == paylist.Id).Any())
+               
+                var payDescription=_grid.GetCurrentItem.PayType.PayDiscription;
+
+                if (payDescription == PayDiscription.MonthlyWage)
                 {
-                    var result = ViewEngin.ViewInForm<SourceSelectView>(view=>view.Pay=_grid.GetCurrentItem,
-                        displayAsDialog: true,sideButtonBar:true);
-
-                    if (result.SourceType == SourceType.EmployeeList)
-                    {
-                        ImportFromEmployeeList();
-                    }
-                    else if (result.SourceType == SourceType.Logsheet)
-                    {
-                       //TODO:Implemet import data from logsheet file
-                    }
+                    GetSalaryDetilas();
+                    ViewEngin.ViewInForm<SalaryDetailsList>(view => view.Pay = _grid.GetCurrentItem, true,
+                    sideButtonBar: true);
                 }
-
-
-                var payDetails = ViewEngin.ViewInForm<SalaryDetailsList>(view=>view.Pay=_grid.GetCurrentItem,true,sideButtonBar:true);
-
+                else if(payDescription==PayDiscription.AnnualPay)
+                {
+                    ViewEngin.ViewInForm<AnnualDetailsList>(view => view.Pay = _grid.GetCurrentItem, true,sideButtonBar:true);
+                }
+                else if (payDescription == PayDiscription.Bonus)
+                {
+                    ViewEngin.ViewInForm<BonusListView>(view => view.Pay = _grid.GetCurrentItem, true, sideButtonBar: true);
+                }
 
             });
 
@@ -131,10 +131,9 @@ namespace SalaryApp.WinClient.Salary.PayViews
 
                     if (payDetails != null)
                     {
-                        payDetails.LeaveDays = (byte)leavs.Count;
-                        payDetails.DaysOfWork = (byte)workDays.Count;
+                        payDetails.LeaveDays = (byte) leavs.Count;
+                        payDetails.DaysOfWork = (byte) workDays.Count;
                         payDetails.AbsentDays = (byte) absetn.Count;
-
                     }
 
 
@@ -168,7 +167,7 @@ namespace SalaryApp.WinClient.Salary.PayViews
 
                     foreach (var entity in salaryList)
                     {
-                        IPayDetails payDetail = new SalaryClaculatorEngin(entity);
+                        SalaryClaculatorEngin payDetail = new SalaryClaculatorEngin(entity);
 
                         un.Complete();
                     }
@@ -180,7 +179,7 @@ namespace SalaryApp.WinClient.Salary.PayViews
 
                     MessageBox.Show(@"محاسبه حقوق با موفقیت انجام شد.", @"پیام سیستم");
 
-                    var context =new SalaryContext();
+                    var context = new SalaryContext();
                     var sumGrossAmount =
                         context.SalaryPayDetails.Where(s => s.PayId == _grid.GetCurrentItem.Id).Sum(g => g.GrossAmount);
                     currentPay.TotalGrossAmount = sumGrossAmount;
@@ -224,43 +223,58 @@ namespace SalaryApp.WinClient.Salary.PayViews
 
             AddAction("ایجاد فایل های مالیات", button =>
             {
-                //TODO:Create Tax file for selected pay list
+                var payDescription = _grid.GetCurrentItem.PayType.PayDiscription;
 
-                using (var context=new SalaryContext())
+                if (payDescription == PayDiscription.MonthlyWage)
                 {
-                    var salarylist =
-                        context.SalaryPayDetails.Where(sd => sd.PayId == _grid.GetCurrentItem.Id).ToList();
-                    var employees =new List<Employee>();
-                    foreach (var item in salarylist)
-                    {
-                        employees.Add(item.Employee);
-                    }
-
-                    var personFileLines=new List<string>();
-                    foreach (var employee in employees)
-                    {
-                        personFileLines.Add($"1,1,{employee.Person.NationalCode},{employee.Person.Firstname},{employee.Person.Lastname},103,0,2,نگهبان,2,,{employee.Person.InsuranceId},,,13960801,1,{employee.Workplace.Title},2,1,,1,,");
-
-                    }
-
-                    var browserDialog=new FolderBrowserDialog();
-                    if(browserDialog.ShowDialog()==DialogResult.Cancel)
-                        return;
-                    var taxDirectory = Directory.CreateDirectory(browserDialog.SelectedPath);
-                    var path = Path.Combine(taxDirectory.FullName, "Persons.txt");
-
-                    File.WriteAllLines(path,personFileLines);
-
-
-
+                    var taxtGenerator = new TaxFileGenerator<SalaryPayDetails>(_grid.GetCurrentItem);
+                    taxtGenerator.GenerateTaxFiles();
                 }
-
-
+                else if(payDescription==PayDiscription.AnnualPay)
+                {
+                    var taxtGenerator = new TaxFileGenerator<AnnualPayDetails>(_grid.GetCurrentItem);
+                    taxtGenerator.GenerateTaxFiles();
+                }
+               
+               
             });
 
-            base.OnLoad(e); 
+            
+
+            base.OnLoad(e);
         }
 
+        private void GetSalaryDetilas()
+        {
+
+                var paylist = _grid.GetCurrentItem;
+            if (!unitOfWork.SalaryDetails.Find(sd => sd.Pay.Id == paylist.Id).Any())
+            {
+                var result = ViewEngin.ViewInForm<SourceSelectView>(view => view.Pay = _grid.GetCurrentItem,
+                    true, sideButtonBar: true);
+
+                if (result.SourceType == SourceType.EmployeeList)
+                {
+                    ImportFromEmployeeList();
+                }
+                else if (result.SourceType == SourceType.Logsheet)
+                {
+                    //TODO:Implemet import data from logsheet file
+                }
+            }
+
+            var payDescription = _grid.GetCurrentItem.PayType.PayDiscription;
+
+            if (payDescription == PayDiscription.MonthlyWage)
+            {
+                var payDetails = ViewEngin.ViewInForm<SalaryDetailsList>(view => view.Pay = _grid.GetCurrentItem, true,
+                sideButtonBar: true);
+            }
+            else if (payDescription == PayDiscription.AnnualPay)
+            {
+                ViewEngin.ViewInForm<AnnualDetailsList>(view => view.Pay = _grid.GetCurrentItem, true, sideButtonBar: true);
+            }
+        }
         private void ImportFromEmployeeList()
         {
             var employees =
@@ -272,9 +286,7 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 {
                     EmployeeId = emp.Id,
                     PayId = _grid.GetCurrentItem.Id,
-                    DailyRate = emp.Workgroup.Rate,
-
-
+                    DailyRate = emp.Workgroup.Rate
                 });
 
                 unitOfWork.Complete();
@@ -282,6 +294,5 @@ namespace SalaryApp.WinClient.Salary.PayViews
 
             MessageBox.Show(@"عملیات انقال موفق بود");
         }
-
     }
 }
