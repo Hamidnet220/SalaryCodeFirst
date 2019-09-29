@@ -368,6 +368,18 @@
     <Compile Include="Migrations\201909291258584_AddDayFoodInSalaryDetailsTable.Designer.cs">
       <DependentUpon>201909291258584_AddDayFoodInSalaryDetailsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909291530284_AddFoodAmountInWorkgroupTable.cs" />
+    <Compile Include="Migrations\201909291530284_AddFoodAmountInWorkgroupTable.Designer.cs">
+      <DependentUpon>201909291530284_AddFoodAmountInWorkgroupTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909291556196_AddShiftAmountInSalaryDetails.cs" />
+    <Compile Include="Migrations\201909291556196_AddShiftAmountInSalaryDetails.Designer.cs">
+      <DependentUpon>201909291556196_AddShiftAmountInSalaryDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909292337352_AddHyginAndChangeColumnNameWorkgroupTable.cs" />
+    <Compile Include="Migrations\201909292337352_AddHyginAndChangeColumnNameWorkgroupTable.Designer.cs">
+      <DependentUpon>201909292337352_AddHyginAndChangeColumnNameWorkgroupTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -625,6 +637,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909291258584_AddDayFoodInSalaryDetailsTable.resx">
       <DependentUpon>201909291258584_AddDayFoodInSalaryDetailsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909291530284_AddFoodAmountInWorkgroupTable.resx">
+      <DependentUpon>201909291530284_AddFoodAmountInWorkgroupTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909291556196_AddShiftAmountInSalaryDetails.resx">
+      <DependentUpon>201909291556196_AddShiftAmountInSalaryDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909292337352_AddHyginAndChangeColumnNameWorkgroupTable.resx">
+      <DependentUpon>201909292337352_AddHyginAndChangeColumnNameWorkgroupTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

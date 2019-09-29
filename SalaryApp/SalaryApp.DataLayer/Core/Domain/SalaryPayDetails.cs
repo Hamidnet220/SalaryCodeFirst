@@ -66,6 +66,9 @@ namespace SalaryApp.DataLayer.Core.Domain
         [YesNoComboBox("نوبنکار")]
         public bool ShifStatus { get; set; }
 
+        [VerboseName("مبلغ نوبنکاری")]
+        public decimal ShiftAmount { get; set; }
+
         [VerboseName("مبلغ تعطیل کاری")]
         public decimal WorkInHolidayAmount { get; set; }
 

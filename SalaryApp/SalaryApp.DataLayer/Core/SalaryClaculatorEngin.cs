@@ -1,9 +1,10 @@
 ﻿using System;
 using SalaryApp.DataLayer.Core.Domain;
+using SalaryApp.DataLayer.Persistence;
 
 namespace SalaryApp.DataLayer.Core
 {
-    public class SalaryClaculatorEngin 
+    public class SalaryClaculatorEngin
     {
         private readonly SalaryPayDetails salaryDetails;
 
@@ -15,31 +16,15 @@ namespace SalaryApp.DataLayer.Core
         }
 
 
-        public decimal GetGrossAmount()
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetTaxAmount()
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetInsuranceAmount()
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetNetAmount()
-        {
-            throw new NotImplementedException();
-        }
-
         private void CalaculateSalary()
         {
             var rate = salaryDetails.DailyRate;
 
+            var daysInMonht = GetDaysInMonth(salaryDetails.Pay);
+
             var netDaysOfwork = salaryDetails.DaysOfWork - salaryDetails.AbsentDays;
+
+            var workRatio = netDaysOfwork / daysInMonht;
 
             var effectiveDaysOfWork = netDaysOfwork - salaryDetails.LeaveDays;
 
@@ -55,7 +40,8 @@ namespace SalaryApp.DataLayer.Core
 
             salaryDetails.WrokInFridayAmoutn = salaryDetails.WorkInFriday * rate * (decimal) 0.4;
 
-            salaryDetails.WorkAsStandbyAmount = salaryDetails.Employee.Workgroup.StandbayAmount;
+            salaryDetails.WorkAsStandbyAmount = salaryDetails.Employee.Workgroup.StandbayAmount *
+                                                salaryDetails.WorkAsStandbyDays;
 
             salaryDetails.WorkOvertimeAmount = (decimal) (salaryDetails.WorkOvertimeHr / 7.33 * 1.4) * rate;
 
@@ -66,37 +52,18 @@ namespace SalaryApp.DataLayer.Core
 
             salaryDetails.BadConditionAmount = (decimal) salaryDetails.BadConditionRatio * netDaysOfwork * rate;
 
-            salaryDetails.FoodBenefit = salaryDetails.DaysFood * salaryDetails.Employee.Workgroup.Rate;
+            salaryDetails.FoodBenefit = salaryDetails.DaysFood * salaryDetails.Employee.Workgroup.FoodBenefitAmount;
 
-            salaryDetails.GrossAmount = salaryDetails.BadConditionAmount +
-                                        salaryDetails.Bon +
-                                        salaryDetails.ChildrenBenefit +
-                                        salaryDetails.CommuteBenefit +
-                                        salaryDetails.FoodBenefit +
-                                        salaryDetails.HygieneAmount +
-                                        salaryDetails.InstructionBenefit +
-                                        salaryDetails.Karobar +
-                                        salaryDetails.Maskan +
-                                        salaryDetails.MonthlyWage +
-                                        salaryDetails.WorkAsStandbyAmount +
-                                        salaryDetails.WorkInHolidayAmount +
-                                        salaryDetails.WorkOvertimeAmount +
-                                        salaryDetails.WrokInFridayAmoutn;
+            salaryDetails.ShiftAmount = (decimal) salaryDetails.Employee.Workgroup.ShiftRation * effectiveDaysOfWork *
+                                        rate;
+
+            salaryDetails.HygieneAmount = salaryDetails.Employee.Workgroup.HygieneAmount * workRatio;
+
+            salaryDetails.GrossAmount= GetGrossAmount(salaryDetails);
 
             salaryDetails.TaxIncluded = salaryDetails.GrossAmount;
 
-            if (salaryDetails.IsTaxExempt)
-            {
-                salaryDetails.TaxAmount = 0;
-            }
-            else
-            {
-                if (salaryDetails.TaxIncluded <= salaryDetails.Employee.Workgroup.TaxExept)
-                    salaryDetails.TaxAmount = 0;
-                else
-                    salaryDetails.TaxAmount = (salaryDetails.TaxIncluded - salaryDetails.Employee.Workgroup.TaxExept) *
-                                              (decimal) 0.05;
-            }
+            salaryDetails.TaxAmount = TaxCalculator(salaryDetails);
 
             salaryDetails.InsuranceIncluded = salaryDetails.GrossAmount - salaryDetails.ChildrenBenefit;
 
@@ -110,6 +77,46 @@ namespace SalaryApp.DataLayer.Core
                                       salaryDetails.TaxAmount - salaryDetails.Loan -
                                       salaryDetails.PayInAdvance -
                                       salaryDetails.OtherDeduction - salaryDetails.OtherDeduction1;
+        }
+
+        private decimal GetGrossAmount(SalaryPayDetails payDetails)
+        {
+            return payDetails.BadConditionAmount +
+                                        payDetails.Bon +
+                                        payDetails.ChildrenBenefit +
+                                        payDetails.CommuteBenefit +
+                                        payDetails.FoodBenefit +
+                                        payDetails.HygieneAmount +
+                                        payDetails.InstructionBenefit +
+                                        payDetails.Karobar +
+                                        payDetails.Maskan +
+                                        payDetails.MonthlyWage +
+                                        payDetails.WorkAsStandbyAmount +
+                                        payDetails.WorkInHolidayAmount +
+                                        payDetails.WorkOvertimeAmount +
+                                        payDetails.ShiftAmount +
+                                        payDetails.WrokInFridayAmoutn;
+        }
+
+        private decimal TaxCalculator(SalaryPayDetails payDetails)
+        {
+            if (payDetails.IsTaxExempt)
+                return 0;
+
+            if (payDetails.TaxIncluded <= payDetails.Employee.Workgroup.TaxExeptAmount)
+                return 0;
+
+            return (payDetails.TaxIncluded - payDetails.Employee.Workgroup.TaxExeptAmount) *
+                   (decimal) payDetails.Employee.Workgroup.TaxRatio;
+        }
+
+        private int GetDaysInMonth(Pay pay)
+        {
+            var year = new SalaryContext().FinancialYears.Find(pay.FinancialYear_Id).Year;
+            var month = pay.MonthId;
+            var daysOfMonth = DateTime.DaysInMonth(year, month);
+
+            return daysOfMonth;
         }
     }
 }
