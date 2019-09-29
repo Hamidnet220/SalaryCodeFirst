@@ -66,6 +66,8 @@ namespace SalaryApp.DataLayer.Core
 
             salaryDetails.BadConditionAmount = (decimal) salaryDetails.BadConditionRatio * netDaysOfwork * rate;
 
+            salaryDetails.FoodBenefit = salaryDetails.DaysFood * salaryDetails.Employee.Workgroup.Rate;
+
             salaryDetails.GrossAmount = salaryDetails.BadConditionAmount +
                                         salaryDetails.Bon +
                                         salaryDetails.ChildrenBenefit +

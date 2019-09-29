@@ -93,6 +93,9 @@ namespace SalaryApp.DataLayer.Core.Domain
         [VerboseName("مبلغ سرانه بهداشت")]
         public decimal HygieneAmount { get; set; }
 
+        [VerboseName("مبانی محاسبه غذا")]
+        public int DaysFood { get; set; }
+
         [VerboseName("مبلغ حق غذا")]
         public decimal FoodBenefit { get; set; }
 

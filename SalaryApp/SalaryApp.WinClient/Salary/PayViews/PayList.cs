@@ -128,6 +128,7 @@ namespace SalaryApp.WinClient.Salary.PayViews
                         payDetails.DaysOfWork = (byte)GetWorkDays(fields).Count;
                         payDetails.AbsentDays = (byte)GetAbsentDays(fields).Count;
                         payDetails.WorkOvertimeHr = int.Parse(overtimeHoure);
+                        payDetails.DaysFood = GetDaysFood(fields).Count;
                     }
 
 
@@ -244,6 +245,12 @@ namespace SalaryApp.WinClient.Salary.PayViews
             });
 
             base.OnLoad(e);
+        }
+
+        private List<string> GetDaysFood(string[] fields)
+        {
+            return fields.Where(d => d.ToString() == "ص" ||
+                                             d.ToString() == "ع").ToList();
         }
 
         private List<string> GetAbsentDays(string[] fields)
