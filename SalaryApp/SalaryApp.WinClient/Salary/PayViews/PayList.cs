@@ -114,32 +114,26 @@ namespace SalaryApp.WinClient.Salary.PayViews
                 foreach (var line in textfile)
                 {
                     var fields = line.Split(',');
-                    var leavs = fields.Where(d => d.ToString() == "م").ToList();
-                    var workDays = fields.Where(d => d.ToString() == "ص" ||
-                                                     d.ToString() == "ع" ||
-                                                     d.ToString() == "ش" ||
-                                                     d.ToString() == "ر" ||
-                                                     d.ToString() == "آ" ||
-                                                     d.ToString() == "م").ToList();
-
-                    var absetn = fields.Where(d => ToString() == "غ").ToList();
 
                     var ncode = fields[3];
+                    var overtimeHoure = fields[39];
 
                     var payDetails = unitOfWork.SalaryDetails.Find(sd => sd.Employee.Person.NationalCode == ncode)
                         .FirstOrDefault();
 
                     if (payDetails != null)
                     {
-                        payDetails.LeaveDays = (byte) leavs.Count;
-                        payDetails.DaysOfWork = (byte) workDays.Count;
-                        payDetails.AbsentDays = (byte) absetn.Count;
+                        payDetails.DailyRate = payDetails.Employee.Workgroup.Rate;
+                        payDetails.LeaveDays = (byte)GetLeaveDays(fields).Count;
+                        payDetails.DaysOfWork = (byte)GetWorkDays(fields).Count;
+                        payDetails.AbsentDays = (byte)GetAbsentDays(fields).Count;
+                        payDetails.WorkOvertimeHr = int.Parse(overtimeHoure);
                     }
 
 
                     unitOfWork.Complete();
 
-                    sumLeavs += leavs.Count;
+                    sumLeavs += GetLeaveDays(fields).Count;
                 }
 
                 MessageBox.Show(sumLeavs.ToString());
@@ -252,10 +246,31 @@ namespace SalaryApp.WinClient.Salary.PayViews
             base.OnLoad(e);
         }
 
+        private List<string> GetAbsentDays(string[] fields)
+        {
+            return fields.Where(d => ToString() == "غ").ToList();
+        }
+
+        private List<string> GetWorkDays(string[] fields)
+        {
+            return fields.Where(d => d.ToString() == "ص" ||
+                                             d.ToString() == "ع" ||
+                                             d.ToString() == "ش" ||
+                                             d.ToString() == "ر" ||
+                                             d.ToString() == "آ" ||
+                                             d.ToString() == "م").ToList();
+        }
+
+        private List<string> GetLeaveDays(string[] fields)
+        {
+            return fields.Where(d => d.ToString() == "م").ToList();
+        }
+
         private void GetSalaryDetilas()
         {
 
-                var paylist = _grid.GetCurrentItem;
+            var paylist = _grid.GetCurrentItem;
+
             if (!unitOfWork.SalaryDetails.Find(sd => sd.Pay.Id == paylist.Id).Any())
             {
                 var result = ViewEngin.ViewInForm<SourceSelectView>(view => view.Pay = _grid.GetCurrentItem,

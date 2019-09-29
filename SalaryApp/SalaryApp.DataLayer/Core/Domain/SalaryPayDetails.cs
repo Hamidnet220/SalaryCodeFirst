@@ -40,7 +40,7 @@ namespace SalaryApp.DataLayer.Core.Domain
         public byte MissionDays { get; set; }
 
         [VerboseName("ساعات اضافه کاری")]
-        public byte WorkOvertimeHr { get; set; }
+        public int WorkOvertimeHr { get; set; }
 
         [VerboseName("تعداد روز جایگزین")]
         public byte WorkAsStandbyDays { get; set; }
@@ -63,7 +63,7 @@ namespace SalaryApp.DataLayer.Core.Domain
         [VerboseName("مبلغ حق اولاد")]
         public decimal ChildrenBenefit { get; set; }
 
-        [VerboseName("وضعیت نوبنکاری")]
+        [YesNoComboBox("نوبنکار")]
         public bool ShifStatus { get; set; }
 
         [VerboseName("مبلغ تعطیل کاری")]
@@ -108,8 +108,8 @@ namespace SalaryApp.DataLayer.Core.Domain
         [VerboseName("مبلغ ناخالص")]
         public decimal GrossAmount { get; set; }
 
-        [VerboseName("معاف از بیمه")]
-        public bool InsuranceExempt { get; set; }
+        [YesNoComboBox("معاف از بیمه")]
+        public bool IsInsuranceExempt { get; set; }
 
         [VerboseName("مشمول بیمه")]
         public decimal InsuranceIncluded { get; set; }
@@ -120,7 +120,7 @@ namespace SalaryApp.DataLayer.Core.Domain
         [VerboseName("مبلغ بیمه کارفرما")]
         public decimal EmployeerIncurance { get; set; }
 
-        [VerboseName("مبلغ معاف از مالیات")]
+        [YesNoComboBox("معاف از مالیات")]
         public bool IsTaxExempt { get; set; }
 
         [VerboseName("مشمول مالیات")]

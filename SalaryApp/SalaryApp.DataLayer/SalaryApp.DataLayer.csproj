@@ -73,6 +73,7 @@
     <Compile Include="Core\Repositories\ISalaryPayDetails.cs" />
     <Compile Include="Core\Repositories\IWorkPlaceRepository.cs" />
     <Compile Include="Core\Repositories\IPayRepository.cs" />
+    <Compile Include="Core\YesNoComboBoxAttribute.cs" />
     <Compile Include="Cultures.cs" />
     <Compile Include="ExpressionHandler.cs" />
     <Compile Include="Migrations\201908270458236_InitialModel.cs" />
@@ -355,6 +356,14 @@
     <Compile Include="Migrations\201909280706124_AddGrossAmountToBonusDetailTable.Designer.cs">
       <DependentUpon>201909280706124_AddGrossAmountToBonusDetailTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909281831555_ConvertByteForIntOfWorkovertimeHoureSalaryDetail.cs" />
+    <Compile Include="Migrations\201909281831555_ConvertByteForIntOfWorkovertimeHoureSalaryDetail.Designer.cs">
+      <DependentUpon>201909281831555_ConvertByteForIntOfWorkovertimeHoureSalaryDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909290448090_ChangeColumnNameInSalaryDetails.cs" />
+    <Compile Include="Migrations\201909290448090_ChangeColumnNameInSalaryDetails.Designer.cs">
+      <DependentUpon>201909290448090_ChangeColumnNameInSalaryDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -603,6 +612,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909280706124_AddGrossAmountToBonusDetailTable.resx">
       <DependentUpon>201909280706124_AddGrossAmountToBonusDetailTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909281831555_ConvertByteForIntOfWorkovertimeHoureSalaryDetail.resx">
+      <DependentUpon>201909281831555_ConvertByteForIntOfWorkovertimeHoureSalaryDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909290448090_ChangeColumnNameInSalaryDetails.resx">
+      <DependentUpon>201909290448090_ChangeColumnNameInSalaryDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

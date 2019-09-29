@@ -54,7 +54,7 @@ namespace SalaryApp.WinClient.Salary.SalaryDetailsViews
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().BackpayAmount, "مبلغ معوق");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().BackpayExempt, "مبلغ معوق معاف");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().GrossAmount, "مبلغ ناخالص");
-            grid.AddTextBoxColumn(sd => new SalaryPayDetails().InsuranceExempt, "معاف از بیمه");
+            grid.AddTextBoxColumn(sd => new SalaryPayDetails().IsInsuranceExempt, "معاف از بیمه");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().InsuranceIncluded, "مشمول بیمه");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().EmployeerIncurance, "بیمه کارفرما");
             grid.AddTextBoxColumn(sd => new SalaryPayDetails().IsTaxExempt, "معاف از مالیات");

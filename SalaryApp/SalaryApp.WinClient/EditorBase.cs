@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using SalaryApp.DataLayer;
 using SalaryApp.DataLayer.Core;
@@ -54,27 +55,32 @@ namespace SalaryApp.WinClient
             foreach (var item in typeof(TModel).GetProperties())
                 try
                 {
-                    var isComboBox =
-                        item.GetCustomAttributes(typeof(ComboBoxAttribute), false).OfType<ComboBoxAttribute>().Any();
-
-                    if (isComboBox)
+                    var attrs = item.CustomAttributes;
+                    var customAttributeData = attrs.FirstOrDefault();
+                    if (customAttributeData == null)
                         continue;
-
-                    var verboseNameAttribute = item.GetCustomAttributes(typeof(VerboseNameAttribute), false)
-                        .OfType<VerboseNameAttribute>()
-                        .FirstOrDefault();
-
-
-                    if (verboseNameAttribute == null)
-                        continue;
-
-                        var verboseName =
-                            verboseNameAttribute
-                                .VerboseName;
-
+                    if(customAttributeData.AttributeType == typeof(VerboseNameAttribute))
+                    {
+                        var verboseNameAttribute = item.GetCustomAttributes(typeof(VerboseNameAttribute), false)
+                       .OfType<VerboseNameAttribute>()
+                       .FirstOrDefault();
+                        var verboseName =verboseNameAttribute.VerboseName;
                         AddLabel(item.Name, verboseName);
                         AddTextBox(item.Name);
                         AdjustControls();
+                    }
+                    else if (customAttributeData.AttributeType== typeof(YesNoComboBoxAttribute))
+                    {
+                        var yesNoComboBox = item.GetCustomAttributes(typeof(YesNoComboBoxAttribute), false)
+                      .OfType<YesNoComboBoxAttribute>()
+                      .FirstOrDefault();
+                        var title = yesNoComboBox.Title;
+                        AddLabel(item.Name, title);
+                        AddYesNoComboBox(item.Name);
+                        AdjustControls();
+                    }
+
+
 
                 }
                 catch (NullReferenceException)
@@ -104,6 +110,31 @@ namespace SalaryApp.WinClient
             textbox.Anchor = AnchorStyles.Right;
             textbox.Anchor = AnchorStyles.Top;
             Controls.Add(textbox);
+        }
+
+        private struct YesNo
+        {
+            public bool Status { get; set; }
+            public string Title { get; set; }
+        }
+        private void AddYesNoComboBox(string comboBoxName)
+        {
+            var items = new List<YesNo>();
+            items.Add(new YesNo() { Status = true, Title = "بله" });
+            items.Add(new YesNo() { Status = false, Title = "خیر" });
+
+            var comboBox = new ComboBox();
+            comboBox.Name = comboBoxName;
+            comboBox.DataSource = items;
+            comboBox.Top = top;
+            comboBox.DisplayMember = "Title";
+            comboBox.ValueMember = "Status";
+            comboBox.DataBindings.Add("SelectedValue", Entity, comboBoxName);
+            comboBox.Size = new Size(150, 25);
+            comboBox.Left = left - comboBox.Width;
+            comboBox.Anchor = AnchorStyles.Right;
+            comboBox.Anchor = AnchorStyles.Top;
+            Controls.Add(comboBox);
         }
 
         private void AddLabel(string labelName, string verboseName)
