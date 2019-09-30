@@ -11,10 +11,6 @@ namespace SalaryApp.DataLayer.Core.Domain
         [ForeignKey("Person_Id")]
         public virtual Person Person { get; set; }
 
-        //public int Workshop_Id { get; set; }
-        //[ForeignKey("Workshop_Id")]
-        //public virtual Workshop Workshop { get; set; }
-
         public int Workgroup_Id { get; set; }
 
         [ForeignKey("Workgroup_Id")]
@@ -24,5 +20,7 @@ namespace SalaryApp.DataLayer.Core.Domain
 
         [ForeignKey("Workplace_Id")]
         public virtual Workplace Workplace { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }
