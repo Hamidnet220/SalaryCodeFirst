@@ -380,6 +380,10 @@
     <Compile Include="Migrations\201909292337352_AddHyginAndChangeColumnNameWorkgroupTable.Designer.cs">
       <DependentUpon>201909292337352_AddHyginAndChangeColumnNameWorkgroupTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909292354371_AddIsDeletedFieldInEmployeeTable.cs" />
+    <Compile Include="Migrations\201909292354371_AddIsDeletedFieldInEmployeeTable.Designer.cs">
+      <DependentUpon>201909292354371_AddIsDeletedFieldInEmployeeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Domain\City.cs" />
     <Compile Include="Persistence\Repositories\AnnualPayDetailRepository.cs" />
@@ -646,6 +650,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909292337352_AddHyginAndChangeColumnNameWorkgroupTable.resx">
       <DependentUpon>201909292337352_AddHyginAndChangeColumnNameWorkgroupTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909292354371_AddIsDeletedFieldInEmployeeTable.resx">
+      <DependentUpon>201909292354371_AddIsDeletedFieldInEmployeeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
